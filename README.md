@@ -23,3 +23,7 @@ We are using the native module system to create the mod and some tools :
 3. Change the export path in _module_info.py_ to the folder of your new mod (like the other example directory "Truand World 0.1" which is already compiled)
 4. Execute _build_module.bat_ to compile all your files into your mod folder
 5. Put your mod folder in your Modules directory and run it on Mount&Blade:Warband
+
+***
+
+A great tutorial about starting to mod and code in Warband is available [here](http://www.freewebs.com/jikbyond/40kTut/M&B%20Module%20System%20Doc2-3.pdf)
