@@ -16,7 +16,7 @@ We are using the native module system to create the mod and some tools :
 
 ***
 
-##How to get ready ?
+##How to be involved ?
 
 1. Download Python 2.7.X and add ";C:/Python27" (or your install path) to the PATH variable of Windows 
 2. Fetch the module system directory from this repository
