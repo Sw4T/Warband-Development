@@ -18,7 +18,7 @@ We are using the native module system to create the mod and some tools :
 
 ##How to get ready ?
 
-1. Download Python 2.7 and add ";C:/Python27" (or your install path) to the PATH variable of Windows 
+1. Download Python 2.7.X and add ";C:/Python27" (or your install path) to the PATH variable of Windows 
 2. Fetch the module system directory from this repository
 3. Change the export path in _module_info.py_ to the folder of your new mod (like the other example directory "Truand World 0.1" which is already compiled)
 4. Execute _build_module.bat_ to compile all your files into your mod folder
