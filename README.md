@@ -4,8 +4,9 @@ _Actually developping_ : **Truand Brawl** - A MP Mod for Mount&Blade Warband whe
 ***
 ## Coders
 
-- Swatosj
-- Marmoutte
+- Swatosj - Editing, Resources content, Scripting 
+- Marmoutte - Scripting
+- Zixelle - Texturing, Scenes
 
 ***
 
