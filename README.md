@@ -25,6 +25,8 @@ We are using the native module system to create the mod and some tools :
 - [Morghs M&B WB-WFAS Editor](http://mountandblade.mircon.de/wp/morghs-mb-wbwfas-editor/) - GUI to add/edit troops, items, parties...
 - [MABLE](http://www.mbrepository.com/file.php?id=2659) - GUI to edit module_items.py
 
+[W.R.E.C.K](http://forums.taleworlds.com/index.php/topic,325102.0.html) is already integrated within the module system
+
 ***
 
 A great tutorial about starting to mod and code in Warband is available in [PDF](http://www.freewebs.com/jikbyond/40kTut/M&B%20Module%20System%20Doc2-3.pdf) or [HTML](http://forums.taleworlds.com/index.php/board,12.0.html)
