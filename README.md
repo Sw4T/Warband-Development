@@ -14,7 +14,7 @@ _Actually developping_ : **Truand Brawl** - A MP Mod for Mount&Blade Warband whe
 
 1. Download Python 2.7.X and add ";C:/Python27" (or your install path) to the PATH variable of Windows 
 2. Get the module system directory from this repository and copy it where you want
-3. Change the variable _export_dir_ of the file _module_info.py_ to the folder of your choice (it will be your Module folder)
+3. Change the variable _export_dir_ of the file _module_info.py_ to the path of your choice (it will be your Module folder)
 4. Execute _compile.bat_ to compile all your files into the new mod folder
 5. To play it, just put your mod folder in your M&B Warband/Modules directory and run it on Mount&Blade:Warband
 
