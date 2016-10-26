@@ -1,13 +1,4 @@
-from header_common import *
-from header_operations import *
-from header_parties import *
-from header_items import *
-from header_skills import *
-from header_triggers import *
-from header_troops import *
-from header_music import *
-
-from module_constants import *
+from compiler import *
 
 ####################################################################################################################
 # Simple triggers are the alternative to old style triggers. They do not preserve state, and thus simpler to maintain.

@@ -1,6 +1,5 @@
-from ID_items import *
-from ID_quests import *
-from ID_factions import *
+from compiler import *
+
 ##############################################################
 # These constants are used in various files.
 # If you need to define a value that will be used in those files,
@@ -468,7 +467,7 @@ slot_town_trade_routes_begin = slot_town_trade_route_1
 slot_town_trade_routes_end = slot_town_trade_route_15 + 1
 
 
-num_trade_goods = itm_siege_supply - itm_spice
+num_trade_goods = itm.siege_supply - itm.spice
 slot_town_trade_good_productions_begin       = 500 #a harmless number, until it can be deprecated
 
 #These affect production but in some cases also demand, so it is perhaps easier to itemize them than to have separate 

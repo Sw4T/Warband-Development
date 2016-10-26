@@ -1,11 +1,4 @@
-from header_common import *
-from header_presentations import *
-from header_mission_templates import *
-from ID_meshes import *
-from header_operations import *
-from header_triggers import *
-from module_constants import *
-import string
+from compiler import *
 
 ####################################################################################################################
 #  Each presentation record contains the following fields:
@@ -16,7 +9,7 @@ import string
 ####################################################################################################################
 
 presentations = [
-  ("game_credits",prsntf_read_only,mesh_load_window,[
+  ("game_credits",prsntf_read_only,mesh.load_window,[
       (ti_on_presentation_load,
        [(assign, "$g_presentation_credits_obj_1", -1),
         (assign, "$g_presentation_credits_obj_2", -1),
@@ -275,7 +268,7 @@ presentations = [
         ]),
       ]),
 
-  ("game_profile_banner_selection", 0, mesh_load_window, [
+  ("game_profile_banner_selection", 0, mesh.load_window, [
     (ti_on_presentation_load, [
       (set_fixed_point_multiplier, 1000),
       (str_store_string, s1, "str_profile_banner_selection_text"),
@@ -363,7 +356,7 @@ presentations = [
       ]),
     ]),
 
-  ("game_custom_battle_designer", prsntf_manual_end_only, mesh_cb_ui_main, [
+  ("game_custom_battle_designer", prsntf_manual_end_only, mesh.cb_ui_main, [
     (ti_on_presentation_load,
      [(set_fixed_point_multiplier, 1000),
 
@@ -7418,7 +7411,7 @@ presentations = [
         ]),
       ]),
 
-  ("name_kingdom",0,mesh_load_window,[
+  ("name_kingdom",0,mesh.load_window,[
       (ti_on_presentation_load,
        [(set_fixed_point_multiplier, 1000),
         (str_store_string, s1, "str_name_kingdom_text"),
@@ -7462,7 +7455,7 @@ presentations = [
         ]),
       ]),
   
-  ("banner_selection",0,mesh_load_window,[
+  ("banner_selection",0,mesh.load_window,[
       (ti_on_presentation_load,
        [(set_fixed_point_multiplier, 1000),
         (str_store_string, s1, "str_banner_selection_text"),
@@ -7564,7 +7557,7 @@ presentations = [
         ]),
       ]),
 
-  ("custom_banner", 0, mesh_load_window,
+  ("custom_banner", 0, mesh.load_window,
    [
      (ti_on_presentation_load,
       [
@@ -8106,7 +8099,7 @@ presentations = [
 ##       ]),
      ]),
 
-  ("banner_charge_positioning", 0, mesh_load_window,
+  ("banner_charge_positioning", 0, mesh.load_window,
    [
      (ti_on_presentation_load,
       [
@@ -8152,7 +8145,7 @@ presentations = [
         ]),
      ]),
 
-  ("banner_charge_selection", 0, mesh_load_window,
+  ("banner_charge_selection", 0, mesh.load_window,
    [
      (ti_on_presentation_load,
       [
@@ -8202,7 +8195,7 @@ presentations = [
         ]),
      ]),
 
-  ("banner_background_selection", 0, mesh_load_window,
+  ("banner_background_selection", 0, mesh.load_window,
    [
      (ti_on_presentation_load,
       [
@@ -8248,7 +8241,7 @@ presentations = [
         ]),
      ]),
 
-  ("banner_flag_type_selection", 0, mesh_load_window,
+  ("banner_flag_type_selection", 0, mesh.load_window,
    [
      (ti_on_presentation_load,
       [
@@ -8294,7 +8287,7 @@ presentations = [
         ]),
      ]),
 
-  ("banner_flag_map_type_selection", 0, mesh_load_window,
+  ("banner_flag_map_type_selection", 0, mesh.load_window,
    [
      (ti_on_presentation_load,
       [
@@ -8349,7 +8342,7 @@ presentations = [
         ]),
      ]),
 
-  ("color_selection", 0, mesh_load_window,
+  ("color_selection", 0, mesh.load_window,
    [
      (ti_on_presentation_load,
       [
@@ -8406,7 +8399,7 @@ presentations = [
         ]),
      ]),
 
-  ("marshall_selection", 0, mesh_load_window,
+  ("marshall_selection", 0, mesh.load_window,
    [
      (ti_on_presentation_load,
       [
@@ -10496,7 +10489,7 @@ presentations = [
         ]),
       ]),
 
-  ("retirement", 0, mesh_load_window,
+  ("retirement", 0, mesh.load_window,
    [
      (ti_on_presentation_load,
       [
@@ -11189,7 +11182,7 @@ presentations = [
         ]),
      ]),
 
-  ("budget_report", 0, mesh_load_window,
+  ("budget_report", 0, mesh.load_window,
    [(ti_on_presentation_load,
      [(presentation_set_duration, 999999),
       (set_fixed_point_multiplier, 1000),
@@ -11818,7 +11811,7 @@ presentations = [
       ]),
     ]),
 
-  ("game_before_quit", 0, mesh_load_window,
+  ("game_before_quit", 0, mesh.load_window,
    [
      (ti_on_presentation_load,
       [

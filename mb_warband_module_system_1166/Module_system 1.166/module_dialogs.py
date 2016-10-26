@@ -1,16 +1,4 @@
-# -*- coding: cp1254 -*-
-from header_common import *
-from header_dialogs import *
-from header_operations import *
-from header_parties import *
-from header_item_modifiers import *
-from header_skills import *
-from header_triggers import *
-from ID_troops import *
-from ID_party_templates import *
-
-from module_constants import *
-
+from compiler import *
 
 ####################################################################################################################
 # During a dialog, the dialog lines are scanned from top to bottom.
@@ -808,12 +796,12 @@ dialogs = [
    [],
    "{!}TODO: Sorry. I want to leave the exercise.", "close_window", []],
 
-  [trp_tutorial_archer_1|auto_proceed, "start",
+  [trp.tutorial_archer_1|auto_proceed, "start",
    [],
    "{!}.", "tutorial_troop_default",
    []],
 
-  [trp_tutorial_master_archer, "start",
+  [trp.tutorial_master_archer, "start",
    [
      (eq, "$g_tutorial_training_ground_archer_trainer_completed_chapters", 1),
      ],
@@ -821,7 +809,7 @@ dialogs = [
  Take the crossbow and the bolts over there and shoot those three targets. The crossbow is much easier to shoot with compared with the bow,\
  but you need to reload it after each shot.", "archer_challenge_2", []],
 
-	 [trp_tutorial_master_archer, "start",
+	 [trp.tutorial_master_archer, "start",
    [
      (eq, "$g_tutorial_training_ground_archer_trainer_completed_chapters", 2),
      ],
@@ -829,18 +817,18 @@ dialogs = [
  Pick up the javelins you see over there and try to hit those three targets. ", 
  "archer_challenge_2", []],
 
-  [trp_tutorial_master_archer, "start",
+  [trp.tutorial_master_archer, "start",
    [
      (eq, "$g_tutorial_training_ground_archer_trainer_completed_chapters", 3),
      ],
    "Well, with that you have recevied the basic skills to use all three types of ranged weapons. The rest will come with practice. Train each and every day, and in time you will be as good as the best marksmen in Calradia.", 
    "ranged_end", []],
 	 
-	 [trp_tutorial_master_archer, "ranged_end", [],
+	 [trp.tutorial_master_archer, "ranged_end", [],
    "Now, you can go talk with the melee fighters or the horsemanship trainer if you haven't already done so. They can teach you important skills too.", 
    "close_window", []],
 
-  [trp_tutorial_master_archer, "start",
+  [trp.tutorial_master_archer, "start",
    [
      (try_begin),
        (eq, "$g_tutorial_training_ground_intro_message_being_displayed", 1),
@@ -869,7 +857,7 @@ dialogs = [
    [],
    "No, not now.", "close_window", []],
 
-  [trp_tutorial_master_archer, "archer_challenge",
+  [trp.tutorial_master_archer, "archer_challenge",
    [
      (eq, "$g_tutorial_training_ground_archer_trainer_completed_chapters", 0),
      ],
@@ -877,14 +865,14 @@ dialogs = [
  Go pick up the bow and arrows you see over there now and shoot those targets.", "archer_challenge_2",
    []],
 
-  # [trp_tutorial_master_archer, "archer_challenge",
+  # [trp.tutorial_master_archer, "archer_challenge",
    # [
      # (eq, "$g_tutorial_training_ground_archer_trainer_completed_chapters", 1),
      # ],
    # "{!}TODO: Make 3 shots with crossbow.", "archer_challenge_2",
    # []],
 
-  # [trp_tutorial_master_archer, "archer_challenge",
+  # [trp.tutorial_master_archer, "archer_challenge",
    # [],
    # "{!}TODO: Make 3 shots with javelin.", "archer_challenge_2",
    # []],
@@ -914,21 +902,21 @@ dialogs = [
    []],
 
 
-  [trp_tutorial_master_horseman, "start",
+  [trp.tutorial_master_horseman, "start",
    [
      (eq, "$g_tutorial_training_ground_horseman_trainer_completed_chapters", 1),
      ],
    "I hope you enjoyed the ride. Now we move on to something a bit more difficult. Grab the lance you see over there and ride around the course hitting each target at least once.", 
    "horseman_melee_challenge_2", []],
    
-  [trp_tutorial_master_horseman, "start",
+  [trp.tutorial_master_horseman, "start",
    [
      (eq, "$g_tutorial_training_ground_horseman_trainer_completed_chapters", 2),
      ],
    "Good! You have been able to hit all targets on horseback. That's no easy feat for a starter. Your next challange will be using a bow and arrows to shoot at the archery targets by the road. You need to put an arrow to each target to consider yourself successful.", 
    "horseman_melee_challenge_2", []],
 
-  [trp_tutorial_master_horseman, "start",
+  [trp.tutorial_master_horseman, "start",
    [
      (eq, "$g_tutorial_training_ground_horseman_trainer_completed_chapters", 3),
      ],
@@ -936,7 +924,7 @@ dialogs = [
    [
      ]],
 	 
-	 [trp_tutorial_master_horseman, "horsemanship_end",
+	 [trp.tutorial_master_horseman, "horsemanship_end",
    [
      ],
    "Now, you can go talk with the melee fighters or the archery trainer if you haven't already done so. You need to learn everything you can to be prepared when you have to defend yourself.", "close_window",
@@ -944,7 +932,7 @@ dialogs = [
 	 
 
 	 
-  [trp_tutorial_master_horseman, "start",
+  [trp.tutorial_master_horseman, "start",
    [
      (try_begin),
        (eq, "$g_tutorial_training_ground_intro_message_being_displayed", 1),
@@ -964,7 +952,7 @@ dialogs = [
    [],
    "Uhm. Maybe later.", "close_window", []],
 
-  # [trp_tutorial_master_horseman, "horseman_challenge",
+  # [trp.tutorial_master_horseman, "horseman_challenge",
    # [
      # (eq, "$g_tutorial_training_ground_player_continue_without_basics", 0),
      # (this_or_next|eq, "$g_tutorial_training_ground_melee_trainer_attack_completed", 0),
@@ -985,12 +973,12 @@ dialogs = [
    # "{!}TODO: No", "horseman_ask_2",
    # []],
 
-  # [trp_tutorial_master_horseman, "horseman_ask_2",
+  # [trp.tutorial_master_horseman, "horseman_ask_2",
    # [],
    # "{!}TODO: Come back later then.", "close_window",
    # []],
 
-  [trp_tutorial_master_horseman, "horseman_challenge",
+  [trp.tutorial_master_horseman, "horseman_challenge",
    [
      (eq, "$g_tutorial_training_ground_horseman_trainer_completed_chapters", 0),
     ],
@@ -1023,12 +1011,12 @@ dialogs = [
    [],
    "Just a minute. I need to do something else first.", "close_window", []],
 
-  [trp_tutorial_rider_1|auto_proceed, "start",
+  [trp.tutorial_rider_1|auto_proceed, "start",
    [],
    "{!}Warning: This line is never displayed.", "tutorial_troop_default",
    []],
 
-  [trp_tutorial_rider_2|auto_proceed, "start",
+  [trp.tutorial_rider_2|auto_proceed, "start",
    [],
    "{!}Warning: This line is never displayed.", "tutorial_troop_default",
    []],
@@ -1305,122 +1293,122 @@ dialogs = [
    
    
    
-  [trp_ramun_the_slave_trader, "start", [
+  [trp.ramun_the_slave_trader, "start", [
    (troop_slot_eq, "$g_talk_troop", slot_troop_met_previously, 0),
    ], "Good day to you, {young man/lassie}.", "ramun_introduce_1",[]],
-  [trp_ramun_the_slave_trader|plyr, "ramun_introduce_1", [], "Forgive me, you look like a trader, but I see none of your merchandise.", "ramun_introduce_2",[
+  [trp.ramun_the_slave_trader|plyr, "ramun_introduce_1", [], "Forgive me, you look like a trader, but I see none of your merchandise.", "ramun_introduce_2",[
    (troop_set_slot, "$g_talk_troop", slot_troop_met_previously, 1),
   ]],
-  [trp_ramun_the_slave_trader|plyr, "ramun_introduce_1", [], "Never mind.", "close_window",[]],
-  [trp_ramun_the_slave_trader, "ramun_introduce_2", [], "A trader? Oh, aye, I certainly am that.\
+  [trp.ramun_the_slave_trader|plyr, "ramun_introduce_1", [], "Never mind.", "close_window",[]],
+  [trp.ramun_the_slave_trader, "ramun_introduce_2", [], "A trader? Oh, aye, I certainly am that.\
  My merchandise is a bit different from most, however. It has to be fed and watered twice a day and tries to run away if I turn my back.", "ramun_introduce_3",[]],
-  [trp_ramun_the_slave_trader|plyr, "ramun_introduce_3", [], "Livestock?", "ramun_introduce_4",[]],
-  [trp_ramun_the_slave_trader, "ramun_introduce_4", [], "Close enough. I like to call myself the man who keeps every boat on this ocean moving.\
+  [trp.ramun_the_slave_trader|plyr, "ramun_introduce_3", [], "Livestock?", "ramun_introduce_4",[]],
+  [trp.ramun_the_slave_trader, "ramun_introduce_4", [], "Close enough. I like to call myself the man who keeps every boat on this ocean moving.\
  Boats are driven by oars, you see, and oars need men to pull them or they stop. That's where I come in.", "ramun_introduce_5",[]],
-  [trp_ramun_the_slave_trader|plyr, "ramun_introduce_5", [], "Galley slaves.", "ramun_introduce_6",[]],
-  [trp_ramun_the_slave_trader, "ramun_introduce_6", [], "Now you're catching on! A trading port like this couldn't survive without them.\
+  [trp.ramun_the_slave_trader|plyr, "ramun_introduce_5", [], "Galley slaves.", "ramun_introduce_6",[]],
+  [trp.ramun_the_slave_trader, "ramun_introduce_6", [], "Now you're catching on! A trading port like this couldn't survive without them.\
  The ships lose a few hands on every voyage, so there's always a high demand. The captains come to me and they pay well.", "ramun_introduce_7",[]],
-  [trp_ramun_the_slave_trader|plyr, "ramun_introduce_7", [], "Where do the slaves come from?", "ramun_introduce_8",[]],
-  [trp_ramun_the_slave_trader, "ramun_introduce_8", [], "Mostly I deal in convicted criminals bought from the authorities.\
+  [trp.ramun_the_slave_trader|plyr, "ramun_introduce_7", [], "Where do the slaves come from?", "ramun_introduce_8",[]],
+  [trp.ramun_the_slave_trader, "ramun_introduce_8", [], "Mostly I deal in convicted criminals bought from the authorities.\
  Others are prisoners of war from various nations, brought to me because I offer the best prices.\
  However, on occasion I'll buy from privateers and other . . . 'individuals'. You can't be picky about your suppliers in this line of work.\
  You wouldn't happen to have any prisoners with you, would you?", "ramun_introduce_9",[]],
-  [trp_ramun_the_slave_trader|plyr, "ramun_introduce_9", [], "Me? ", "ramun_introduce_10",[]],
-  [trp_ramun_the_slave_trader, "ramun_introduce_10", [], "Why not? If you intend to set foot outside this town,\
+  [trp.ramun_the_slave_trader|plyr, "ramun_introduce_9", [], "Me? ", "ramun_introduce_10",[]],
+  [trp.ramun_the_slave_trader, "ramun_introduce_10", [], "Why not? If you intend to set foot outside this town,\
  you're going to cross swords with someone sooner or later. And, God willing, you'll come out on top.\
  Why not make some extra money off the whole thing? Take them alive, bring them back to me, and I'll pay you fifty denars for each head.\
  Don't much care who they are or where they come from.", "ramun_introduce_11",[]],
-  [trp_ramun_the_slave_trader|plyr, "ramun_introduce_11", [], "Hmm. I'll think about it.", "ramun_introduce_12",[]],
-  [trp_ramun_the_slave_trader, "ramun_introduce_12", [], "Do think about it!\
+  [trp.ramun_the_slave_trader|plyr, "ramun_introduce_11", [], "Hmm. I'll think about it.", "ramun_introduce_12",[]],
+  [trp.ramun_the_slave_trader, "ramun_introduce_12", [], "Do think about it!\
  There's a lot of silver to be made, no mistake. More than enough for the both of us.", "close_window",[]],
 
-  [trp_ramun_the_slave_trader,"start", [], "Hello, {playername}.", "ramun_talk",[]],
-  [trp_ramun_the_slave_trader,"ramun_pre_talk", [], "Anything else?", "ramun_talk",[]],
+  [trp.ramun_the_slave_trader,"start", [], "Hello, {playername}.", "ramun_talk",[]],
+  [trp.ramun_the_slave_trader,"ramun_pre_talk", [], "Anything else?", "ramun_talk",[]],
 
-  [trp_ramun_the_slave_trader|plyr,"ramun_talk",
+  [trp.ramun_the_slave_trader|plyr,"ramun_talk",
    [[store_num_regular_prisoners,reg(0)],[ge,reg(0),1]],
    "I've brought you some prisoners, Ramun. Would you like a look?", "ramun_sell_prisoners",[]],
-  [trp_ramun_the_slave_trader,"ramun_sell_prisoners", [],
+  [trp.ramun_the_slave_trader,"ramun_sell_prisoners", [],
   "Let me see what you have...", "ramun_sell_prisoners_2",
    [[change_screen_trade_prisoners]]],
-  [trp_ramun_the_slave_trader, "ramun_sell_prisoners_2", [], "A pleasure doing business with you.", "close_window",[]],
+  [trp.ramun_the_slave_trader, "ramun_sell_prisoners_2", [], "A pleasure doing business with you.", "close_window",[]],
 
-  [trp_ramun_the_slave_trader|plyr,"ramun_talk", [(neg|troop_slot_ge,"$g_talk_troop",slot_troop_met_previously,1)], "How do I take somebody as prisoner?", "ramun_ask_about_capturing",[]],
-  [trp_ramun_the_slave_trader|plyr,"ramun_talk", [(troop_slot_ge,"$g_talk_troop", slot_troop_met_previously, 1)], "Can you tell me again about capturing prisoners?", "ramun_ask_about_capturing",[(troop_set_slot,"$g_talk_troop", slot_troop_met_previously, 2)]],
+  [trp.ramun_the_slave_trader|plyr,"ramun_talk", [(neg|troop_slot_ge,"$g_talk_troop",slot_troop_met_previously,1)], "How do I take somebody as prisoner?", "ramun_ask_about_capturing",[]],
+  [trp.ramun_the_slave_trader|plyr,"ramun_talk", [(troop_slot_ge,"$g_talk_troop", slot_troop_met_previously, 1)], "Can you tell me again about capturing prisoners?", "ramun_ask_about_capturing",[(troop_set_slot,"$g_talk_troop", slot_troop_met_previously, 2)]],
 
-  [trp_ramun_the_slave_trader,"ramun_ask_about_capturing", [(neg|troop_slot_ge,"$g_talk_troop",slot_troop_met_previously,1)],
+  [trp.ramun_the_slave_trader,"ramun_ask_about_capturing", [(neg|troop_slot_ge,"$g_talk_troop",slot_troop_met_previously,1)],
  "You're new to this, aren't you? Let me explain it in simple terms.\
  The basic rule of taking someone prisoner is knocking him down with a blunt weapon, like a mace or a club,\
  rather than cutting him open with a sword. That way he goes to sleep for a little while rather than bleeding to death, you see?\
  I'm assuming you have a blunt weapon with you . . .", "ramun_have_blunt_weapon",[]],
-  [trp_ramun_the_slave_trader|plyr,"ramun_have_blunt_weapon", [],
+  [trp.ramun_the_slave_trader|plyr,"ramun_have_blunt_weapon", [],
  "Of course.", "ramun_have_blunt_weapon_yes",[]],
-  [trp_ramun_the_slave_trader|plyr,"ramun_have_blunt_weapon", [],
+  [trp.ramun_the_slave_trader|plyr,"ramun_have_blunt_weapon", [],
  "As a matter of fact, I don't.", "ramun_have_blunt_weapon_no",[]],
-  [trp_ramun_the_slave_trader,"ramun_have_blunt_weapon_yes", [],
+  [trp.ramun_the_slave_trader,"ramun_have_blunt_weapon_yes", [],
  "Good. Then all you need to do is beat the bugger down with your weapon, and when the fighting's over you clap him in irons.\
  It's a bit different for nobles and such, they tend to be protected enough that it won't matter what kind of weapon you use,\
  but your average rabble-rouser will bleed like a stuck pig if you get him with something sharp. I don't have many requirements in my merchandise,\
  but I do insist they be breathing when I buy them.", "ramun_ask_about_capturing_2",[]],
-  [trp_ramun_the_slave_trader,"ramun_have_blunt_weapon_no", [],
+  [trp.ramun_the_slave_trader,"ramun_have_blunt_weapon_no", [],
  "No? Heh, well, this must be your lucky day. I've got an old club lying around that I was going to throw away.\
  It a bit battered, but still good enough bash someone until he stops moving.\
  Here, have it.","ramun_have_blunt_weapon_no_2",[(troop_add_item, "trp_player","itm_club",imod_cracked)]],
-  [trp_ramun_the_slave_trader|plyr,"ramun_have_blunt_weapon_no_2", [],
+  [trp.ramun_the_slave_trader|plyr,"ramun_have_blunt_weapon_no_2", [],
  "Thanks, Ramun. Perhaps I may try my hand at it.", "ramun_have_blunt_weapon_yes",[]],
-  [trp_ramun_the_slave_trader,"ramun_ask_about_capturing", [],
+  [trp.ramun_the_slave_trader,"ramun_ask_about_capturing", [],
  "Alright, I'll try and expain it again in simple terms. The basic rule of taking someone prisoner is knocking him down with a blunt weapon, like a mace or a club,\
  rather than cutting him open with a sword. That way he goes to sleep for a little while rather than bleeding to death, you see?\
  It's a bit different for nobles and such, they tend to be protected enough that it won't matter what kind of weapon you use,\
  but your average rabble-rouser will bleed like a stuck pig if you get him with something sharp.", "ramun_ask_about_capturing_2",[]],
-  [trp_ramun_the_slave_trader|plyr,"ramun_ask_about_capturing_2", [], "Alright, I think I understand. Anything else?", "ramun_ask_about_capturing_3",[]],
-  [trp_ramun_the_slave_trader,"ramun_ask_about_capturing_3", [],
+  [trp.ramun_the_slave_trader|plyr,"ramun_ask_about_capturing_2", [], "Alright, I think I understand. Anything else?", "ramun_ask_about_capturing_3",[]],
+  [trp.ramun_the_slave_trader,"ramun_ask_about_capturing_3", [],
  "Well, it's not as simple as all that. Blunt weapons don't do as much damage as sharp ones, so they won't bring your enemies down as quickly.\
  And trust me, given the chance, most of the scum you run across would just as soon kill you as look at you, so don't expect any courtesy when you pull out a club instead of a sword.\
  Moreover, having to drag prisoners to and fro will slow down your party, which is why some people simply set their prisoners free after the fighting's done.\
  It's madness. How could anyone turn down all that silver, eh?", "ramun_ask_about_capturing_4",[]],
-  [trp_ramun_the_slave_trader|plyr,"ramun_ask_about_capturing_4", [],
+  [trp.ramun_the_slave_trader|plyr,"ramun_ask_about_capturing_4", [],
  "Is that everything?", "ramun_ask_about_capturing_5",[]],
-  [trp_ramun_the_slave_trader,"ramun_ask_about_capturing_5", [],
+  [trp.ramun_the_slave_trader,"ramun_ask_about_capturing_5", [],
  "Just one final thing. Managing prisoners safely is not an easy thing to do, you could call it a skill in itself.\
  If you want to capture a lot of prisoners, you should try and learn the tricks of it yourself,\
  or you won't be able to hang on to a single man you catch.", "ramun_ask_about_capturing_7",[]],
-  [trp_ramun_the_slave_trader|plyr,"ramun_ask_about_capturing_7", [],
+  [trp.ramun_the_slave_trader|plyr,"ramun_ask_about_capturing_7", [],
  "Thanks, I'll keep it in mind.", "ramun_pre_talk",[]],
 
-  [trp_ramun_the_slave_trader|plyr,"ramun_talk", [], "I'd better be going.", "ramun_leave",[]],
-  [trp_ramun_the_slave_trader,"ramun_leave", [], "Remember, any prisoners you've got, bring them to me. I'll pay you good silver for every one.", "close_window",[]],
+  [trp.ramun_the_slave_trader|plyr,"ramun_talk", [], "I'd better be going.", "ramun_leave",[]],
+  [trp.ramun_the_slave_trader,"ramun_leave", [], "Remember, any prisoners you've got, bring them to me. I'll pay you good silver for every one.", "close_window",[]],
 
   
 
   
   
   
-  [trp_nurse_for_lady, "start", [
+  [trp.nurse_for_lady, "start", [
 #  (eq, "$talk_context", tc_garden),
   ], "I humbly request that your lordship keeps his hands where I can see them.", "close_window",[]],
 
-##  [trp_tutorial_trainer, "start", [(eq, "$tutorial_1_state", 1),], "TODO: Watch me.", "tutorial_1_1_1",[]],
-##  [trp_tutorial_trainer, "tutorial_1_1_1", [], "TODO: This is up.", "tutorial_1_1_2",[(agent_set_attack_action, "$g_talk_agent", 3),]],
-##  [trp_tutorial_trainer, "tutorial_1_1_2", [], "TODO: This is left.", "tutorial_1_1_3",[(agent_set_attack_action, "$g_talk_agent", 2),]],
-##  [trp_tutorial_trainer, "tutorial_1_1_3", [], "TODO: This is right.", "tutorial_1_1_4",[(agent_set_attack_action, "$g_talk_agent", 1),]],
-##  [trp_tutorial_trainer|plyr, "tutorial_1_1_4", [], "TODO: OK.", "close_window",[]],
+##  [trp.tutorial_trainer, "start", [(eq, "$tutorial_1_state", 1),], "TODO: Watch me.", "tutorial_1_1_1",[]],
+##  [trp.tutorial_trainer, "tutorial_1_1_1", [], "TODO: This is up.", "tutorial_1_1_2",[(agent_set_attack_action, "$g_talk_agent", 3),]],
+##  [trp.tutorial_trainer, "tutorial_1_1_2", [], "TODO: This is left.", "tutorial_1_1_3",[(agent_set_attack_action, "$g_talk_agent", 2),]],
+##  [trp.tutorial_trainer, "tutorial_1_1_3", [], "TODO: This is right.", "tutorial_1_1_4",[(agent_set_attack_action, "$g_talk_agent", 1),]],
+##  [trp.tutorial_trainer|plyr, "tutorial_1_1_4", [], "TODO: OK.", "close_window",[]],
 
 
 #old tutorial is below
 
-##  [trp_tutorial_trainer,"start", [(eq, "$tutorial_quest_award_taken", 1),], "I think you have trained enough. Perhaps you should go to Zendar for the next step of your adventure.", "close_window",[]],
-##  [trp_tutorial_trainer,"start", [(store_character_level, ":player_level", "trp_player"),(gt, ":player_level", 1)], "I think you have trained enough. Perhaps you should go to Zendar for the next step of your adventure.", "close_window",[]],
-##  [trp_tutorial_trainer,"start", [(eq, "$tutorial_quest_taken", 0),], "Greetings stranger. What's your name?", "tutorial1_1",[]],
-##  [trp_tutorial_trainer|plyr, "tutorial1_1", [], "Greetings sir, it's {playername}.", "tutorial1_2", []],
-##  [trp_tutorial_trainer, "tutorial1_2", [], "Well {playername}, this place you see is the training ground. Locals come here to practice their combat skills. Since you are here you may have a go as well.", "tutorial1_3", []],
-##  [trp_tutorial_trainer|plyr, "tutorial1_3", [], "I'd like that very much sir. Thank you.", "tutorial1_4", []],
-##  [trp_tutorial_trainer, "tutorial1_4", [], "You will learn the basics of weapons and riding a horse here.\
+##  [trp.tutorial_trainer,"start", [(eq, "$tutorial_quest_award_taken", 1),], "I think you have trained enough. Perhaps you should go to Zendar for the next step of your adventure.", "close_window",[]],
+##  [trp.tutorial_trainer,"start", [(store_character_level, ":player_level", "trp_player"),(gt, ":player_level", 1)], "I think you have trained enough. Perhaps you should go to Zendar for the next step of your adventure.", "close_window",[]],
+##  [trp.tutorial_trainer,"start", [(eq, "$tutorial_quest_taken", 0),], "Greetings stranger. What's your name?", "tutorial1_1",[]],
+##  [trp.tutorial_trainer|plyr, "tutorial1_1", [], "Greetings sir, it's {playername}.", "tutorial1_2", []],
+##  [trp.tutorial_trainer, "tutorial1_2", [], "Well {playername}, this place you see is the training ground. Locals come here to practice their combat skills. Since you are here you may have a go as well.", "tutorial1_3", []],
+##  [trp.tutorial_trainer|plyr, "tutorial1_3", [], "I'd like that very much sir. Thank you.", "tutorial1_4", []],
+##  [trp.tutorial_trainer, "tutorial1_4", [], "You will learn the basics of weapons and riding a horse here.\
 ##  First you'll begin with melee weapons. Then you'll enter an archery range to test your skills. And finally you'll see a horse waiting for you.\
 ##  I advise you to train in all these 3 areas. But you can skip some of them, it's up to you.", "tutorial1_6", []],
-##  [trp_tutorial_trainer, "tutorial1_6", [], "Tell you what, if you destroy at least 10 dummies while training, I will give you my old knife as a reward. It's a little rusty but it's a good blade.", "tutorial1_7", []],
-##  [trp_tutorial_trainer|plyr, "tutorial1_7", [], "Sounds nice, I'm ready for training.", "tutorial1_9", []],
-##  [trp_tutorial_trainer, "tutorial1_9", [], "Good. Return to me when you have earned your reward.", "close_window", [(eq, "$tutorial_quest_taken", 0),
+##  [trp.tutorial_trainer, "tutorial1_6", [], "Tell you what, if you destroy at least 10 dummies while training, I will give you my old knife as a reward. It's a little rusty but it's a good blade.", "tutorial1_7", []],
+##  [trp.tutorial_trainer|plyr, "tutorial1_7", [], "Sounds nice, I'm ready for training.", "tutorial1_9", []],
+##  [trp.tutorial_trainer, "tutorial1_9", [], "Good. Return to me when you have earned your reward.", "close_window", [(eq, "$tutorial_quest_taken", 0),
 ##                                                                                                                     (str_store_troop_name, 1, "trp_tutorial_trainer"),
 ##                                                                                                                     (str_store_party_name, 2, "p_training_ground"),
 ##                                                                                                                     (setup_quest_giver, "qst_destroy_dummies", "str_given_by_s1_at_s2"),
@@ -1428,37 +1416,37 @@ dialogs = [
 ##                                                                                                                     (call_script, "script_start_quest", "qst_destroy_dummies", "$g_talk_troop"),
 ##                                                                                                                     (assign, "$tutorial_quest_taken", 1)]],
 ##
-##  [trp_tutorial_trainer,"start", [(eq, "$tutorial_quest_taken", 1),
+##  [trp.tutorial_trainer,"start", [(eq, "$tutorial_quest_taken", 1),
 ##                                  (eq, "$tutorial_quest_succeeded", 1),], "Well done {playername}. Now you earned this knife. There you go.", "tutorial2_1",[]],
-##  [trp_tutorial_trainer|plyr, "tutorial2_1", [], "Thank you master.", "close_window", [(call_script, "script_end_quest", "qst_destroy_dummies"),(assign, "$tutorial_quest_award_taken", 1),(add_xp_to_troop, 100, "trp_player"),(troop_add_item, "trp_player","itm_knife",imod_chipped),]],
+##  [trp.tutorial_trainer|plyr, "tutorial2_1", [], "Thank you master.", "close_window", [(call_script, "script_end_quest", "qst_destroy_dummies"),(assign, "$tutorial_quest_award_taken", 1),(add_xp_to_troop, 100, "trp_player"),(troop_add_item, "trp_player","itm_knife",imod_chipped),]],
 ##
-##  [trp_tutorial_trainer,"start", [(eq, "$tutorial_quest_taken", 1),
+##  [trp.tutorial_trainer,"start", [(eq, "$tutorial_quest_taken", 1),
 ##                                  (eq, "$tutorial_quest_succeeded", 1),], "Greetings {playername}. Feel free to train with the targets.", "tutorial2_1",[]],
 ##
-##  [trp_tutorial_trainer,"start", [(eq, "$tutorial_quest_taken", 1),
+##  [trp.tutorial_trainer,"start", [(eq, "$tutorial_quest_taken", 1),
 ##                                  (eq, "$tutorial_quest_succeeded", 0),], "I don't see 10 dummies on the floor from here. You haven't earned your reward yet.", "tutorial3_1",[]],
-##  [trp_tutorial_trainer|plyr, "tutorial3_1", [], "Alright alright, I was just tired and wanted to talk to you while resting.", "tutorial3_2", []],
-##  [trp_tutorial_trainer, "tutorial3_2", [], "Less talk, more work.", "close_window", []],
+##  [trp.tutorial_trainer|plyr, "tutorial3_1", [], "Alright alright, I was just tired and wanted to talk to you while resting.", "tutorial3_2", []],
+##  [trp.tutorial_trainer, "tutorial3_2", [], "Less talk, more work.", "close_window", []],
 
 
-##  [party_tpl|pt_peasant,"start", [(eq,"$talk_context",tc_party_encounter)], "Greetings traveller.", "peasant_talk_1",[(play_sound,"snd_encounter_farmers")]],
-##  [party_tpl|pt_peasant|plyr,"peasant_talk_1", [[eq,"$quest_accepted_zendar_looters"]], "Greetings to you too.", "close_window",[(assign, "$g_leave_encounter",1)]],
-##  [party_tpl|pt_peasant|plyr,"peasant_talk_1", [[neq,"$quest_accepted_zendar_looters"],[eq,"$peasant_misunderstanding_said"]], "I have been charged with hunting down outlaws in this area...", "peasant_talk_2",[[assign,"$peasant_misunderstanding_said",1]]],
-##  [party_tpl|pt_peasant|plyr,"peasant_talk_1", [[neq,"$quest_accepted_zendar_looters"],[neq,"$peasant_misunderstanding_said"]], "Greetings. I am hunting outlaws. Have you seen any around here?", "peasant_talk_2b",[]],
-##  [party_tpl|pt_peasant,"peasant_talk_2", [], "I swear to God {sir/madam}. I am not an outlaw... I am just a simple peasant. I am taking my goods to the market, see.", "peasant_talk_3",[]],
-##  [party_tpl|pt_peasant|plyr,"peasant_talk_3", [], "I was just going to ask if you saw any outlaws around here.", "peasant_talk_4",[]],
-##  [party_tpl|pt_peasant,"peasant_talk_4", [], "Oh... phew... yes, outlaws are everywhere. They are making life miserable for us.\
+##  [party_tpl|pt.peasant,"start", [(eq,"$talk_context",tc_party_encounter)], "Greetings traveller.", "peasant_talk_1",[(play_sound,"snd_encounter_farmers")]],
+##  [party_tpl|pt.peasant|plyr,"peasant_talk_1", [[eq,"$quest_accepted_zendar_looters"]], "Greetings to you too.", "close_window",[(assign, "$g_leave_encounter",1)]],
+##  [party_tpl|pt.peasant|plyr,"peasant_talk_1", [[neq,"$quest_accepted_zendar_looters"],[eq,"$peasant_misunderstanding_said"]], "I have been charged with hunting down outlaws in this area...", "peasant_talk_2",[[assign,"$peasant_misunderstanding_said",1]]],
+##  [party_tpl|pt.peasant|plyr,"peasant_talk_1", [[neq,"$quest_accepted_zendar_looters"],[neq,"$peasant_misunderstanding_said"]], "Greetings. I am hunting outlaws. Have you seen any around here?", "peasant_talk_2b",[]],
+##  [party_tpl|pt.peasant,"peasant_talk_2", [], "I swear to God {sir/madam}. I am not an outlaw... I am just a simple peasant. I am taking my goods to the market, see.", "peasant_talk_3",[]],
+##  [party_tpl|pt.peasant|plyr,"peasant_talk_3", [], "I was just going to ask if you saw any outlaws around here.", "peasant_talk_4",[]],
+##  [party_tpl|pt.peasant,"peasant_talk_4", [], "Oh... phew... yes, outlaws are everywhere. They are making life miserable for us.\
 ## I pray to God you will kill them all.", "close_window",[(assign, "$g_leave_encounter",1)]],
-##  [party_tpl|pt_peasant,"peasant_talk_2b", [], "Outlaws? They are everywhere. They are making life miserable for us.\
+##  [party_tpl|pt.peasant,"peasant_talk_2b", [], "Outlaws? They are everywhere. They are making life miserable for us.\
 ## I pray to God you will kill them all.", "close_window",[(assign, "$g_leave_encounter",1)]],
 
-  [party_tpl|pt_manhunters,"start", [(eq,"$talk_context",tc_party_encounter)], "Hey, you there! You seen any outlaws around here?", "manhunter_talk_b",[]],
-  [party_tpl|pt_manhunters|plyr,"manhunter_talk_b", [], "Yes, they went this way about an hour ago.", "manhunter_talk_b1",[]],
-  [party_tpl|pt_manhunters,"manhunter_talk_b1", [], "I knew it! Come on, lads, lets go get these bastards! Thanks a lot, friend.", "close_window",[(assign, "$g_leave_encounter",1)]],
-  [party_tpl|pt_manhunters|plyr,"manhunter_talk_b", [], "No, haven't seen any outlaws lately.", "manhunter_talk_b2",[]],
-  [party_tpl|pt_manhunters,"manhunter_talk_b2", [], "Bah. They're holed up in this country like rats, but we'll smoke them out yet. Sooner or later.", "close_window",[(assign, "$g_leave_encounter",1)]],
+  [party_tpl|pt.manhunters,"start", [(eq,"$talk_context",tc_party_encounter)], "Hey, you there! You seen any outlaws around here?", "manhunter_talk_b",[]],
+  [party_tpl|pt.manhunters|plyr,"manhunter_talk_b", [], "Yes, they went this way about an hour ago.", "manhunter_talk_b1",[]],
+  [party_tpl|pt.manhunters,"manhunter_talk_b1", [], "I knew it! Come on, lads, lets go get these bastards! Thanks a lot, friend.", "close_window",[(assign, "$g_leave_encounter",1)]],
+  [party_tpl|pt.manhunters|plyr,"manhunter_talk_b", [], "No, haven't seen any outlaws lately.", "manhunter_talk_b2",[]],
+  [party_tpl|pt.manhunters,"manhunter_talk_b2", [], "Bah. They're holed up in this country like rats, but we'll smoke them out yet. Sooner or later.", "close_window",[(assign, "$g_leave_encounter",1)]],
 
-  [party_tpl|pt_looters|auto_proceed,"start", [(eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker),], "{!}Warning: This line should never be displayed.", "looters_1",[
+  [party_tpl|pt.looters|auto_proceed,"start", [(eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker),], "{!}Warning: This line should never be displayed.", "looters_1",[
 	(str_store_string, s11, "@It's your money or your life, {mate/girlie}. No sudden moves or we'll run you through."),
 	(str_store_string, s12, "@Lucky for you, you caught me in a good mood. Give us all your coin and I might just let you live."),
 	(str_store_string, s13, "@This a robbery, eh? I givin' you one chance to hand over everythin' you got, or me and my mates'll kill you. Understand?"),
@@ -1466,13 +1454,13 @@ dialogs = [
 	(str_store_string_reg, s4, ":random"),
 	(play_sound, "snd_encounter_looters")
   ]],
-  [party_tpl|pt_looters,"looters_1", [], "{s4}", "looters_2",[]],
-  [party_tpl|pt_looters|plyr,"looters_2", [[store_character_level,reg(1),"trp_player"],[lt,reg(1),4]], "I'm not afraid of you lot. Fight me if you dare!", "close_window",
+  [party_tpl|pt.looters,"looters_1", [], "{s4}", "looters_2",[]],
+  [party_tpl|pt.looters|plyr,"looters_2", [[store_character_level,reg(1),"trp_player"],[lt,reg(1),4]], "I'm not afraid of you lot. Fight me if you dare!", "close_window",
    [[encounter_attack]]],
-  [party_tpl|pt_looters|plyr,"looters_2", [[store_character_level,reg(1),"trp_player"],[ge,reg(1),4]], "You'll have nothing of mine but cold steel, scum.", "close_window",
+  [party_tpl|pt.looters|plyr,"looters_2", [[store_character_level,reg(1),"trp_player"],[ge,reg(1),4]], "You'll have nothing of mine but cold steel, scum.", "close_window",
    [[encounter_attack]]],
 
-  [party_tpl|pt_village_farmers,"start", [(eq,"$talk_context",tc_party_encounter),
+  [party_tpl|pt.village_farmers,"start", [(eq,"$talk_context",tc_party_encounter),
                                           (agent_play_sound, "$g_talk_agent", "snd_encounter_farmers"),
   ],
    " My {lord/lady}, we're only poor farmers from the village of {s11}. {reg1?We are taking our products to the market at {s12}.:We are returning from the market at {s12} back to our village.}", "village_farmer_talk",
@@ -1584,9 +1572,9 @@ dialogs = [
 
 #Quest heroes member chats
 
-  [trp_kidnapped_girl,"member_chat", [], "Are we home yet?", "kidnapped_girl_chat_1",[]],
-  [trp_kidnapped_girl|plyr,"kidnapped_girl_chat_1", [], "Not yet.", "kidnapped_girl_chat_2",[]],
-  [trp_kidnapped_girl,"kidnapped_girl_chat_2", [], "I can't wait to get back. I've missed my family so much, I'd give anything to see them again.", "close_window",[]],
+  [trp.kidnapped_girl,"member_chat", [], "Are we home yet?", "kidnapped_girl_chat_1",[]],
+  [trp.kidnapped_girl|plyr,"kidnapped_girl_chat_1", [], "Not yet.", "kidnapped_girl_chat_2",[]],
+  [trp.kidnapped_girl,"kidnapped_girl_chat_2", [], "I can't wait to get back. I've missed my family so much, I'd give anything to see them again.", "close_window",[]],
 
   [anyone,"member_chat",
    [
@@ -16859,7 +16847,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 	[anyone, "lady_elope_agree_nurse", [],
     "Your lordship... Your ladyship... Would you like me to witness your exchange of vows?", "lady_elope_agree_lady_vows",[
-    (set_conversation_speaker_troop, trp_nurse_for_lady),
+    (set_conversation_speaker_troop, trp.nurse_for_lady),
 	]],
 
 	[anyone, "lady_elope_agree_lady_vows", [
@@ -16870,7 +16858,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 	[anyone, "lady_elope_agree_nurse_2", [],
     "Very good. Do you, {playername}, swear similarly to accept {s4} as your wife?", "lady_elope_agree_player_vows",[
-    (set_conversation_speaker_troop, trp_nurse_for_lady),
+    (set_conversation_speaker_troop, trp.nurse_for_lady),
 	]],
 	
 	[anyone|plyr,"lady_elope_agree_player_vows", [],
@@ -18696,7 +18684,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 
 #Player Parties
-##  [party_tpl|pt_old_garrison,"start", [],
+##  [party_tpl|pt.old_garrison,"start", [],
 ##   "They told us to leave the castle to the new garrison {sir/madam}. So we left and came to rejoin you.", "player_old_garrison_encounter",[]],
 ##  
 ##  [anyone|plyr,"player_old_garrison_encounter", [(party_can_join)],
@@ -18949,12 +18937,12 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 ##### TODO: QUESTS COMMENT OUT BEGIN
   
-##  [party_tpl|pt_peasant_rebels,"start", [],
+##  [party_tpl|pt.peasant_rebels,"start", [],
 ##   "TODO: What.", "peasant_rebel_talk",[]],
 ##  [anyone|plyr, "peasant_rebel_talk", [], "TODO: Die.", "close_window",[]],
 ##  [anyone|plyr, "peasant_rebel_talk", [], "TODO: Nothing.", "close_window",[(assign, "$g_leave_encounter",1)]],
 ##
-##  [party_tpl|pt_noble_refugees,"start", [],
+##  [party_tpl|pt.noble_refugees,"start", [],
 ##   "TODO: What.", "noble_refugee_talk",[]],
 ##  [anyone|plyr, "noble_refugee_talk", [], "TODO: Nothing.", "close_window",[(assign, "$g_leave_encounter",1)]],
 ##
@@ -19486,7 +19474,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
    
 # Local merchant
 
-  [trp_local_merchant,"start", [], "Mercy! Please don't kill me!", "local_merchant_mercy",[]],
+  [trp.local_merchant,"start", [], "Mercy! Please don't kill me!", "local_merchant_mercy",[]],
   [anyone|plyr,"local_merchant_mercy", [(quest_get_slot, ":quest_giver_troop", "qst_kill_local_merchant", slot_quest_giver_troop),(str_store_troop_name, s2, ":quest_giver_troop")],
    "I have nothing against you man. But {s2} wants you dead. Sorry.", "local_merchant_mercy_no",[]],
   [anyone,"local_merchant_mercy_no", [], "Damn you! May you burn in Hell!", "close_window",[]],
@@ -19508,23 +19496,23 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 # Village traitor
 
-  [trp_fugitive,"start", [], "What do you want?", "fugitive_1",[]],
-  [trp_fugitive|plyr,"fugitive_1", [
+  [trp.fugitive,"start", [], "What do you want?", "fugitive_1",[]],
+  [trp.fugitive|plyr,"fugitive_1", [
      (quest_get_slot, ":quest_target_dna", "qst_hunt_down_fugitive", slot_quest_target_dna),
      (call_script, "script_get_name_from_dna_to_s50", ":quest_target_dna"),
      (str_store_string, s4, s50),
       ], "I am looking for a murderer by the name of {s4}. You fit his description.", "fugitive_2",[]],
-  [trp_fugitive|plyr,"fugitive_1", [], "Nothing. Sorry to trouble you.", "close_window",[]],
-  [trp_fugitive,"fugitive_2", [], "I don't understand, {sir/madam}.\
+  [trp.fugitive|plyr,"fugitive_1", [], "Nothing. Sorry to trouble you.", "close_window",[]],
+  [trp.fugitive,"fugitive_2", [], "I don't understand, {sir/madam}.\
  I never killed anyone. I think you've got the wrong man.", "fugitive_3",[]],
-  [trp_fugitive|plyr,"fugitive_3", [], "Then drop your sword. If you are innocent, you have nothing to fear.\
+  [trp.fugitive|plyr,"fugitive_3", [], "Then drop your sword. If you are innocent, you have nothing to fear.\
  We'll go now and talk to your neighbours, and if they verify your story, I'll go on my way.", "fugitive_4",[]],
   [anyone,"fugitive_4", [], "I'm not going anywhere, friend. You're going to have to fight for your silver, today.", "fugitive_5",
    []],
 
-  [trp_fugitive|plyr,"fugitive_5", [], "No problem. I really just need your head, anyway.", "fugitive_fight_start",[]],
-  [trp_fugitive|plyr,"fugitive_5", [], "I come not for money, but to execute the law!", "fugitive_fight_start",[]],
-  [trp_fugitive|plyr,"fugitive_5", [], "Alas, that you cannot be made to see reason.", "fugitive_fight_start",[]],
+  [trp.fugitive|plyr,"fugitive_5", [], "No problem. I really just need your head, anyway.", "fugitive_fight_start",[]],
+  [trp.fugitive|plyr,"fugitive_5", [], "I come not for money, but to execute the law!", "fugitive_fight_start",[]],
+  [trp.fugitive|plyr,"fugitive_5", [], "Alas, that you cannot be made to see reason.", "fugitive_fight_start",[]],
 	
   [anyone,"fugitive_fight_start", [], "Die, dog!", "close_window",
    [
@@ -19582,12 +19570,12 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   [anyone,"sacrificed_messenger_cancel_3", [], "Thank you, {sir/madam}.\
  I will follow you to the gates of hell. But this would not be a good death.", "close_window",[]],
 
-  [party_tpl|pt_sacrificed_messenger,"start", [],
+  [party_tpl|pt.sacrificed_messenger,"start", [],
    "Don't worry, {sir/madam}, I'm on my way.", "close_window",[(assign, "$g_leave_encounter",1)]],
 
 #Spy
 
-  [party_tpl|pt_spy,"start", [], "Good day {sir/madam}. Such fine weather don't you think? If you'll excuse me now I must go on my way.", "follow_spy_talk",[]],
+  [party_tpl|pt.spy,"start", [], "Good day {sir/madam}. Such fine weather don't you think? If you'll excuse me now I must go on my way.", "follow_spy_talk",[]],
 
   [anyone|plyr, "follow_spy_talk",
    [
@@ -19598,7 +19586,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   [anyone, "follow_spy_talk_2", [], "You won't get me alive!", "close_window", []],
   [anyone|plyr, "follow_spy_talk", [], "Never mind me. I was just passing by.", "close_window", [(assign, "$g_leave_encounter",1)]],
 
-  [party_tpl|pt_spy_partners,"start", [], "Greetings.", "spy_partners_talk",[]],
+  [party_tpl|pt.spy_partners,"start", [], "Greetings.", "spy_partners_talk",[]],
 
   [anyone|plyr,"spy_partners_talk",
    [
@@ -19612,8 +19600,8 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 ###Conspirator
 ##
-##  [party_tpl|pt_conspirator_leader,"start", [], "TODO: Hello.", "conspirator_talk",[]],
-##  [party_tpl|pt_conspirator,"start", [], "TODO: Hello.", "conspirator_talk",[]],
+##  [party_tpl|pt.conspirator_leader,"start", [], "TODO: Hello.", "conspirator_talk",[]],
+##  [party_tpl|pt.conspirator,"start", [], "TODO: Hello.", "conspirator_talk",[]],
 ##
 ##  [anyone|plyr,"conspirator_talk", [(gt, "$qst_capture_conspirators_leave_meeting_counter", 0),
 ##                                    (quest_get_slot,":quest_giver","qst_capture_conspirators",slot_quest_giver_troop),
@@ -19627,7 +19615,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 #Runaway Peasants
 
 
-  [party_tpl|pt_runaway_serfs,"start", [(party_slot_eq, "$g_encountered_party", slot_town_center, 0)],#slot_town_center is used for first time meeting
+  [party_tpl|pt.runaway_serfs,"start", [(party_slot_eq, "$g_encountered_party", slot_town_center, 0)],#slot_town_center is used for first time meeting
    "Good day {sir/madam}.", "runaway_serf_intro_1",
    [(party_set_slot, "$g_encountered_party", slot_town_center, 1)]],
   
@@ -19652,7 +19640,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
    [(quest_get_slot, ":quest_object_center", "qst_bring_back_runaway_serfs", slot_quest_object_center),
     (call_script, "script_change_player_relation_with_center", ":quest_object_center", 1)]],
 
-  [party_tpl|pt_runaway_serfs,"runaway_serf_go_back", [(quest_get_slot, ":home_center", "qst_bring_back_runaway_serfs", slot_quest_object_center),
+  [party_tpl|pt.runaway_serfs,"runaway_serf_go_back", [(quest_get_slot, ":home_center", "qst_bring_back_runaway_serfs", slot_quest_object_center),
                                                        (str_store_party_name, s5, ":home_center")],
    "All right {sir/madam}. As you wish. We'll head back to {s5} now.", "close_window",
    [(quest_get_slot, ":quest_object_center", "qst_bring_back_runaway_serfs", slot_quest_object_center),
@@ -19664,7 +19652,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     (assign, "$g_leave_encounter",1)]],
   
 
-  [party_tpl|pt_runaway_serfs,"start", [(party_slot_eq, "$g_encountered_party", slot_town_castle, 1),
+  [party_tpl|pt.runaway_serfs,"start", [(party_slot_eq, "$g_encountered_party", slot_town_castle, 1),
                                         ],
    "Good day {sir/madam}. Don't worry. If anyone asks, we haven't seen you.", "runaway_serf_reconsider",[]],
 
@@ -19676,7 +19664,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   [anyone|plyr,"runaway_serf_reconsider", [], "Good. Go quickly now before I change my mind.", "runaway_serf_let_go",[]],
   
   
-  [party_tpl|pt_runaway_serfs,"start", [(party_slot_eq, "$g_encountered_party", slot_town_castle, 0),
+  [party_tpl|pt.runaway_serfs,"start", [(party_slot_eq, "$g_encountered_party", slot_town_castle, 0),
                                         (get_party_ai_object, ":cur_ai_object"),
                                         (quest_get_slot, ":home_center", "qst_bring_back_runaway_serfs", slot_quest_object_center),
                                         (neq, ":home_center", ":cur_ai_object")],
@@ -19687,7 +19675,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
    [(quest_get_slot, ":quest_object_center", "qst_bring_back_runaway_serfs", slot_quest_object_center),
     (call_script, "script_change_player_relation_with_center", ":quest_object_center", 1)]],
   
-  [party_tpl|pt_runaway_serfs,"start",
+  [party_tpl|pt.runaway_serfs,"start",
    [(quest_get_slot, ":home_center", "qst_bring_back_runaway_serfs", slot_quest_object_center),
     (str_store_party_name, s5, ":home_center")], "We are on our way back to {s5} {sir/madam}.", "runaway_serf_talk_again_return",[]],
   
@@ -19719,7 +19707,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   
 
 #Deserters
-  [party_tpl|pt_deserters, "start", [(eq,"$talk_context",tc_party_encounter),
+  [party_tpl|pt.deserters, "start", [(eq,"$talk_context",tc_party_encounter),
                                      (party_get_slot,":protected_until_hours", "$g_encountered_party",slot_party_ignore_player_until),
                                      (store_current_hours,":cur_hours"),
                                      (store_sub, ":protection_remaining",":protected_until_hours",":cur_hours"),
@@ -19735,7 +19723,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     ]],
 
   
-  [party_tpl|pt_deserters,"start", [
+  [party_tpl|pt.deserters,"start", [
       (eq,"$talk_context",tc_party_encounter)
                     ], "We are the free brothers.\
  We will fight only for ourselves from now on.\
@@ -23046,13 +23034,13 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
                                                        (ge,":party_size",":quest_target_amount"),],
    "Sorry. I can't do that right now", "merchant_quest_stall",[]],
 
-  [party_tpl|pt_merchant_caravan,"start", [(quest_get_slot, ":quest_target_party", "qst_escort_merchant_caravan", slot_quest_target_party),
+  [party_tpl|pt.merchant_caravan,"start", [(quest_get_slot, ":quest_target_party", "qst_escort_merchant_caravan", slot_quest_target_party),
                                            (eq,"$g_encountered_party",":quest_target_party"),
                                            (quest_slot_eq,"qst_escort_merchant_caravan", slot_quest_current_state, 2),
                                            ],
    "We can cover the rest of the way ourselves. Thanks.", "close_window",[(assign, "$g_leave_encounter", 1)]],
   
-  [party_tpl|pt_merchant_caravan,"start", [(quest_get_slot, ":quest_target_party", "qst_escort_merchant_caravan", slot_quest_target_party),
+  [party_tpl|pt.merchant_caravan,"start", [(quest_get_slot, ":quest_target_party", "qst_escort_merchant_caravan", slot_quest_target_party),
                                            (eq,"$g_encountered_party",":quest_target_party"),
                                            (quest_get_slot, ":quest_target_center", "qst_escort_merchant_caravan", slot_quest_target_center),
                                            (store_distance_to_party_from_party, ":dist", ":quest_target_center",":quest_target_party"),
@@ -23082,7 +23070,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
                                                        (assign, "$g_leave_encounter", 1),
                                                        ]],
   
-  [party_tpl|pt_merchant_caravan,"start", [(quest_get_slot, ":quest_target_party", "qst_escort_merchant_caravan", slot_quest_target_party),
+  [party_tpl|pt.merchant_caravan,"start", [(quest_get_slot, ":quest_target_party", "qst_escort_merchant_caravan", slot_quest_target_party),
                                            (eq,"$g_encountered_party",":quest_target_party"),
                                            (quest_slot_eq, "qst_escort_merchant_caravan", slot_quest_current_state, 0),
                                            ],
@@ -23095,7 +23083,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   
   [anyone,"merchant_caravan_intro_2", [], "Well, It is good to know we won't travel alone. What do you want us to do now?", "escort_merchant_caravan_talk",[]],
   
-  [party_tpl|pt_merchant_caravan,"start", [(quest_get_slot, ":quest_target_party", "qst_escort_merchant_caravan", slot_quest_target_party),
+  [party_tpl|pt.merchant_caravan,"start", [(quest_get_slot, ":quest_target_party", "qst_escort_merchant_caravan", slot_quest_target_party),
                                            (eq, "$g_encountered_party", ":quest_target_party"),
                                            ],
    "Eh. We've made it this far... What do you want us to do?", "escort_merchant_caravan_talk",[]],
@@ -23199,7 +23187,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
    "Sorry. I don't have time for this right now.", "merchant_quest_stall",[]],
 
 
-  [trp_kidnapped_girl,"start",
+  [trp.kidnapped_girl,"start",
    [
      (eq, "$talk_context", tc_entering_center_quest_talk),
      ],
@@ -23212,45 +23200,45 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 
 
-  [trp_kidnapped_girl|plyr,"kidnapped_girl_liberated_map", [], "Yes. Come with me. We are going home.", "kidnapped_girl_liberated_map_2a",[]],
-  [trp_kidnapped_girl,"kidnapped_girl_liberated_map_2a", [(neg|party_can_join)], "Unfortunately. You do not have room in your party for me.", "close_window",[(assign, "$g_leave_encounter",1)]],
-  [trp_kidnapped_girl,"kidnapped_girl_liberated_map_2a", [], "Oh really? Thank you so much!",
+  [trp.kidnapped_girl|plyr,"kidnapped_girl_liberated_map", [], "Yes. Come with me. We are going home.", "kidnapped_girl_liberated_map_2a",[]],
+  [trp.kidnapped_girl,"kidnapped_girl_liberated_map_2a", [(neg|party_can_join)], "Unfortunately. You do not have room in your party for me.", "close_window",[(assign, "$g_leave_encounter",1)]],
+  [trp.kidnapped_girl,"kidnapped_girl_liberated_map_2a", [], "Oh really? Thank you so much!",
    "close_window", [(party_join),
                     (quest_set_slot, "qst_kidnapped_girl", slot_quest_current_state, 3),
                     (assign, "$g_leave_encounter",1)]],
-  [trp_kidnapped_girl|plyr,"kidnapped_girl_liberated_map", [], "Wait here a while longer. I'll come back for you.", "kidnapped_girl_liberated_map_2b",[]],
-  [trp_kidnapped_girl,"kidnapped_girl_liberated_map_2b", [], "Oh, please {sir/madam}, do not leave me here all alone!", "close_window",[(assign, "$g_leave_encounter",1)]],
+  [trp.kidnapped_girl|plyr,"kidnapped_girl_liberated_map", [], "Wait here a while longer. I'll come back for you.", "kidnapped_girl_liberated_map_2b",[]],
+  [trp.kidnapped_girl,"kidnapped_girl_liberated_map_2b", [], "Oh, please {sir/madam}, do not leave me here all alone!", "close_window",[(assign, "$g_leave_encounter",1)]],
 
 
-  [trp_kidnapped_girl,"start", [],
+  [trp.kidnapped_girl,"start", [],
    "Oh {sir/madam}. Thank you so much for rescuing me. Will you take me to my family now?", "kidnapped_girl_liberated_map",[]],
   
-  [trp_kidnapped_girl|plyr,"kidnapped_girl_liberated_battle", [], "Yes. Come with me. We are going home.", "kidnapped_girl_liberated_battle_2a",[]],
-  [trp_kidnapped_girl,"kidnapped_girl_liberated_battle_2a", [(neg|hero_can_join, "p_main_party")], "Unfortunately. You do not have room in your party for me.", "kidnapped_girl_liberated_battle_2b",[]],
-  [trp_kidnapped_girl,"kidnapped_girl_liberated_battle_2a", [], "Oh really? Thank you so much!",
+  [trp.kidnapped_girl|plyr,"kidnapped_girl_liberated_battle", [], "Yes. Come with me. We are going home.", "kidnapped_girl_liberated_battle_2a",[]],
+  [trp.kidnapped_girl,"kidnapped_girl_liberated_battle_2a", [(neg|hero_can_join, "p_main_party")], "Unfortunately. You do not have room in your party for me.", "kidnapped_girl_liberated_battle_2b",[]],
+  [trp.kidnapped_girl,"kidnapped_girl_liberated_battle_2a", [], "Oh really? Thank you so much!",
    "close_window",[(party_add_members, "p_main_party","trp_kidnapped_girl",1),
                    (quest_set_slot, "qst_kidnapped_girl", slot_quest_current_state, 3),
                    ]],
-  [trp_kidnapped_girl|plyr,"kidnapped_girl_liberated_battle", [], "Wait here a while longer. I'll come back for you.", "kidnapped_girl_liberated_battle_2b",[]],
-  [trp_kidnapped_girl,"kidnapped_girl_liberated_battle_2b", [], "Oh, please {sir/madam}, do not leave me here all alone!",
+  [trp.kidnapped_girl|plyr,"kidnapped_girl_liberated_battle", [], "Wait here a while longer. I'll come back for you.", "kidnapped_girl_liberated_battle_2b",[]],
+  [trp.kidnapped_girl,"kidnapped_girl_liberated_battle_2b", [], "Oh, please {sir/madam}, do not leave me here all alone!",
    "close_window", [(add_companion_party,"trp_kidnapped_girl"),
                     (assign, "$g_leave_encounter",1)]],
 
-  [trp_kidnapped_girl,"start", [], "Can I come with you now?", "kidnapped_girl_liberated_map",[]],
+  [trp.kidnapped_girl,"start", [], "Can I come with you now?", "kidnapped_girl_liberated_map",[]],
 
 
-  [party_tpl|pt_bandits_awaiting_ransom,"start", [(quest_slot_eq, "qst_kidnapped_girl", slot_quest_current_state, 0),],
+  [party_tpl|pt.bandits_awaiting_ransom,"start", [(quest_slot_eq, "qst_kidnapped_girl", slot_quest_current_state, 0),],
    "Are you the one that brought the ransom?\
  Quick, give us the money now.", "bandits_awaiting_ransom_intro_1",[(quest_set_slot, "qst_kidnapped_girl", slot_quest_current_state, 1),]],
-  [party_tpl|pt_bandits_awaiting_ransom,"start", [(quest_slot_eq, "qst_kidnapped_girl", slot_quest_current_state, 1),],
+  [party_tpl|pt.bandits_awaiting_ransom,"start", [(quest_slot_eq, "qst_kidnapped_girl", slot_quest_current_state, 1),],
    "You came back?\
  Quick, give us the money now.", "bandits_awaiting_ransom_intro_1",[]],
-  [party_tpl|pt_bandits_awaiting_ransom|plyr, "bandits_awaiting_ransom_intro_1", [(store_troop_gold, ":cur_gold"),
+  [party_tpl|pt.bandits_awaiting_ransom|plyr, "bandits_awaiting_ransom_intro_1", [(store_troop_gold, ":cur_gold"),
                                                                                   (quest_get_slot, ":quest_target_amount", "qst_kidnapped_girl", slot_quest_target_amount),
                                                                                   (ge, ":cur_gold", ":quest_target_amount")
                                                                                   ],
    "Here, take the money. Just set the girl free.", "bandits_awaiting_ransom_pay",[]],
-  [party_tpl|pt_bandits_awaiting_ransom, "bandits_awaiting_ransom_pay", [],
+  [party_tpl|pt.bandits_awaiting_ransom, "bandits_awaiting_ransom_pay", [],
    "Heh. You've brought the money all right.\
  You can take the girl now.\
  It was a pleasure doing business with you...", "close_window",
@@ -23289,7 +23277,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   [anyone, "bandits_awaiting_ransom_fight", [],
    "You won't be demanding anything when you're dead.", "close_window",[(encounter_attack),]],
 
-  [party_tpl|pt_bandits_awaiting_ransom,"start", [(quest_slot_ge, "qst_kidnapped_girl", slot_quest_current_state, 2),],
+  [party_tpl|pt.bandits_awaiting_ransom,"start", [(quest_slot_ge, "qst_kidnapped_girl", slot_quest_current_state, 2),],
    "What's it? You have given us the money. We have no more business.", "bandits_awaiting_remeet",[]],
   [anyone|plyr,"bandits_awaiting_remeet", [],
    "Sorry to bother you. I'll be on my way now.", "close_window",[(assign, "$g_leave_encounter",1)]],
@@ -23298,7 +23286,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   [anyone,"bandits_awaiting_remeet_2", [],
    "Oh, that business! Of course. Let us get down to it.", "close_window",[(encounter_attack)]],
 
-  [party_tpl|pt_kidnapped_girl,"start", [],
+  [party_tpl|pt.kidnapped_girl,"start", [],
    "Oh {sir/madam}. Thank you so much for rescuing me. Will you take me to my family now?", "kidnapped_girl_encounter_1",[]],
   [anyone|plyr,"kidnapped_girl_encounter_1", [], "Yes. Come with me. I'll take you home.", "kidnapped_girl_join",[]],
   [anyone,"kidnapped_girl_join", [(neg|party_can_join)], "Unfortunately. You do not have room in your party for me.", "close_window",[(assign, "$g_leave_encounter",1)]],
@@ -24301,7 +24289,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   [anyone ,"start", [(is_between,"$g_talk_troop",goods_merchants_begin,goods_merchants_end)],
    "Welcome {sir/madam}. What can I do for you?", "goods_merchant_talk",[]],
 
-#  [trp_salt_mine_merchant,"start", [], "Hello.", "goods_merchant_talk",[]],
+#  [trp.salt_mine_merchant,"start", [], "Hello.", "goods_merchant_talk",[]],
 
 #  [anyone,"merchant_begin", [], " What can I do for you?", "goods_merchant_talk",[]],
 
@@ -24856,36 +24844,36 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 
 ######################################################################################
-  [trp_galeas,"start", [], "Hello {boy/girl}. If you have any prisoners, I will be happy to buy them from you.", "galeas_talk",[]],
+  [trp.galeas,"start", [], "Hello {boy/girl}. If you have any prisoners, I will be happy to buy them from you.", "galeas_talk",[]],
 
-  [trp_galeas|plyr,"galeas_talk",
+  [trp.galeas|plyr,"galeas_talk",
    [[store_num_regular_prisoners,reg(0)],[ge,reg(0),1]],
    "Then you'd better bring your purse. I have got prisoners to sell.", "galeas_sell_prisoners",[]],
-  [trp_galeas|plyr,"galeas_talk",[], "Not this time. Good-bye.", "close_window",[]],
-  [trp_galeas,"galeas_sell_prisoners", [],
+  [trp.galeas|plyr,"galeas_talk",[], "Not this time. Good-bye.", "close_window",[]],
+  [trp.galeas,"galeas_sell_prisoners", [],
   "Let me see what you have...", "galeas_sell_prisoners_2",
    [[change_screen_trade_prisoners]]],
-  [trp_galeas, "galeas_sell_prisoners_2", [], "You take more prisoners, bring them to me. I will pay well.", "close_window",[]],
+  [trp.galeas, "galeas_sell_prisoners_2", [], "You take more prisoners, bring them to me. I will pay well.", "close_window",[]],
 
-##  [party_tpl|pt_refugees,"start", [], "We have been driven out of our homes because of this war.", "close_window",[(assign, "$g_leave_encounter",1)]],
-##  [party_tpl|pt_farmers,"start", [], "We are just simple farmers.", "close_window",[(assign, "$g_leave_encounter",1)]],
+##  [party_tpl|pt.refugees,"start", [], "We have been driven out of our homes because of this war.", "close_window",[(assign, "$g_leave_encounter",1)]],
+##  [party_tpl|pt.farmers,"start", [], "We are just simple farmers.", "close_window",[(assign, "$g_leave_encounter",1)]],
 
 
 # Random Quest related conversations
-#  [trp_nobleman, "start", [],
+#  [trp.nobleman, "start", [],
 #   "Who are you? What do you want? Be warned, we are fully armed and more than capable to defend ourselves. Go to your way now or you will regret it.", "nobleman_talk_1",
 #   [(play_sound,"snd_encounter_nobleman")]],
-#  [trp_nobleman|plyr, "nobleman_talk_1", [],
+#  [trp.nobleman|plyr, "nobleman_talk_1", [],
 #   "I demand that you surrender to me.", "nobleman_talk_2",[]],
-#  [trp_nobleman|plyr, "nobleman_talk_1", [],
+#  [trp.nobleman|plyr, "nobleman_talk_1", [],
 #   "I am sorry sir. You may go.", "close_window",[(assign, "$g_leave_encounter",1)]],
-#  [trp_nobleman, "nobleman_talk_2", [],
+#  [trp.nobleman, "nobleman_talk_2", [],
 #   "Surrender to a puny peasant like you? Hah. Not likely.", "close_window",[[encounter_attack]]],
 #
-#  [trp_nobleman,"enemy_defeated", [], "Parley! I am of noble birth, and I ask for my right to surrender.", "nobleman_defeated_1",[]],
-#  [trp_nobleman|plyr,"nobleman_defeated_1", [], "And I will grant you that. If you can be ransomed of course...", "nobleman_defeated_2",[]],
-#  [trp_nobleman,"nobleman_defeated_2", [], "Oh, you need not worry about that. My family would pay a large ransom for me.", "nobleman_defeated_3",[]],
-#  [trp_nobleman|plyr,"nobleman_defeated_3", [[str_store_troop_name,1,"$nobleman_quest_giver"]], "Hmm. {s1} will be happy about this... Then you are my prisoner.", "close_window",
+#  [trp.nobleman,"enemy_defeated", [], "Parley! I am of noble birth, and I ask for my right to surrender.", "nobleman_defeated_1",[]],
+#  [trp.nobleman|plyr,"nobleman_defeated_1", [], "And I will grant you that. If you can be ransomed of course...", "nobleman_defeated_2",[]],
+#  [trp.nobleman,"nobleman_defeated_2", [], "Oh, you need not worry about that. My family would pay a large ransom for me.", "nobleman_defeated_3",[]],
+#  [trp.nobleman|plyr,"nobleman_defeated_3", [[str_store_troop_name,1,"$nobleman_quest_giver"]], "Hmm. {s1} will be happy about this... Then you are my prisoner.", "close_window",
 #   [[assign,"$nobleman_quest_succeeded",1],[assign,"$nobleman_quest_nobleman_active",0]]],
 
 # Prisoner Trains
@@ -24950,7 +24938,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   
 
 # Bandits
-##  [party_tpl|pt_mountain_bandits,"start", [(this_or_next|eq, "$g_encountered_party_template", "pt_mountain_bandits"),(eq, "$g_encountered_party_template", "pt_forest_bandits"),
+##  [party_tpl|pt.mountain_bandits,"start", [(this_or_next|eq, "$g_encountered_party_template", "pt_mountain_bandits"),(eq, "$g_encountered_party_template", "pt_forest_bandits"),
 ##                                           (eq,"$talk_context",tc_party_encounter),
 ##                                           (party_get_slot,":protected_until_hours", "$g_encountered_party",slot_party_ignore_player_until),
 ##                                           (store_current_hours,":cur_hours"),
@@ -24968,15 +24956,15 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 ##    ]],
 
 # Ryan BEGIN
-  [party_tpl|pt_mountain_bandits|auto_proceed,"start", [(eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)],
+  [party_tpl|pt.mountain_bandits|auto_proceed,"start", [(eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)],
    "{!}Warning: This line should never display.", "bandit_introduce",[]],
-  [party_tpl|pt_forest_bandits|auto_proceed,"start", [(eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)],
+  [party_tpl|pt.forest_bandits|auto_proceed,"start", [(eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)],
    "{!}Warning: This line should never display.", "bandit_introduce",[]],
-  [party_tpl|pt_taiga_bandits|auto_proceed,"start", [(eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)],
+  [party_tpl|pt.taiga_bandits|auto_proceed,"start", [(eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)],
    "{!}Warning: This line should never display.", "bandit_introduce",[]],   
-  [party_tpl|pt_steppe_bandits|auto_proceed,"start", [(eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)],
+  [party_tpl|pt.steppe_bandits|auto_proceed,"start", [(eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)],
    "{!}Warning: This line should never display.", "bandit_introduce",[]],   
-  [party_tpl|pt_desert_bandits|auto_proceed,"start", [(eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)],
+  [party_tpl|pt.desert_bandits|auto_proceed,"start", [(eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)],
    "{!}Warning: This line should never display.", "bandit_introduce",[]],   
    
    
@@ -25057,33 +25045,33 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   
  
 
-  [party_tpl|pt_rescued_prisoners,"start", [(eq,"$talk_context",tc_party_encounter)], "Do you want us to follow you?", "disbanded_troop_ask",[]],
+  [party_tpl|pt.rescued_prisoners,"start", [(eq,"$talk_context",tc_party_encounter)], "Do you want us to follow you?", "disbanded_troop_ask",[]],
   [anyone|plyr,"disbanded_troop_ask", [], "Yes. Let us ride together.", "disbanded_troop_join",[]],
   [anyone|plyr,"disbanded_troop_ask", [], "No. Not at this time.", "close_window",[(assign, "$g_leave_encounter",1)]],
   [anyone,"disbanded_troop_join", [[neg|party_can_join]], "Unfortunately. You do not have room in your party for us.", "close_window",[(assign, "$g_leave_encounter",1)]],
   [anyone,"disbanded_troop_join", [], "We are at your command.", "close_window",[[party_join],(assign, "$g_leave_encounter",1)]],
    
-  [party_tpl|pt_enemy,"start", [(eq,"$talk_context",tc_party_encounter)], "You will not capture me again. Not this time.", "enemy_talk_1",[]],
-  [party_tpl|pt_enemy|plyr,"enemy_talk_1", [], "You don't have a chance against me. Give up.", "enemy_talk_2",[]],
-  [party_tpl|pt_enemy,"enemy_talk_2", [], "I will give up when you are dead!", "close_window",[[encounter_attack]]],
+  [party_tpl|pt.enemy,"start", [(eq,"$talk_context",tc_party_encounter)], "You will not capture me again. Not this time.", "enemy_talk_1",[]],
+  [party_tpl|pt.enemy|plyr,"enemy_talk_1", [], "You don't have a chance against me. Give up.", "enemy_talk_2",[]],
+  [party_tpl|pt.enemy,"enemy_talk_2", [], "I will give up when you are dead!", "close_window",[[encounter_attack]]],
 
 
 ######################################
 # ROUTED WARRIORS
 ######################################
 
-  [party_tpl|pt_routed_warriors, "start", [(eq,"$talk_context",tc_party_encounter)],
+  [party_tpl|pt.routed_warriors, "start", [(eq,"$talk_context",tc_party_encounter)],
    "I beg you, please leave us alone.", "party_encounter_routed_agents_are_caught",
    []],
 
-  [party_tpl|pt_routed_warriors|plyr, "party_encounter_routed_agents_are_caught", [],
+  [party_tpl|pt.routed_warriors|plyr, "party_encounter_routed_agents_are_caught", [],
    "Do you think you can run away from me? You will be my prisoner or die!", "party_encounter_routed_agents_are_caught2",
    []],
 
-  [party_tpl|pt_routed_warriors|plyr,"party_encounter_routed_agents_are_caught", [],
+  [party_tpl|pt.routed_warriors|plyr,"party_encounter_routed_agents_are_caught", [],
    "Ok. We'll leave you in peace for this time, do not face with us again.", "close_window", [(assign, "$g_leave_encounter",1)]],
 
-  [party_tpl|pt_routed_warriors, "party_encounter_routed_agents_are_caught2",
+  [party_tpl|pt.routed_warriors, "party_encounter_routed_agents_are_caught2",
    [
      #(store_party_size_wo_prisoners, ":routed_party_size", "$g_encountered_party"),
      #(store_party_size_wo_prisoners, ":main_party_size", "p_main_party"),
@@ -25129,7 +25117,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
    "Haven't you got any mercy? Ok, we will fight you to the last man!", "close_window",
    []],
 
-  [party_tpl|pt_routed_warriors, "party_encounter_routed_agents_are_caught2",
+  [party_tpl|pt.routed_warriors, "party_encounter_routed_agents_are_caught2",
     [
       #(store_party_size_wo_prisoners, ":routed_party_size", "$g_encountered_party"),
       #(store_party_size_wo_prisoners, ":main_party_size", "p_main_party"),
@@ -25186,7 +25174,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
      #(change_screen_exchange_with_party, "$g_encountered_party"),
      ]],
 
-  #[party_tpl|pt_routed_warriors,"close_window_anythink_else", [],
+  #[party_tpl|pt.routed_warriors,"close_window_anythink_else", [],
   # "Anythink else.", "close_window", [(assign, "$g_leave_encounter",1)]],
 
 

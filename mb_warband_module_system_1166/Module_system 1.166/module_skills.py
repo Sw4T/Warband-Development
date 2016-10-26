@@ -1,5 +1,4 @@
-from header_common import *
-from header_skills import *
+from compiler import *
 
 ####################################################################################################################
 #  Each skill contains the following fields:

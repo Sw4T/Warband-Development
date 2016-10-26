@@ -1,11 +1,4 @@
-from header_common import *
-from header_operations import *
-from header_mission_templates import *
-from header_animations import *
-from header_sounds import *
-from header_music import *
-from header_items import *
-from module_constants import *
+from compiler import *
 
 ####################################################################################################################
 #   Each mission-template is a tuple that contains the following fields:
@@ -32,7 +25,7 @@ from module_constants import *
 # 
 ####################################################################################################################
 
-pilgrim_disguise = [itm_pilgrim_hood,itm_pilgrim_disguise,itm_practice_staff, itm_throwing_daggers]
+pilgrim_disguise = [itm.pilgrim_hood,itm.pilgrim_disguise,itm.practice_staff, itm.throwing_daggers]
 af_castle_lord = af_override_horse | af_override_weapons| af_require_civilian
 
 multiplayer_server_check_belfry_movement = (
@@ -1972,8 +1965,8 @@ mission_templates = [
   (
     "village_training", mtf_arena_fight, -1,
     "village_training",
-    [(2,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_staff, itm_practice_boots]),
-     (4,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff, itm_practice_boots]),
+    [(2,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm.practice_staff, itm.practice_boots]),
+     (4,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm.practice_staff, itm.practice_boots]),
      ],
     [
       (ti_before_mission_start, 0, 0, [],
@@ -2166,7 +2159,7 @@ mission_templates = [
   (
     "back_alley_revolt",mtf_battle_mode,charge,
     "You lead your men to battle.",
-    [(0,mtef_team_0|mtef_use_exact_number,af_override_horse|af_override_weapons|af_override_head,aif_start_alarmed,4,[itm_quarter_staff]),
+    [(0,mtef_team_0|mtef_use_exact_number,af_override_horse|af_override_weapons|af_override_head,aif_start_alarmed,4,[itm.quarter_staff]),
      (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
      ],
     [
@@ -3393,10 +3386,10 @@ mission_templates = [
     "training_ground_trainer_training",mtf_arena_fight,-1,
     "You will fight a match in the arena.",
     [
-      (16, mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_shield,itm_practice_sword,itm_practice_boots]),
-      (17, mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff,itm_practice_boots]),
-      (18, mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_practice_staff,itm_practice_boots]),
-      (19, mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_boots]),
+      (16, mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm.practice_shield,itm.practice_sword,itm.practice_boots]),
+      (17, mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm.practice_staff,itm.practice_boots]),
+      (18, mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm.practice_staff,itm.practice_boots]),
+      (19, mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm.heavy_practice_sword,itm.practice_boots]),
       (20, mtef_visitor_source,0,0,1,[]),
     ],
     [
@@ -3446,11 +3439,11 @@ mission_templates = [
     "training_ground_training", mtf_arena_fight, -1,
     "Training.",
     [
-      (0,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_staff]),
-      (1,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff]),
-      (2,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff]),
-      (3,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff]),
-      (4,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff]),
+      (0,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm.practice_staff]),
+      (1,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm.practice_staff]),
+      (2,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm.practice_staff]),
+      (3,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm.practice_staff]),
+      (4,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm.practice_staff]),
       (8,mtef_visitor_source,af_override_weapons|af_override_horse|af_override_head,0,1,[]),
       (9,mtef_visitor_source,af_override_weapons|af_override_horse|af_override_head,0,1,[]),
       (10,mtef_visitor_source,af_override_weapons|af_override_horse|af_override_head,0,1,[]),
@@ -3912,61 +3905,61 @@ mission_templates = [
     "arena_melee_fight",mtf_arena_fight,-1,
     "You enter a melee fight in the arena.",
     [
-      (0,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_horse,itm_arena_tunic_red, itm_red_tourney_helmet]),
-      (1,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm_heavy_practice_sword, itm_arena_tunic_red]),
-      (2,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse,itm_arena_tunic_red, itm_red_tourney_helmet]),
-      (3,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse,itm_arena_tunic_red, itm_red_tourney_helmet]),
-      (4,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows, itm_practice_dagger, itm_arena_tunic_red]),
-      (5,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm_practice_sword,itm_practice_shield,itm_arena_tunic_red]),
-      (6,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse,itm_arena_tunic_red]),
-      (7,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse,itm_arena_tunic_red, itm_red_tourney_helmet]),
+      (0,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm.practice_bow,itm.practice_arrows,itm.practice_horse,itm.arena_tunic_red, itm.red_tourney_helmet]),
+      (1,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm.heavy_practice_sword, itm.arena_tunic_red]),
+      (2,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm.heavy_practice_sword,itm.practice_horse,itm.arena_tunic_red, itm.red_tourney_helmet]),
+      (3,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm.practice_lance,itm.practice_shield,itm.practice_horse,itm.arena_tunic_red, itm.red_tourney_helmet]),
+      (4,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm.practice_bow,itm.practice_arrows, itm.practice_dagger, itm.arena_tunic_red]),
+      (5,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm.practice_sword,itm.practice_shield,itm.arena_tunic_red]),
+      (6,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm.heavy_practice_sword,itm.practice_horse,itm.arena_tunic_red]),
+      (7,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm.practice_lance,itm.practice_shield,itm.practice_horse,itm.arena_tunic_red, itm.red_tourney_helmet]),
 
-      (8,mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_dagger, itm_arena_tunic_blue]),
-      (9,mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse,itm_arena_tunic_blue,itm_blue_tourney_helmet]),
-      (10,mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_arena_tunic_blue]),
-      (11,mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm_practice_sword,itm_practice_shield,itm_arena_tunic_blue, itm_blue_tourney_helmet]),
-      (12,mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_horse,itm_arena_tunic_blue]),
-      (13,mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse,itm_arena_tunic_blue,itm_blue_tourney_helmet]),
-      (14,mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_arena_tunic_blue]),
-      (15,mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm_practice_sword,itm_practice_shield,itm_arena_tunic_blue]),
+      (8,mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm.practice_bow,itm.practice_arrows,itm.practice_dagger, itm.arena_tunic_blue]),
+      (9,mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm.practice_lance,itm.practice_shield,itm.practice_horse,itm.arena_tunic_blue,itm.blue_tourney_helmet]),
+      (10,mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm.heavy_practice_sword,itm.arena_tunic_blue]),
+      (11,mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm.practice_sword,itm.practice_shield,itm.arena_tunic_blue, itm.blue_tourney_helmet]),
+      (12,mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm.practice_bow,itm.practice_arrows,itm.practice_horse,itm.arena_tunic_blue]),
+      (13,mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm.practice_lance,itm.practice_shield,itm.practice_horse,itm.arena_tunic_blue,itm.blue_tourney_helmet]),
+      (14,mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm.heavy_practice_sword,itm.arena_tunic_blue]),
+      (15,mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm.practice_sword,itm.practice_shield,itm.arena_tunic_blue]),
 
-      (16,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_horse,itm_arena_tunic_green, itm_green_tourney_helmet]),
-      (17,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_arena_tunic_green, itm_green_tourney_helmet]),
-      (18,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse,itm_arena_tunic_green, itm_green_tourney_helmet]),
-      (19,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse,itm_arena_tunic_green, itm_green_tourney_helmet]),
-      (20,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_dagger, itm_arena_tunic_green, itm_green_tourney_helmet]),
-      (21,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm_practice_sword,itm_practice_shield,itm_arena_tunic_green]),
-      (22,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse,itm_arena_tunic_green]),
-      (23,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse,itm_arena_tunic_green, itm_green_tourney_helmet]),
+      (16,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm.practice_bow,itm.practice_arrows,itm.practice_horse,itm.arena_tunic_green, itm.green_tourney_helmet]),
+      (17,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm.heavy_practice_sword,itm.arena_tunic_green, itm.green_tourney_helmet]),
+      (18,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm.heavy_practice_sword,itm.practice_horse,itm.arena_tunic_green, itm.green_tourney_helmet]),
+      (19,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm.practice_lance,itm.practice_shield,itm.practice_horse,itm.arena_tunic_green, itm.green_tourney_helmet]),
+      (20,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm.practice_bow,itm.practice_arrows,itm.practice_dagger, itm.arena_tunic_green, itm.green_tourney_helmet]),
+      (21,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm.practice_sword,itm.practice_shield,itm.arena_tunic_green]),
+      (22,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm.heavy_practice_sword,itm.practice_horse,itm.arena_tunic_green]),
+      (23,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm.practice_lance,itm.practice_shield,itm.practice_horse,itm.arena_tunic_green, itm.green_tourney_helmet]),
 
-      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_horse,itm_arena_tunic_yellow, itm_gold_tourney_helmet]),
-      (25,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_arena_tunic_yellow, itm_gold_tourney_helmet]),
-      (26,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse,itm_arena_tunic_yellow, itm_gold_tourney_helmet]),
-      (27,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse,itm_arena_tunic_yellow, itm_gold_tourney_helmet]),
-      (28,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_dagger, itm_arena_tunic_yellow, itm_gold_tourney_helmet]),
-      (29,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_practice_sword,itm_practice_shield,itm_arena_tunic_yellow]),
-      (30,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse,itm_arena_tunic_yellow]),
-      (31,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse,itm_arena_tunic_yellow, itm_gold_tourney_helmet]),
+      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.practice_bow,itm.practice_arrows,itm.practice_horse,itm.arena_tunic_yellow, itm.gold_tourney_helmet]),
+      (25,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.heavy_practice_sword,itm.arena_tunic_yellow, itm.gold_tourney_helmet]),
+      (26,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.heavy_practice_sword,itm.practice_horse,itm.arena_tunic_yellow, itm.gold_tourney_helmet]),
+      (27,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.practice_lance,itm.practice_shield,itm.practice_horse,itm.arena_tunic_yellow, itm.gold_tourney_helmet]),
+      (28,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.practice_bow,itm.practice_arrows,itm.practice_dagger, itm.arena_tunic_yellow, itm.gold_tourney_helmet]),
+      (29,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.practice_sword,itm.practice_shield,itm.arena_tunic_yellow]),
+      (30,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.heavy_practice_sword,itm.practice_horse,itm.arena_tunic_yellow]),
+      (31,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.practice_lance,itm.practice_shield,itm.practice_horse,itm.arena_tunic_yellow, itm.gold_tourney_helmet]),
 #32
-      (32, mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm_heavy_practice_sword]),
-      (33,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm_practice_staff]),
-      (34,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_practice_sword, itm_practice_shield]),
-      (35,mtef_visitor_source|mtef_team_4,af_override_all,aif_start_alarmed,1,[itm_practice_staff]),
-      (36, mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows, itm_practice_dagger]),
-      (37,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm_practice_sword, itm_practice_shield]),
-      (38,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_heavy_practice_sword]),
-      (39,mtef_visitor_source|mtef_team_4,af_override_all,aif_start_alarmed,1,[itm_practice_staff]),
+      (32, mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm.heavy_practice_sword]),
+      (33,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm.practice_staff]),
+      (34,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.practice_sword, itm.practice_shield]),
+      (35,mtef_visitor_source|mtef_team_4,af_override_all,aif_start_alarmed,1,[itm.practice_staff]),
+      (36, mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm.practice_bow,itm.practice_arrows, itm.practice_dagger]),
+      (37,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm.practice_sword, itm.practice_shield]),
+      (38,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.heavy_practice_sword]),
+      (39,mtef_visitor_source|mtef_team_4,af_override_all,aif_start_alarmed,1,[itm.practice_staff]),
 #40-49 not used yet
-      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_horse,itm_arena_tunic_yellow, itm_gold_tourney_helmet]),
-      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_arena_tunic_yellow, itm_gold_tourney_helmet]),
-      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse,itm_arena_tunic_yellow, itm_gold_tourney_helmet]),
-      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse,itm_arena_tunic_yellow, itm_gold_tourney_helmet]),
-      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_dagger, itm_arena_tunic_yellow, itm_gold_tourney_helmet]),
-      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_practice_sword,itm_practice_shield,itm_arena_tunic_yellow]),
-      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse,itm_arena_tunic_yellow]),
-      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse,itm_arena_tunic_yellow, itm_gold_tourney_helmet]),
-      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_horse,itm_arena_tunic_yellow, itm_gold_tourney_helmet]),
-      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_horse,itm_arena_tunic_yellow, itm_gold_tourney_helmet]),
+      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.practice_bow,itm.practice_arrows,itm.practice_horse,itm.arena_tunic_yellow, itm.gold_tourney_helmet]),
+      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.heavy_practice_sword,itm.arena_tunic_yellow, itm.gold_tourney_helmet]),
+      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.heavy_practice_sword,itm.practice_horse,itm.arena_tunic_yellow, itm.gold_tourney_helmet]),
+      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.practice_lance,itm.practice_shield,itm.practice_horse,itm.arena_tunic_yellow, itm.gold_tourney_helmet]),
+      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.practice_bow,itm.practice_arrows,itm.practice_dagger, itm.arena_tunic_yellow, itm.gold_tourney_helmet]),
+      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.practice_sword,itm.practice_shield,itm.arena_tunic_yellow]),
+      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.heavy_practice_sword,itm.practice_horse,itm.arena_tunic_yellow]),
+      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.practice_lance,itm.practice_shield,itm.practice_horse,itm.arena_tunic_yellow, itm.gold_tourney_helmet]),
+      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.practice_bow,itm.practice_arrows,itm.practice_horse,itm.arena_tunic_yellow, itm.gold_tourney_helmet]),
+      (24,mtef_visitor_source|mtef_team_3,af_override_all,aif_start_alarmed,1,[itm.practice_bow,itm.practice_arrows,itm.practice_horse,itm.arena_tunic_yellow, itm.gold_tourney_helmet]),
 
       (50, mtef_scene_source,af_override_horse|af_override_weapons|af_override_head,0,1,[]),
       (51, mtef_visitor_source,af_override_horse|af_override_weapons|af_override_head,0,1,[]),
@@ -3975,8 +3968,8 @@ mission_templates = [
       (53, mtef_scene_source,af_override_horse,0,1,[]),(54, mtef_scene_source,af_override_horse,0,1,[]),(55, mtef_scene_source,af_override_horse,0,1,[]),
 #used for torunament master scene
 
-      (56, mtef_visitor_source|mtef_team_0, af_override_all, aif_start_alarmed, 1, [itm_practice_sword, itm_practice_shield, itm_padded_cloth, itm_segmented_helmet]),
-      (57, mtef_visitor_source|mtef_team_0, af_override_all, aif_start_alarmed, 1, [itm_practice_sword, itm_practice_shield, itm_padded_cloth, itm_segmented_helmet]),
+      (56, mtef_visitor_source|mtef_team_0, af_override_all, aif_start_alarmed, 1, [itm.practice_sword, itm.practice_shield, itm.padded_cloth, itm.segmented_helmet]),
+      (57, mtef_visitor_source|mtef_team_0, af_override_all, aif_start_alarmed, 1, [itm.practice_sword, itm.practice_shield, itm.padded_cloth, itm.segmented_helmet]),
     ],
     tournament_triggers
   ),
@@ -4053,8 +4046,8 @@ mission_templates = [
     "duel_with_lord",mtf_arena_fight|mtf_commit_casualties,-1,
     "You enter a melee fight in the arena.",
     [    
-	  (0, mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm_sword_medieval_a,itm_arena_tunic_blue]),
-	  (16, mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm_sword_medieval_a,itm_arena_tunic_blue]),
+	  (0, mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm.sword_medieval_a,itm.arena_tunic_blue]),
+	  (16, mtef_visitor_source|mtef_team_1,af_override_all,aif_start_alarmed,1,[itm.sword_medieval_a,itm.arena_tunic_blue]),
     ],
     [
       common_inventory_not_available,
@@ -4376,10 +4369,10 @@ mission_templates = [
     "wedding",0,-1,
     "Wedding",
     [
-        (0,mtef_visitor_source,af_override_everything,0,1,[itm_tabard, itm_ankle_boots]),
-        (1,mtef_visitor_source,af_override_everything,0,1,[itm_bride_dress, itm_bride_crown, itm_bride_shoes]),
+        (0,mtef_visitor_source,af_override_everything,0,1,[itm.tabard, itm.ankle_boots]),
+        (1,mtef_visitor_source,af_override_everything,0,1,[itm.bride_dress, itm.bride_crown, itm.bride_shoes]),
         (2,mtef_visitor_source,af_castle_lord,0,1,[]),
-        (3,mtef_visitor_source,af_override_everything,0,1,[itm_courtly_outfit, itm_blue_hose]),
+        (3,mtef_visitor_source,af_override_everything,0,1,[itm.courtly_outfit, itm.blue_hose]),
         (4,mtef_visitor_source,af_castle_lord,0,1,[]),
         (5,mtef_visitor_source,af_castle_lord,0,1,[]),
         (6,mtef_visitor_source,af_castle_lord,0,1,[]),
@@ -4731,18 +4724,18 @@ mission_templates = [
       (30,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
       (31,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
 
-      (32,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm_practice_sword]),
-      (33,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm_practice_sword]),
-      (34,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm_practice_sword]),
-      (35,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm_practice_sword]),
+      (32,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm.practice_sword]),
+      (33,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm.practice_sword]),
+      (34,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm.practice_sword]),
+      (35,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm.practice_sword]),
       (36,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
       (37,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
       (38,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
       (39,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
 
       (40,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (41,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm_practice_bow, itm_practice_arrows]),
-      (42,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm_practice_bow, itm_practice_arrows]),
+      (41,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm.practice_bow, itm.practice_arrows]),
+      (42,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm.practice_bow, itm.practice_arrows]),
       (43,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
       (44,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
       (45,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
@@ -4763,10 +4756,10 @@ mission_templates = [
       (58,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
       (59,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
       (60,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (61,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm_practice_sword]),
-      (62,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm_practice_sword]),
-      (63,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm_practice_bow, itm_practice_arrows]),
-      (64,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm_practice_bow, itm_practice_arrows]),
+      (61,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm.practice_sword]),
+      (62,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm.practice_sword]),
+      (63,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm.practice_bow, itm.practice_arrows]),
+      (64,mtef_visitor_source|mtef_team_0,af_override_weapons,aif_start_alarmed,1,[itm.practice_bow, itm.practice_arrows]),
       ],
     [
       (ti_tab_pressed, 0, 0, [],
@@ -6278,7 +6271,7 @@ mission_templates = [
     "tutorial_1",0,-1,
     "You enter the training ground.",
     [
-        (0,mtef_leader_only,af_override_everything,0,1,[itm_tutorial_shield,itm_tutorial_sword,itm_tutorial_short_bow,itm_tutorial_arrows,itm_leather_jerkin,itm_leather_boots]), #af_override_weapons
+        (0,mtef_leader_only,af_override_everything,0,1,[itm.tutorial_shield,itm.tutorial_sword,itm.tutorial_short_bow,itm.tutorial_arrows,itm.leather_jerkin,itm.leather_boots]), #af_override_weapons
      ],
     [
       (ti_tab_pressed, 0, 0, [],
@@ -6423,7 +6416,7 @@ mission_templates = [
 ##    "tutorial_1",0,-1,
 ##    "You enter the training ground.",
 ##    [
-##        (0,mtef_leader_only|mtef_team_0,af_override_horse|af_override_weapons,0,1,[itm_tutorial_shield,itm_tutorial_sword,itm_tutorial_short_bow,itm_tutorial_arrows]), #af_override_weapons
+##        (0,mtef_leader_only|mtef_team_0,af_override_horse|af_override_weapons,0,1,[itm.tutorial_shield,itm.tutorial_sword,itm.tutorial_short_bow,itm.tutorial_arrows]), #af_override_weapons
 ##        (1,mtef_visitor_source|mtef_team_0,0,0,1,[]),
 ##        (2,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
 ##        (3,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
@@ -6486,7 +6479,7 @@ mission_templates = [
     "tutorial_2",mtf_arena_fight,-1,
     "You enter the training ground.",
     [
-        (0,mtef_leader_only|mtef_team_0,af_override_everything,0,1,[itm_tutorial_shield,itm_leather_jerkin,itm_leather_boots]),
+        (0,mtef_leader_only|mtef_team_0,af_override_everything,0,1,[itm.tutorial_shield,itm.leather_jerkin,itm.leather_boots]),
         (2,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
         (4,mtef_visitor_source|mtef_team_1,0,0,1,[]),
      ],
@@ -6771,7 +6764,7 @@ mission_templates = [
     "tutorial_3",mtf_arena_fight,-1,
     "You enter the training ground.",
     [
-        (0,mtef_leader_only|mtef_team_0,af_override_everything,0,1,[itm_leather_jerkin,itm_leather_boots]),
+        (0,mtef_leader_only|mtef_team_0,af_override_everything,0,1,[itm.leather_jerkin,itm.leather_boots]),
         (3,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
         (5,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
      ],
@@ -7028,7 +7021,7 @@ mission_templates = [
     "tutorial_3_2",mtf_arena_fight,-1,
     "You enter the training ground.",
     [
-        (0,mtef_leader_only|mtef_team_0,af_override_everything,0,1,[itm_tutorial_staff,itm_leather_jerkin,itm_leather_boots]), 
+        (0,mtef_leader_only|mtef_team_0,af_override_everything,0,1,[itm.tutorial_staff,itm.leather_jerkin,itm.leather_boots]), 
         (4,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
         (6,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
      ],
@@ -7182,7 +7175,7 @@ mission_templates = [
     "tutorial_4",mtf_arena_fight,-1,
     "You enter the training ground.",
     [
-        (0,mtef_leader_only|mtef_team_0,af_override_everything,0,1,[itm_tutorial_sword,itm_tutorial_short_bow,itm_tutorial_arrows,itm_leather_jerkin,itm_leather_boots]), #af_override_weapons
+        (0,mtef_leader_only|mtef_team_0,af_override_everything,0,1,[itm.tutorial_sword,itm.tutorial_short_bow,itm.tutorial_arrows,itm.leather_jerkin,itm.leather_boots]), #af_override_weapons
      ],
     [
       (ti_tab_pressed, 0, 0, [],
@@ -7397,7 +7390,7 @@ mission_templates = [
     "tutorial_5",mtf_arena_fight,-1,
     "You enter the training ground.",
     [
-        (0,mtef_visitor_source|mtef_team_0,af_override_everything,0,1,[itm_tutorial_sword,itm_tutorial_shield,itm_tutorial_short_bow,itm_tutorial_arrows,itm_tutorial_saddle_horse,itm_leather_jerkin,itm_leather_boots]),
+        (0,mtef_visitor_source|mtef_team_0,af_override_everything,0,1,[itm.tutorial_sword,itm.tutorial_shield,itm.tutorial_short_bow,itm.tutorial_arrows,itm.tutorial_saddle_horse,itm.leather_jerkin,itm.leather_boots]),
         (1,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
         (2,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
         (3,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),

@@ -1,18 +1,4 @@
-# -*- coding: cp1254 -*-
-from header_common import *
-from header_operations import *
-from module_constants import *
-from module_constants import *
-from header_parties import *
-from header_skills import *
-from header_mission_templates import *
-from header_items import *
-from header_triggers import *
-from header_terrain_types import *
-from header_music import *
-from header_map_icons import *
-from ID_animations import *
-
+from compiler import *
 
 ####################################################################################################################
 # scripts is a list of script records.
@@ -20,6 +6,7 @@ from ID_animations import *
 # 1) Script id: The prefix "script_" will be inserted when referencing scripts.
 # 2) Operation block: This must be a valid operation block. See header_operations.py for reference.
 ####################################################################################################################
+
 
 scripts = [
 
@@ -1444,7 +1431,6 @@ scripts = [
       (item_set_slot, "itm_vaegir_noble_helmet", slot_item_multiplayer_item_class, multi_item_class_type_light_helm),
       (item_set_slot, "itm_vaegir_war_helmet", slot_item_multiplayer_item_class, multi_item_class_type_light_helm),
       (item_set_slot, "itm_vaegir_mask", slot_item_multiplayer_item_class, multi_item_class_type_light_helm),
-	  (item_set_slot, "itm_viber_sword", slot_item_multiplayer_item_class, multi_item_class_type_sword),
 	  
 	  
 	  #gloves
@@ -1498,7 +1484,6 @@ scripts = [
       (call_script, "script_multiplayer_set_item_available_for_troop", "itm_guard_helmet", "trp_swadian_crossbowman_multiplayer"),
 
       #1b-Swadian Infantry
-	  (call_script, "script_multiplayer_set_item_available_for_troop", "itm_viber_sword", "trp_swadian_infantry_multiplayer"),
       (call_script, "script_multiplayer_set_item_available_for_troop", "itm_awlpike", "trp_swadian_infantry_multiplayer"),
       (call_script, "script_multiplayer_set_item_available_for_troop", "itm_awlpike_long", "trp_swadian_infantry_multiplayer"),
       (call_script, "script_multiplayer_set_item_available_for_troop", "itm_sword_medieval_a", "trp_swadian_infantry_multiplayer"),
@@ -3987,7 +3972,7 @@ scripts = [
   ("game_get_troop_wage",
     [
       (store_script_param_1, ":troop_id"),
-      (store_script_param_2, ":unused"), #party id
+      #(store_script_param_2, ":unused"), #party id
       
       (assign,":wage", 0),
       (try_begin),
@@ -10378,6 +10363,7 @@ scripts = [
           (eq, ":event_type", multiplayer_event_show_server_message),
           (display_message, "str_server_s0", 0xFFFF6666),
         (try_end),
+      (try_end),
      ]),
 
   # script_cf_multiplayer_evaluate_poll
@@ -15603,7 +15589,7 @@ scripts = [
 
        (assign, ":max_routed_agents", 0),
        (assign, ":routed_party_faction", "fac_neutral"),
-       (try_for_range, ":cur_faction", fac_kingdom_1, fac_kingdoms_end),
+       (try_for_range, ":cur_faction", "fac_kingdom_1", "fac_kingdoms_end"),
          (faction_get_slot, ":num_routed_agents_in_this_faction", ":cur_faction", slot_faction_num_routed_agents),
          (gt, ":num_routed_agents_in_this_faction", ":max_routed_agents"),
          (assign, ":max_routed_agents", ":num_routed_agents_in_this_faction"),
@@ -27852,7 +27838,7 @@ scripts = [
         (try_end),
       (try_end),  
 
-      (try_for_range, ":cur_faction", fac_kingdom_1, fac_kingdoms_end),
+      (try_for_range, ":cur_faction", "fac_kingdom_1", "fac_kingdoms_end"),
         (faction_set_slot, ":cur_faction", slot_faction_num_routed_agents, 0),
       (try_end),
       
@@ -32352,8 +32338,8 @@ scripts = [
 ##       (try_begin),
 ##         (gt, ":horse_item", 0),
 ##         (assign, ":eye_height", 210),
-##         (cur_tableau_add_horse, ":horse_item", pos2, anim_horse_stand, 0),
-##         (assign, ":animation", anim_ride_0),
+##         (cur_tableau_add_horse, ":horse_item", pos2, anim.horse_stand, 0),
+##         (assign, ":animation", anim.ride_0),
 ##         (position_set_z, pos5, 125),
 ##         (try_begin),
 ##           (is_between, ":camera_yaw", -10, 10), #make sure horse head doesn't obstruct face.
@@ -32415,7 +32401,7 @@ scripts = [
        (assign, ":camera_distance", 360),
        (assign, ":camera_yaw", -15),
        (assign, ":camera_pitch", -18),
-       (assign, ":animation", anim_stand_man),
+       (assign, ":animation", anim.stand_man),
        
        (position_set_z, pos5, ":cam_height"),
 
@@ -32471,7 +32457,7 @@ scripts = [
        (assign, ":camera_distance", 380),
        (assign, ":camera_yaw", -15),
        (assign, ":camera_pitch", -18),
-       (assign, ":animation", anim_stand_man),
+       (assign, ":animation", anim.stand_man),
        
        (position_set_z, pos5, ":cam_height"),
 
@@ -32522,7 +32508,7 @@ scripts = [
        (assign, ":camera_distance", 380),
        (assign, ":camera_yaw", -15),
        (assign, ":camera_pitch", -18),
-       (assign, ":animation", anim_stand_man),
+       (assign, ":animation", anim.stand_man),
        
        (position_set_z, pos5, ":cam_height"),
 
@@ -32706,7 +32692,7 @@ scripts = [
        (assign, ":camera_distance", 450),
        (assign, ":camera_yaw", 15),
        (assign, ":camera_pitch", -18),
-       (assign, ":animation", anim_stand_man),
+       (assign, ":animation", anim.stand_man),
        
        (troop_get_inventory_slot, ":horse_item", ":troop_no", ek_horse),
        (try_begin),
@@ -38230,8 +38216,8 @@ scripts = [
   # Output: none
   ("debug_variables",
     [
-      (store_script_param, ":unused", 1),
-      (store_script_param, ":unused_2", 2),
+      #(store_script_param, ":unused", 1),
+      #(store_script_param, ":unused_2", 2),
     ]),        
         
 #lord recruitment scripts begin	  
@@ -45638,12 +45624,12 @@ scripts = [
 	    (val_add, ":cur_good_price_slot", slot_town_trade_good_prices_begin),
 	    (party_get_slot, ":cur_price_modifier", ":center", ":cur_good_price_slot"),
 
-	    (try_begin),
-	      (lt, ":number_of_inputs_required", 0),
-	      (store_div, ":final_price_for_secondary_input", ":final_price_for_secondary_input", 2),
-	    (else_try),
-	      (store_mul, ":final_price_for_secondary_input", ":final_price_for_secondary_input", ":number_of_inputs_required"),
-	    (try_end),
+	    #(try_begin),
+	    #  (lt, ":number_of_inputs_required", 0),
+	    #  (store_div, ":final_price_for_secondary_input", ":final_price_for_secondary_input", 2),
+	    #(else_try),
+	    #  (store_mul, ":final_price_for_secondary_input", ":final_price_for_secondary_input", ":number_of_inputs_required"),
+	    #(try_end),
 
 	    (store_mul, ":final_price_for_secondary_input", ":base_price", ":cur_price_modifier"),
 	    (val_div, ":final_price_for_secondary_input", 1000),

@@ -1,11 +1,4 @@
-from header_game_menus import *
-from header_parties import *
-from header_items import *
-from header_mission_templates import *
-from header_music import *
-from header_terrain_types import *
-
-from module_constants import *
+from compiler import *
 
 ####################################################################################################################
 #  (menu-id, menu-flags, menu_text, mesh-name, [<operations>], [<options>]),
@@ -3915,22 +3908,22 @@ game_menus = [
 		  (ge, ":leader_troop", 1),
 		  (troop_get_slot, ":leader_troop_faction", ":leader_troop", slot_troop_original_faction),
 		  (try_begin),
-			(eq, ":leader_troop_faction", fac_kingdom_1),
+			(eq, ":leader_troop_faction", "fac_kingdom_1"),
             (set_background_mesh, "mesh_pic_swad"),
 		  (else_try),
-			(eq, ":leader_troop_faction", fac_kingdom_2),
+			(eq, ":leader_troop_faction", "fac_kingdom_2"),
             (set_background_mesh, "mesh_pic_vaegir"),
 		  (else_try),
-			(eq, ":leader_troop_faction", fac_kingdom_3),
+			(eq, ":leader_troop_faction", "fac_kingdom_3"),
             (set_background_mesh, "mesh_pic_khergit"),
 		  (else_try),
-			(eq, ":leader_troop_faction", fac_kingdom_4),
+			(eq, ":leader_troop_faction", "fac_kingdom_4"),
             (set_background_mesh, "mesh_pic_nord"),
 		  (else_try),
-			(eq, ":leader_troop_faction", fac_kingdom_5),
+			(eq, ":leader_troop_faction", "fac_kingdom_5"),
             (set_background_mesh, "mesh_pic_rhodock"),
 		  (else_try),
-			(eq, ":leader_troop_faction", fac_kingdom_6),
+			(eq, ":leader_troop_faction", "fac_kingdom_6"),
             (set_background_mesh, "mesh_pic_sarranid_encounter"),
 		  (try_end),
         (try_end),

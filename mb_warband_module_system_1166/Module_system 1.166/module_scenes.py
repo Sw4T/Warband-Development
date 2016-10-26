@@ -1,8 +1,4 @@
-from header_common import *
-from header_operations import *
-from header_triggers import *
-from header_scenes import *
-from module_constants import *
+from compiler import *
 
 ####################################################################################################################
 #  Each scene record contains the following fields:

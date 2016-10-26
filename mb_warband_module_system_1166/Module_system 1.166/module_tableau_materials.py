@@ -1,9 +1,4 @@
-from header_common import *
-from ID_animations import *
-from header_mission_templates import *
-from header_tableau_materials import *
-from header_items import *
-from module_constants import *
+from compiler import *
 
 ####################################################################################################################
 #  Each tableau material contains the following fields:
@@ -933,8 +928,8 @@ tableaus = [
 ####     (try_begin),
 ####       (gt, ":horse_item", 0),
 ####       (position_rotate_z, pos2, -40),
-####       (cur_tableau_add_horse, ":horse_item", pos2, anim_horse_stand, 0),
-####       (assign, ":animation", anim_ride_0),
+####       (cur_tableau_add_horse, ":horse_item", pos2, anim.horse_stand, 0),
+####       (assign, ":animation", anim.ride_0),
 ####       (position_set_z, pos5, 125),
 ####       (position_set_y, pos5, 480),
 ####     (try_end),
