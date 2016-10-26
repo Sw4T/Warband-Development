@@ -1444,6 +1444,7 @@ scripts = [
       (item_set_slot, "itm_vaegir_noble_helmet", slot_item_multiplayer_item_class, multi_item_class_type_light_helm),
       (item_set_slot, "itm_vaegir_war_helmet", slot_item_multiplayer_item_class, multi_item_class_type_light_helm),
       (item_set_slot, "itm_vaegir_mask", slot_item_multiplayer_item_class, multi_item_class_type_light_helm),
+	  (item_set_slot, "itm_viber_sword", slot_item_multiplayer_item_class, multi_item_class_type_sword),
 	  
 	  
 	  #gloves
@@ -1497,6 +1498,7 @@ scripts = [
       (call_script, "script_multiplayer_set_item_available_for_troop", "itm_guard_helmet", "trp_swadian_crossbowman_multiplayer"),
 
       #1b-Swadian Infantry
+	  (call_script, "script_multiplayer_set_item_available_for_troop", "itm_viber_sword", "trp_swadian_infantry_multiplayer"),
       (call_script, "script_multiplayer_set_item_available_for_troop", "itm_awlpike", "trp_swadian_infantry_multiplayer"),
       (call_script, "script_multiplayer_set_item_available_for_troop", "itm_awlpike_long", "trp_swadian_infantry_multiplayer"),
       (call_script, "script_multiplayer_set_item_available_for_troop", "itm_sword_medieval_a", "trp_swadian_infantry_multiplayer"),
