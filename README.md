@@ -28,3 +28,4 @@ We are using the native module system to create the mod and some tools :
 ***
 
 A great tutorial about starting to mod and code in Warband is available in [PDF](http://www.freewebs.com/jikbyond/40kTut/M&B%20Module%20System%20Doc2-3.pdf) or [HTML](http://forums.taleworlds.com/index.php/board,12.0.html)
+Tutorial about scripting in warband : http://forums.taleworlds.com/index.php/topic,142422.0.html
