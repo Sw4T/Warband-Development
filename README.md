@@ -1,6 +1,6 @@
 # Warband-Development
 
-_Actually developping_ : **Truand Brawl** - A MP Mod for Mount&Blade Warband where you fight with many differents classes, weapons and stuff but in a totally random way.
+_Actually developping_ : **Truand Brawl** - A MP Mod for Mount&Blade Warband where you fight with many differents classes, weapons and stuff but in a totally random way. We're aiming to release a version with deathmatch implemented over little maps and some basic random stuff like positioning or weapons.
 ***
 ## Coders
 
