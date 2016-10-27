@@ -3908,22 +3908,22 @@ game_menus = [
 		  (ge, ":leader_troop", 1),
 		  (troop_get_slot, ":leader_troop_faction", ":leader_troop", slot_troop_original_faction),
 		  (try_begin),
-			(eq, ":leader_troop_faction", "fac_kingdom_1"),
+			(eq, ":leader_troop_faction", "fac_kingdom_7"),
             (set_background_mesh, "mesh_pic_swad"),
 		  (else_try),
-			(eq, ":leader_troop_faction", "fac_kingdom_2"),
+			(eq, ":leader_troop_faction", "fac_kingdom_7"),
             (set_background_mesh, "mesh_pic_vaegir"),
 		  (else_try),
-			(eq, ":leader_troop_faction", "fac_kingdom_3"),
+			(eq, ":leader_troop_faction", "fac_kingdom_7"),
             (set_background_mesh, "mesh_pic_khergit"),
 		  (else_try),
-			(eq, ":leader_troop_faction", "fac_kingdom_4"),
+			(eq, ":leader_troop_faction", "fac_kingdom_7"),
             (set_background_mesh, "mesh_pic_nord"),
 		  (else_try),
-			(eq, ":leader_troop_faction", "fac_kingdom_5"),
+			(eq, ":leader_troop_faction", "fac_kingdom_7"),
             (set_background_mesh, "mesh_pic_rhodock"),
 		  (else_try),
-			(eq, ":leader_troop_faction", "fac_kingdom_6"),
+			(eq, ":leader_troop_faction", "fac_kingdom_7"),
             (set_background_mesh, "mesh_pic_sarranid_encounter"),
 		  (try_end),
         (try_end),
@@ -9211,22 +9211,22 @@ game_menus = [
                
 			   (assign, ":troop_of_merchant", 0),	
                (try_begin),
-                 (eq, "$g_encountered_party_faction", "fac_kingdom_1"),
+                 (eq, "$g_encountered_party_faction", "fac_kingdom_7"),
                  (assign, ":troop_of_merchant", "trp_swadian_merchant"),
                (else_try),  
-                 (eq, "$g_encountered_party_faction", "fac_kingdom_2"),
+                 (eq, "$g_encountered_party_faction", "fac_kingdom_7"),
                  (assign, ":troop_of_merchant", "trp_vaegir_merchant"),
                (else_try),                   
-                 (eq, "$g_encountered_party_faction", "fac_kingdom_3"),
+                 (eq, "$g_encountered_party_faction", "fac_kingdom_7"),
                  (assign, ":troop_of_merchant", "trp_khergit_merchant"),
                (else_try),  
-                 (eq, "$g_encountered_party_faction", "fac_kingdom_4"),
+                 (eq, "$g_encountered_party_faction", "fac_kingdom_7"),
                  (assign, ":troop_of_merchant", "trp_nord_merchant"),
                (else_try),  
-                 (eq, "$g_encountered_party_faction", "fac_kingdom_5"),
+                 (eq, "$g_encountered_party_faction", "fac_kingdom_7"),
                  (assign, ":troop_of_merchant", "trp_rhodok_merchant"),
                (else_try),  
-                 (eq, "$g_encountered_party_faction", "fac_kingdom_6"),
+                 (eq, "$g_encountered_party_faction", "fac_kingdom_7"),
                  (assign, ":troop_of_merchant", "trp_sarranid_merchant"),
                (try_end),
 			   (gt, ":troop_of_merchant", 0),	
@@ -10184,7 +10184,7 @@ game_menus = [
            (set_jump_mission, "mt_arena_melee_fight"),
            
            (try_begin),
-             (eq, ":town_original_faction", "fac_kingdom_1"),
+             (eq, ":town_original_faction", "fac_kingdom_7"),
              #Swadia
              (store_mod, ":mod", ":town_index_within_faction", 4),
              (try_begin),
@@ -10201,7 +10201,7 @@ game_menus = [
                (call_script, "script_set_items_for_tournament", 40, 80, 50, 20, 40, 0, 0, 0, "itm_arena_armor_red", "itm_tourney_helm_red"),
              (try_end),
            (else_try),
-             (eq, ":town_original_faction", "fac_kingdom_2"),
+             (eq, ":town_original_faction", "fac_kingdom_7"),
              #Vaegirs
              (store_mod, ":mod", ":town_index_within_faction", 4),
              (try_begin),
@@ -10218,7 +10218,7 @@ game_menus = [
                (call_script, "script_set_items_for_tournament", 40, 80, 50, 20, 30, 0, 60, 0, "itm_arena_armor_red", "itm_steppe_helmet_red"),
              (try_end),
            (else_try),
-             (eq, ":town_original_faction", "fac_kingdom_3"),
+             (eq, ":town_original_faction", "fac_kingdom_7"),
              #Khergit
              (store_mod, ":mod", ":town_index_within_faction", 2),
              (try_begin),
@@ -10229,7 +10229,7 @@ game_menus = [
                (call_script, "script_set_items_for_tournament", 100, 50, 25, 0, 0, 30, 50, 0, "itm_arena_tunic_red", "itm_steppe_helmet_red"),
              (try_end),
            (else_try),
-             (eq, ":town_original_faction", "fac_kingdom_4"),
+             (eq, ":town_original_faction", "fac_kingdom_7"),
              #Nords
              (store_mod, ":mod", ":town_index_within_faction", 3),
              (try_begin),
@@ -10244,7 +10244,7 @@ game_menus = [
              (try_end),
            (else_try),
              #Rhodoks
-             (eq, ":town_original_faction", "fac_kingdom_5"),
+             (eq, ":town_original_faction", "fac_kingdom_7"),
              (call_script, "script_set_items_for_tournament", 25, 100, 60, 0, 30, 0, 30, 50, "itm_arena_tunic_red", "itm_arena_helmet_red"),
            (else_try),
              #Sarranids
@@ -13289,7 +13289,7 @@ game_menus = [
       (position_set_y, pos0, 30),
       (position_set_z, pos0, 170),
       (try_begin),
-        (is_between, "$g_notification_menu_var1", "fac_kingdom_1", kingdoms_end), #Excluding player kingdom
+        (is_between, "$g_notification_menu_var1", "fac_kingdom_7", kingdoms_end), #Excluding player kingdom
         (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_for_menu", "$g_notification_menu_var1", pos0),
       (else_try),
         (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
@@ -13325,7 +13325,7 @@ game_menus = [
       (position_set_y, pos0, 30),
       (position_set_z, pos0, 170),
       (try_begin),
-        (is_between, "$g_notification_menu_var1", "fac_kingdom_1", kingdoms_end), #Excluding player kingdom
+        (is_between, "$g_notification_menu_var1", "fac_kingdom_7", kingdoms_end), #Excluding player kingdom
         (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_for_menu", "$g_notification_menu_var1", pos0),
       (else_try),
         (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
@@ -13493,7 +13493,7 @@ game_menus = [
       (position_set_y, pos0, 30),
       (position_set_z, pos0, 170),
       (try_begin),
-        (is_between, "$g_notification_menu_var1", "fac_kingdom_1", kingdoms_end), #Excluding player kingdom
+        (is_between, "$g_notification_menu_var1", "fac_kingdom_7", kingdoms_end), #Excluding player kingdom
         (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_for_menu", "$g_notification_menu_var1", pos0),
       (else_try),
         (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
@@ -13595,7 +13595,7 @@ game_menus = [
       (position_set_y, pos0, 30),
       (position_set_z, pos0, 170),
       (try_begin),
-        (is_between, "$g_notification_menu_var1", "fac_kingdom_1", kingdoms_end), #Excluding player kingdom
+        (is_between, "$g_notification_menu_var1", "fac_kingdom_7", kingdoms_end), #Excluding player kingdom
         (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_for_menu", "$g_notification_menu_var1", pos0),
       (else_try),
         (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
@@ -14020,22 +14020,22 @@ game_menus = [
 	      (store_faction_of_party, ":starting_town_faction", "$g_starting_town"),
 	      
 	      (try_begin),
-	        (eq, ":starting_town_faction", "fac_kingdom_1"), #player selected swadian city as starting town.
+	        (eq, ":starting_town_faction", "fac_kingdom_7"), #player selected swadian city as starting town.
 	        (assign, ":scene_to_use", "scn_lair_forest_bandits"),	    
 	      (else_try),
-	        (eq, ":starting_town_faction", "fac_kingdom_2"), #player selected Vaegir city as starting town.
+	        (eq, ":starting_town_faction", "fac_kingdom_7"), #player selected Vaegir city as starting town.
 	        (assign, ":scene_to_use", "scn_lair_taiga_bandits"),	    
 	      (else_try),
-	        (eq, ":starting_town_faction", "fac_kingdom_3"), #player selected Khergit city as starting town.
+	        (eq, ":starting_town_faction", "fac_kingdom_7"), #player selected Khergit city as starting town.
 	        (assign, ":scene_to_use", "scn_lair_steppe_bandits"),	    
 	      (else_try),
-	        (eq, ":starting_town_faction", "fac_kingdom_4"), #player selected Nord city as starting town.
+	        (eq, ":starting_town_faction", "fac_kingdom_7"), #player selected Nord city as starting town.
 	        (assign, ":scene_to_use", "scn_lair_sea_raiders"),
 	      (else_try),
-	        (eq, ":starting_town_faction", "fac_kingdom_5"), #player selected Rhodok city as starting town.
+	        (eq, ":starting_town_faction", "fac_kingdom_7"), #player selected Rhodok city as starting town.
 	        (assign, ":scene_to_use", "scn_lair_mountain_bandits"),
 	      (else_try),
-	        (eq, ":starting_town_faction", "fac_kingdom_6"), #player selected Sarranid city as starting town.
+	        (eq, ":starting_town_faction", "fac_kingdom_7"), #player selected Sarranid city as starting town.
 	        (assign, ":scene_to_use", "scn_lair_desert_bandits"),	    
 	      (try_end),  
 	    (try_end),

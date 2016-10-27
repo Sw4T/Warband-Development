@@ -170,28 +170,28 @@ scripts = [
       (try_end),
       
 # Factions:
-      (faction_set_slot, "fac_kingdom_1",  slot_faction_culture, "fac_culture_1"),
-      (faction_set_slot, "fac_kingdom_1",  slot_faction_leader, "trp_kingdom_1_lord"),
+      (faction_set_slot, "fac_kingdom_7",  slot_faction_culture, "fac_culture_1"),
+      (faction_set_slot, "fac_kingdom_7",  slot_faction_leader, "trp_kingdom_1_lord"),
 	  (troop_set_slot, "trp_kingdom_1_lord", slot_troop_renown, 1200),
 	  
-      (faction_set_slot, "fac_kingdom_2",  slot_faction_culture, "fac_culture_2"),
-      (faction_set_slot, "fac_kingdom_2",  slot_faction_leader, "trp_kingdom_2_lord"),
+      (faction_set_slot, "fac_kingdom_7",  slot_faction_culture, "fac_culture_2"),
+      (faction_set_slot, "fac_kingdom_7",  slot_faction_leader, "trp_kingdom_2_lord"),
 	  (troop_set_slot, "trp_kingdom_2_lord", slot_troop_renown, 1200),
 
-      (faction_set_slot, "fac_kingdom_3",  slot_faction_culture, "fac_culture_3"),
-      (faction_set_slot, "fac_kingdom_3",  slot_faction_leader, "trp_kingdom_3_lord"),
+      (faction_set_slot, "fac_kingdom_7",  slot_faction_culture, "fac_culture_3"),
+      (faction_set_slot, "fac_kingdom_7",  slot_faction_leader, "trp_kingdom_3_lord"),
 	  (troop_set_slot, "trp_kingdom_3_lord", slot_troop_renown, 1200),
 
-      (faction_set_slot, "fac_kingdom_4",  slot_faction_culture, "fac_culture_4"),
-      (faction_set_slot, "fac_kingdom_4",  slot_faction_leader, "trp_kingdom_4_lord"),
+      (faction_set_slot, "fac_kingdom_7",  slot_faction_culture, "fac_culture_4"),
+      (faction_set_slot, "fac_kingdom_7",  slot_faction_leader, "trp_kingdom_4_lord"),
 	  (troop_set_slot, "trp_kingdom_4_lord", slot_troop_renown, 1200),
 
-      (faction_set_slot, "fac_kingdom_5",  slot_faction_culture, "fac_culture_5"),
-      (faction_set_slot, "fac_kingdom_5",  slot_faction_leader, "trp_kingdom_5_lord"),
+      (faction_set_slot, "fac_kingdom_7",  slot_faction_culture, "fac_culture_5"),
+      (faction_set_slot, "fac_kingdom_7",  slot_faction_leader, "trp_kingdom_5_lord"),
 	  (troop_set_slot, "trp_kingdom_5_lord", slot_troop_renown, 1200),
 
-      (faction_set_slot, "fac_kingdom_6",  slot_faction_culture, "fac_culture_6"),
-      (faction_set_slot, "fac_kingdom_6",  slot_faction_leader, "trp_kingdom_6_lord"),
+      (faction_set_slot, "fac_kingdom_7",  slot_faction_culture, "fac_culture_6"),
+      (faction_set_slot, "fac_kingdom_7",  slot_faction_leader, "trp_kingdom_6_lord"),
 	  (troop_set_slot, "trp_kingdom_6_lord", slot_troop_renown, 1200),
 	  
       (assign, ":player_faction_culture", "fac_culture_1"),
@@ -375,13 +375,14 @@ scripts = [
 # We assume there are enough banners for all kingdom heroes.
 
       #faction banners
-      (faction_set_slot, "fac_kingdom_1", slot_faction_banner, "mesh_banner_kingdom_f"),
-      (faction_set_slot, "fac_kingdom_2", slot_faction_banner, "mesh_banner_kingdom_b"),
-      (faction_set_slot, "fac_kingdom_3", slot_faction_banner, "mesh_banner_kingdom_c"),
-      (faction_set_slot, "fac_kingdom_4", slot_faction_banner, "mesh_banner_kingdom_a"),
-      (faction_set_slot, "fac_kingdom_5", slot_faction_banner, "mesh_banner_kingdom_d"),
-      (faction_set_slot, "fac_kingdom_6", slot_faction_banner, "mesh_banner_kingdom_e"),
-
+      (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_f"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_b"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_c"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_a"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_d"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_e"),
+	  (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_e"),
+	  
       (try_for_range, ":cur_faction", npc_kingdoms_begin, npc_kingdoms_end),
         (faction_get_slot, ":cur_faction_king", ":cur_faction", slot_faction_leader),
         (faction_get_slot, ":cur_faction_banner", ":cur_faction", slot_faction_banner),
@@ -400,13 +401,13 @@ scripts = [
         (store_troop_faction, ":kingdom_hero_faction", ":kingdom_hero"),
         (neg|faction_slot_eq, ":kingdom_hero_faction", slot_faction_leader, ":kingdom_hero"),
         (try_begin), 
-          (eq, ":kingdom_hero_faction", "fac_kingdom_3"), #Khergit Khanate
+          (eq, ":kingdom_hero_faction", "fac_kingdom_7"), #Khergit Khanate
           (store_add, ":kingdom_3_banners_begin", banner_scene_props_begin, khergit_banners_begin_offset),
           (store_add, ":banner_id", ":kingdom_3_banners_begin", ":num_khergit_lords_assigned"),
           (troop_set_slot, ":kingdom_hero", slot_troop_banner_scene_prop, ":banner_id"),
           (val_add, ":num_khergit_lords_assigned", 1),
         (else_try),
-          (eq, ":kingdom_hero_faction", "fac_kingdom_6"), #Sarranid Sultanate
+          (eq, ":kingdom_hero_faction", "fac_kingdom_7"), #Sarranid Sultanate
           (store_add, ":kingdom_6_banners_begin", banner_scene_props_begin, sarranid_banners_begin_offset),
           (store_add, ":banner_id", ":kingdom_6_banners_begin", ":num_sarranid_lords_assigned"),
           (troop_set_slot, ":kingdom_hero", slot_troop_banner_scene_prop, ":banner_id"),
@@ -462,91 +463,91 @@ scripts = [
       (try_end),
 
       (try_for_range, ":faction_no", kingdoms_begin, kingdoms_end),
-        (is_between, ":faction_no", "fac_kingdom_1", kingdoms_end), #Excluding player kingdom
+        (is_between, ":faction_no", "fac_kingdom_7", kingdoms_end), #Excluding player kingdom
         (add_faction_note_tableau_mesh, ":faction_no", "tableau_faction_note_mesh"),
       (else_try),
         (add_faction_note_tableau_mesh, ":faction_no", "tableau_faction_note_mesh_banner"),
       (try_end),
 
 	  #Give centers to factions first, to ensure more equal distributions
-	  (call_script, "script_give_center_to_faction_aux", "p_town_1", "fac_kingdom_4"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_2", "fac_kingdom_4"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_3", "fac_kingdom_5"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_4", "fac_kingdom_1"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_5", "fac_kingdom_5"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_6", "fac_kingdom_1"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_7", "fac_kingdom_1"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_8", "fac_kingdom_2"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_9", "fac_kingdom_2"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_10", "fac_kingdom_3"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_11", "fac_kingdom_2"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_12", "fac_kingdom_4"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_13", "fac_kingdom_2"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_14", "fac_kingdom_3"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_15", "fac_kingdom_5"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_16", "fac_kingdom_1"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_17", "fac_kingdom_3"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_18", "fac_kingdom_3"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_19", "fac_kingdom_6"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_20", "fac_kingdom_6"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_21", "fac_kingdom_6"),
-	  (call_script, "script_give_center_to_faction_aux", "p_town_22", "fac_kingdom_6"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_1", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_2", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_3", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_4", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_5", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_6", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_7", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_8", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_9", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_10", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_11", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_12", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_13", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_14", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_15", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_16", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_17", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_18", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_19", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_20", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_21", "fac_kingdom_7"),
+	  (call_script, "script_give_center_to_faction_aux", "p_town_22", "fac_kingdom_7"),
 	  
-      (call_script, "script_give_center_to_faction_aux", "p_castle_1", "fac_kingdom_5"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_2", "fac_kingdom_3"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_3", "fac_kingdom_2"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_4", "fac_kingdom_2"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_5", "fac_kingdom_4"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_6", "fac_kingdom_1"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_7", "fac_kingdom_3"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_8", "fac_kingdom_2"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_9", "fac_kingdom_5"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_10", "fac_kingdom_4"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_11", "fac_kingdom_4"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_1", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_2", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_3", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_4", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_5", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_6", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_7", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_8", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_9", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_10", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_11", "fac_kingdom_7"),
 
-      (call_script, "script_give_center_to_faction_aux", "p_castle_12", "fac_kingdom_4"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_13", "fac_kingdom_1"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_14", "fac_kingdom_5"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_15", "fac_kingdom_5"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_16", "fac_kingdom_5"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_17", "fac_kingdom_3"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_18", "fac_kingdom_2"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_19", "fac_kingdom_2"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_20", "fac_kingdom_1"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_12", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_13", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_14", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_15", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_16", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_17", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_18", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_19", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_20", "fac_kingdom_7"),
 
-      (call_script, "script_give_center_to_faction_aux", "p_castle_21", "fac_kingdom_5"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_22", "fac_kingdom_3"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_23", "fac_kingdom_1"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_24", "fac_kingdom_1"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_21", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_22", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_23", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_24", "fac_kingdom_7"),
 
-      (call_script, "script_give_center_to_faction_aux", "p_castle_25", "fac_kingdom_1"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_26", "fac_kingdom_1"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_27", "fac_kingdom_1"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_28", "fac_kingdom_5"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_25", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_26", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_27", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_28", "fac_kingdom_7"),
 
-      (call_script, "script_give_center_to_faction_aux", "p_castle_29", "fac_kingdom_2"), 
-      (call_script, "script_give_center_to_faction_aux", "p_castle_30", "fac_kingdom_3"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_31", "fac_kingdom_1"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_29", "fac_kingdom_7"), 
+      (call_script, "script_give_center_to_faction_aux", "p_castle_30", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_31", "fac_kingdom_7"),
 
-      (call_script, "script_give_center_to_faction_aux", "p_castle_32", "fac_kingdom_4"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_33", "fac_kingdom_5"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_34", "fac_kingdom_4"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_35", "fac_kingdom_1"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_32", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_33", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_34", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_35", "fac_kingdom_7"),
       
-      (call_script, "script_give_center_to_faction_aux", "p_castle_36", "fac_kingdom_4"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_37", "fac_kingdom_2"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_38", "fac_kingdom_3"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_39", "fac_kingdom_2"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_40", "fac_kingdom_3"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_36", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_37", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_38", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_39", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_40", "fac_kingdom_7"),
       
-      (call_script, "script_give_center_to_faction_aux", "p_castle_41", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_42", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_43", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_44", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_45", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_46", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_47", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_48", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_41", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_42", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_43", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_44", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_45", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_46", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_47", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_48", "fac_kingdom_7"),
       
 
 	  #Now give towns to great lords
@@ -593,16 +594,16 @@ scripts = [
       (try_end),
 	  	  
 	  #set territorial disputes/outstanding border issues 
-	  (party_set_slot, "p_castle_10", slot_center_ex_faction, "fac_kingdom_2"), #vaegirs claim nord-held alburq
-	  (party_set_slot, "p_castle_13", slot_center_ex_faction, "fac_kingdom_4"), #nords claim swadian-held kelredan
-	  (party_set_slot, "p_castle_15", slot_center_ex_faction, "fac_kingdom_1"), #swadians claim rhodok-held ergelon
-	  (party_set_slot, "p_castle_46", slot_center_ex_faction, "fac_kingdom_5"), #rhodoks claim sarranid-held weyyah
-	  (party_set_slot, "p_castle_40", slot_center_ex_faction, "fac_kingdom_6"), #sarranids claim khergit-held uhhun
-	  (party_set_slot, "p_town_11",   slot_center_ex_faction, "fac_kingdom_3"), #Khergits claim vaegir-held curaw
+	  (party_set_slot, "p_castle_10", slot_center_ex_faction, "fac_kingdom_7"), #vaegirs claim nord-held alburq
+	  (party_set_slot, "p_castle_13", slot_center_ex_faction, "fac_kingdom_7"), #nords claim swadian-held kelredan
+	  (party_set_slot, "p_castle_15", slot_center_ex_faction, "fac_kingdom_7"), #swadians claim rhodok-held ergelon
+	  (party_set_slot, "p_castle_46", slot_center_ex_faction, "fac_kingdom_7"), #rhodoks claim sarranid-held weyyah
+	  (party_set_slot, "p_castle_40", slot_center_ex_faction, "fac_kingdom_7"), #sarranids claim khergit-held uhhun
+	  (party_set_slot, "p_town_11",   slot_center_ex_faction, "fac_kingdom_7"), #Khergits claim vaegir-held curaw
 	  
 	  #Swadians, being in the middle, will have additional claims on two of their neighhbors
-	  (party_set_slot, "p_castle_15", slot_center_ex_faction, "fac_kingdom_1"), #swadians claim vaegir-held tilbault
-	  (party_set_slot, "p_castle_22", slot_center_ex_faction, "fac_kingdom_1"), #swadians claim khergit-held unuzdaq	  	  	  	  
+	  (party_set_slot, "p_castle_15", slot_center_ex_faction, "fac_kingdom_7"), #swadians claim vaegir-held tilbault
+	  (party_set_slot, "p_castle_22", slot_center_ex_faction, "fac_kingdom_7"), #swadians claim khergit-held unuzdaq	  	  	  	  
 	  
       (call_script, "script_update_village_market_towns"),	  
 
@@ -838,14 +839,14 @@ scripts = [
         (call_script, "script_faction_recalculate_strength", ":faction_no"),
       (try_end),
 
-	  (faction_set_slot, "fac_kingdom_1", slot_faction_adjective, "str_kingdom_1_adjective"),
-	  (faction_set_slot, "fac_kingdom_2", slot_faction_adjective, "str_kingdom_2_adjective"),
-	  (faction_set_slot, "fac_kingdom_3", slot_faction_adjective, "str_kingdom_3_adjective"),
-	  (faction_set_slot, "fac_kingdom_4", slot_faction_adjective, "str_kingdom_4_adjective"),
-	  (faction_set_slot, "fac_kingdom_5", slot_faction_adjective, "str_kingdom_5_adjective"),
-	  (faction_set_slot, "fac_kingdom_6", slot_faction_adjective, "str_kingdom_6_adjective"),
+	  (faction_set_slot, "fac_kingdom_7", slot_faction_adjective, "str_kingdom_1_adjective"),
+	  (faction_set_slot, "fac_kingdom_7", slot_faction_adjective, "str_kingdom_2_adjective"),
+	  (faction_set_slot, "fac_kingdom_7", slot_faction_adjective, "str_kingdom_3_adjective"),
+	  (faction_set_slot, "fac_kingdom_7", slot_faction_adjective, "str_kingdom_4_adjective"),
+	  (faction_set_slot, "fac_kingdom_7", slot_faction_adjective, "str_kingdom_5_adjective"),
+	  (faction_set_slot, "fac_kingdom_7", slot_faction_adjective, "str_kingdom_6_adjective"),
 	  
-##      (assign, "$players_kingdom", "fac_kingdom_1"),
+##      (assign, "$players_kingdom", "fac_kingdom_7"),
 ##      (call_script, "script_give_center_to_lord", "p_town_7", "trp_player", 0),
 ##      (call_script, "script_give_center_to_lord", "p_town_16", "trp_player", 0),
 ####      (call_script, "script_give_center_to_lord", "p_castle_10", "trp_player", 0),
@@ -967,8 +968,8 @@ scripts = [
       (assign, "$g_quick_battle_game_type", 0),
       (assign, "$g_quick_battle_troop", quick_battle_troops_begin),
       (assign, "$g_quick_battle_map", quick_battle_scenes_begin),
-      (assign, "$g_quick_battle_team_1_faction", "fac_kingdom_1"),
-      (assign, "$g_quick_battle_team_2_faction", "fac_kingdom_2"),
+      (assign, "$g_quick_battle_team_1_faction", "fac_kingdom_7"),
+      (assign, "$g_quick_battle_team_2_faction", "fac_kingdom_7"),
       (assign, "$g_quick_battle_army_1_size", 25),
       (assign, "$g_quick_battle_army_2_size", 25),
 
@@ -978,42 +979,42 @@ scripts = [
       (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_2_archer, "trp_taiga_bandit"),
       (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_cavalry, "trp_steppe_bandit"),
       (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_2_cavalry, "trp_desert_bandit"),
-      (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_1_infantry, "trp_swadian_footman"),
-      (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_2_infantry, "trp_swadian_infantry"),
-      (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_1_archer, "trp_swadian_skirmisher"),
-      (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_2_archer, "trp_swadian_crossbowman"),
-      (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_1_cavalry, "trp_swadian_man_at_arms"),
-      (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_2_cavalry, "trp_swadian_knight"),
-      (faction_set_slot, "fac_kingdom_2", slot_faction_quick_battle_tier_1_infantry, "trp_vaegir_footman"),
-      (faction_set_slot, "fac_kingdom_2", slot_faction_quick_battle_tier_2_infantry, "trp_vaegir_infantry"),
-      (faction_set_slot, "fac_kingdom_2", slot_faction_quick_battle_tier_1_archer, "trp_vaegir_skirmisher"),
-      (faction_set_slot, "fac_kingdom_2", slot_faction_quick_battle_tier_2_archer, "trp_vaegir_archer"),
-      (faction_set_slot, "fac_kingdom_2", slot_faction_quick_battle_tier_1_cavalry, "trp_vaegir_horseman"),
-      (faction_set_slot, "fac_kingdom_2", slot_faction_quick_battle_tier_2_cavalry, "trp_vaegir_knight"),
-      (faction_set_slot, "fac_kingdom_3", slot_faction_quick_battle_tier_1_infantry, "trp_khergit_dismounted_lancer_multiplayer_ai"),
-      (faction_set_slot, "fac_kingdom_3", slot_faction_quick_battle_tier_2_infantry, "trp_khergit_dismounted_lancer_multiplayer_ai"),
-      (faction_set_slot, "fac_kingdom_3", slot_faction_quick_battle_tier_1_archer, "trp_khergit_horse_archer"),
-      (faction_set_slot, "fac_kingdom_3", slot_faction_quick_battle_tier_2_archer, "trp_khergit_veteran_horse_archer"),
-      (faction_set_slot, "fac_kingdom_3", slot_faction_quick_battle_tier_1_cavalry, "trp_khergit_lancer"),
-      (faction_set_slot, "fac_kingdom_3", slot_faction_quick_battle_tier_2_cavalry, "trp_khergit_lancer"),
-      (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_1_infantry, "trp_nord_warrior"),
-      (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_2_infantry, "trp_nord_champion"),
-      (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_1_archer, "trp_nord_archer"),
-      (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_2_archer, "trp_nord_veteran_archer"),
-      (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_1_cavalry, "trp_nord_scout_multiplayer_ai"),
-      (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_2_cavalry, "trp_nord_scout_multiplayer_ai"),
-      (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_infantry, "trp_rhodok_veteran_spearman"),
-      (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_infantry, "trp_rhodok_sergeant"),
-      (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_archer, "trp_rhodok_crossbowman"),
-      (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_archer, "trp_rhodok_veteran_crossbowman"),
-      (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_cavalry, "trp_rhodok_scout_multiplayer_ai"),
-      (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_cavalry, "trp_rhodok_scout_multiplayer_ai"),
-      (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_1_infantry, "trp_sarranid_veteran_footman"),
-      (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_2_infantry, "trp_sarranid_infantry"),
-      (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_1_archer, "trp_sarranid_skirmisher"),
-      (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_2_archer, "trp_sarranid_archer"),
-      (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_1_cavalry, "trp_sarranid_horseman"),
-      (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_2_cavalry, "trp_sarranid_mamluke"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_infantry, "trp_swadian_footman"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_infantry, "trp_swadian_infantry"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_archer, "trp_swadian_skirmisher"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_archer, "trp_swadian_crossbowman"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_cavalry, "trp_swadian_man_at_arms"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_cavalry, "trp_swadian_knight"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_infantry, "trp_vaegir_footman"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_infantry, "trp_vaegir_infantry"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_archer, "trp_vaegir_skirmisher"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_archer, "trp_vaegir_archer"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_cavalry, "trp_vaegir_horseman"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_cavalry, "trp_vaegir_knight"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_infantry, "trp_khergit_dismounted_lancer_multiplayer_ai"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_infantry, "trp_khergit_dismounted_lancer_multiplayer_ai"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_archer, "trp_khergit_horse_archer"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_archer, "trp_khergit_veteran_horse_archer"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_cavalry, "trp_khergit_lancer"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_cavalry, "trp_khergit_lancer"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_infantry, "trp_nord_warrior"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_infantry, "trp_nord_champion"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_archer, "trp_nord_archer"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_archer, "trp_nord_veteran_archer"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_cavalry, "trp_nord_scout_multiplayer_ai"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_cavalry, "trp_nord_scout_multiplayer_ai"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_infantry, "trp_rhodok_veteran_spearman"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_infantry, "trp_rhodok_sergeant"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_archer, "trp_rhodok_crossbowman"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_archer, "trp_rhodok_veteran_crossbowman"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_cavalry, "trp_rhodok_scout_multiplayer_ai"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_cavalry, "trp_rhodok_scout_multiplayer_ai"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_infantry, "trp_sarranid_veteran_footman"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_infantry, "trp_sarranid_infantry"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_archer, "trp_sarranid_skirmisher"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_archer, "trp_sarranid_archer"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_cavalry, "trp_sarranid_horseman"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_cavalry, "trp_sarranid_mamluke"),
 
       #for multiplayer mode
       (assign, "$g_multiplayer_selected_map", multiplayer_scenes_begin),
@@ -1027,8 +1028,8 @@ scripts = [
       (assign, "$g_multiplayer_point_gained_from_flags", 100),
       (assign, "$g_multiplayer_point_gained_from_capturing_flag", 5),
       (assign, "$g_multiplayer_game_type", 0),
-      (assign, "$g_multiplayer_team_1_faction", "fac_kingdom_1"),
-      (assign, "$g_multiplayer_team_2_faction", "fac_kingdom_2"),
+      (assign, "$g_multiplayer_team_1_faction", "fac_kingdom_7"),
+      (assign, "$g_multiplayer_team_2_faction", "fac_kingdom_7"),
       (assign, "$g_multiplayer_next_team_1_faction", "$g_multiplayer_team_1_faction"),
       (assign, "$g_multiplayer_next_team_2_faction", "$g_multiplayer_team_2_faction"),
       (assign, "$g_multiplayer_num_bots_team_1", 0),
@@ -1056,12 +1057,12 @@ scripts = [
       (assign, "$g_multiplayer_round_earnings_multiplier", 100),
   
       #faction banners
-      (faction_set_slot, "fac_kingdom_1", slot_faction_banner, "mesh_banner_kingdom_f"),
-      (faction_set_slot, "fac_kingdom_2", slot_faction_banner, "mesh_banner_kingdom_b"),
-      (faction_set_slot, "fac_kingdom_3", slot_faction_banner, "mesh_banner_kingdom_c"),
-      (faction_set_slot, "fac_kingdom_4", slot_faction_banner, "mesh_banner_kingdom_a"),
-      (faction_set_slot, "fac_kingdom_5", slot_faction_banner, "mesh_banner_kingdom_d"),
-      (faction_set_slot, "fac_kingdom_6", slot_faction_banner, "mesh_banner_kingdom_e"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_f"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_b"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_c"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_a"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_d"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_e"),
 
       (try_for_range, ":cur_item", all_items_begin, all_items_end),
         (try_for_range, ":cur_faction", npc_kingdoms_begin, npc_kingdoms_end),
@@ -1070,17 +1071,17 @@ scripts = [
           (item_set_slot, ":cur_item", ":faction_index", 100), #100 is the default price multiplier
         (try_end),
       (try_end),
-      (store_sub, ":swadian_price_slot", "fac_kingdom_1", npc_kingdoms_begin),
+      (store_sub, ":swadian_price_slot", "fac_kingdom_7", npc_kingdoms_begin),
       (val_add, ":swadian_price_slot", slot_item_multiplayer_faction_price_multipliers_begin),
-      (store_sub, ":vaegir_price_slot", "fac_kingdom_2", npc_kingdoms_begin),
+      (store_sub, ":vaegir_price_slot", "fac_kingdom_7", npc_kingdoms_begin),
       (val_add, ":vaegir_price_slot", slot_item_multiplayer_faction_price_multipliers_begin),
-      (store_sub, ":khergit_price_slot", "fac_kingdom_3", npc_kingdoms_begin),
+      (store_sub, ":khergit_price_slot", "fac_kingdom_7", npc_kingdoms_begin),
       (val_add, ":khergit_price_slot", slot_item_multiplayer_faction_price_multipliers_begin),
-      (store_sub, ":nord_price_slot", "fac_kingdom_4", npc_kingdoms_begin),
+      (store_sub, ":nord_price_slot", "fac_kingdom_7", npc_kingdoms_begin),
       (val_add, ":nord_price_slot", slot_item_multiplayer_faction_price_multipliers_begin),
-      (store_sub, ":rhodok_price_slot", "fac_kingdom_5", npc_kingdoms_begin),
+      (store_sub, ":rhodok_price_slot", "fac_kingdom_7", npc_kingdoms_begin),
       (val_add, ":rhodok_price_slot", slot_item_multiplayer_faction_price_multipliers_begin),
-      (store_sub, ":sarranid_price_slot", "fac_kingdom_6", npc_kingdoms_begin),
+      (store_sub, ":sarranid_price_slot", "fac_kingdom_7", npc_kingdoms_begin),
       (val_add, ":sarranid_price_slot", slot_item_multiplayer_faction_price_multipliers_begin),
 
       (item_set_slot, "itm_awlpike", ":swadian_price_slot", 80),
@@ -7426,43 +7427,49 @@ scripts = [
      
          (team_get_faction, ":team_faction_no", 0),
          (try_begin),
-           (eq, ":team_faction_no", "fac_kingdom_1"),   
+           (eq, ":team_faction_no", "fac_kingdom_7"),   
            (assign, "$team_1_flag_scene_prop", "spr_ctf_flag_kingdom_1"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_2"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_1_flag_scene_prop", "spr_ctf_flag_kingdom_2"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_3"), 
+           (eq, ":team_faction_no", "fac_kingdom_7"), 
            (assign, "$team_1_flag_scene_prop", "spr_ctf_flag_kingdom_3"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_4"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_1_flag_scene_prop", "spr_ctf_flag_kingdom_4"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_5"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_1_flag_scene_prop", "spr_ctf_flag_kingdom_5"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_6"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
+           (assign, "$team_1_flag_scene_prop", "spr_ctf_flag_kingdom_6"),
+		 (else_try),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_1_flag_scene_prop", "spr_ctf_flag_kingdom_6"),
          (try_end),
        (else_try),
          (team_get_faction, ":team_faction_no", 1),
          (try_begin),    
-           (eq, ":team_faction_no", "fac_kingdom_1"),   
+           (eq, ":team_faction_no", "fac_kingdom_7"),   
            (assign, "$team_2_flag_scene_prop", "spr_ctf_flag_kingdom_1"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_2"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_2_flag_scene_prop", "spr_ctf_flag_kingdom_2"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_3"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_2_flag_scene_prop", "spr_ctf_flag_kingdom_3"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_4"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_2_flag_scene_prop", "spr_ctf_flag_kingdom_4"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_5"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_2_flag_scene_prop", "spr_ctf_flag_kingdom_5"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_6"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
+           (assign, "$team_2_flag_scene_prop", "spr_ctf_flag_kingdom_6"),
+		 (else_try),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_2_flag_scene_prop", "spr_ctf_flag_kingdom_6"),
          (try_end),  
        
@@ -7477,43 +7484,43 @@ scripts = [
      
          (team_get_faction, ":team_faction_no", 0),
          (try_begin),
-           (eq, ":team_faction_no", "fac_kingdom_1"),   
+           (eq, ":team_faction_no", "fac_kingdom_7"),   
            (assign, "$team_1_flag_scene_prop", "spr_headquarters_flag_swadian"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_2"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_1_flag_scene_prop", "spr_headquarters_flag_vaegir"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_3"), 
+           (eq, ":team_faction_no", "fac_kingdom_7"), 
            (assign, "$team_1_flag_scene_prop", "spr_headquarters_flag_khergit"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_4"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_1_flag_scene_prop", "spr_headquarters_flag_nord"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_5"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_1_flag_scene_prop", "spr_headquarters_flag_rhodok"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_6"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_1_flag_scene_prop", "spr_headquarters_flag_sarranid"),
          (try_end),
        (else_try),
          (team_get_faction, ":team_faction_no", 1),
          (try_begin),    
-           (eq, ":team_faction_no", "fac_kingdom_1"),   
+           (eq, ":team_faction_no", "fac_kingdom_7"),   
            (assign, "$team_2_flag_scene_prop", "spr_headquarters_flag_swadian"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_2"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_2_flag_scene_prop", "spr_headquarters_flag_vaegir"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_3"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_2_flag_scene_prop", "spr_headquarters_flag_khergit"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_4"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_2_flag_scene_prop", "spr_headquarters_flag_nord"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_5"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_2_flag_scene_prop", "spr_headquarters_flag_rhodok"),
          (else_try),
-           (eq, ":team_faction_no", "fac_kingdom_6"),
+           (eq, ":team_faction_no", "fac_kingdom_7"),
            (assign, "$team_2_flag_scene_prop", "spr_headquarters_flag_sarranid"),
          (try_end),  
        
@@ -11035,7 +11042,7 @@ scripts = [
      (store_script_param, ":overlay_id", 1),
      (store_script_param, ":selected_faction_no", 2),
 ##     (store_script_param, ":opposite_team_selected_faction_no", 3),
-##     (try_for_range, ":cur_faction", "fac_kingdom_1", "fac_kingdoms_end"),
+##     (try_for_range, ":cur_faction", "fac_kingdom_7", "fac_kingdoms_end"),
 ##       (try_begin),
 ##         (eq, ":opposite_team_selected_faction_no", ":cur_faction"),
 ##         (try_begin),
@@ -11047,13 +11054,13 @@ scripts = [
 ##         (overlay_add_item, ":overlay_id", s0),
 ##       (try_end),
 ##     (try_end),
-##     (val_sub, ":selected_faction_no", "fac_kingdom_1"),
+##     (val_sub, ":selected_faction_no", "fac_kingdom_7"),
 ##     (overlay_set_val, ":overlay_id", ":selected_faction_no"),
      (try_for_range, ":cur_faction", npc_kingdoms_begin, npc_kingdoms_end),
        (str_store_faction_name, s0, ":cur_faction"),
        (overlay_add_item, ":overlay_id", s0),
      (try_end),
-     (val_sub, ":selected_faction_no", "fac_kingdom_1"),
+     (val_sub, ":selected_faction_no", "fac_kingdom_7"),
      (overlay_set_val, ":overlay_id", ":selected_faction_no"),
      ]),
   
@@ -15589,7 +15596,7 @@ scripts = [
 
        (assign, ":max_routed_agents", 0),
        (assign, ":routed_party_faction", "fac_neutral"),
-       (try_for_range, ":cur_faction", "fac_kingdom_1", "fac_kingdoms_end"),
+       (try_for_range, ":cur_faction", "fac_kingdom_7", "fac_kingdoms_end"),
          (faction_get_slot, ":num_routed_agents_in_this_faction", ":cur_faction", slot_faction_num_routed_agents),
          (gt, ":num_routed_agents_in_this_faction", ":max_routed_agents"),
          (assign, ":max_routed_agents", ":num_routed_agents_in_this_faction"),
@@ -18255,7 +18262,7 @@ scripts = [
 		(quest_slot_eq, "qst_retaliate_for_border_incident", slot_quest_dont_give_again_remaining_days, 0),
 		(assign, ":target_leader", 0),
   
-		(try_for_range, ":kingdom", "fac_kingdom_1", kingdoms_end),
+		(try_for_range, ":kingdom", "fac_kingdom_7", kingdoms_end),
 			(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", ":giver_faction", ":kingdom"),
 			(assign, ":diplomatic_status", reg0),
 			(eq, ":diplomatic_status", -1),
@@ -19343,7 +19350,7 @@ scripts = [
               
         (party_stack_get_troop_id, ":stack_troop", ":party_no", 0),  
         (try_begin),
-          (neg|is_between, ":stack_troop", "trp_looter", "trp_black_khergit_horseman"),
+          (neg|is_between, ":stack_troop", "trp_looter", "trp_bandit"),
 
           (assign, ":join_distance", 5), #day/not bandit
           (try_begin),
@@ -19399,7 +19406,7 @@ scripts = [
           (assign, ":enemy_is_bandit_party_and_level_is_greater_than_6", 0),
           (try_begin),
             (party_stack_get_troop_id, ":stack_troop", ":party_no", 0),
-            (is_between, ":stack_troop", "trp_looter", "trp_black_khergit_horseman"),                    
+            (is_between, ":stack_troop", "trp_looter", "trp_bandit"),                    
             (gt, ":player_level", 6),
             (assign, ":enemy_is_bandit_party_and_level_is_greater_than_6", 1),
           (try_end),  
@@ -24682,11 +24689,11 @@ scripts = [
 	
 	(assign, ":players_kingdom_at_peace", 0), #if the player kingdom is at peace, then create an enmity
 	(try_begin),
-		(is_between, "$players_kingdom", "fac_kingdom_1", kingdoms_end),
+		(is_between, "$players_kingdom", "fac_kingdom_7", kingdoms_end),
 		(assign, ":players_kingdom_at_peace", 1),
 	(try_end),
 	
-    (try_for_range, ":cur_kingdom", "fac_kingdom_1", kingdoms_end),
+    (try_for_range, ":cur_kingdom", "fac_kingdom_7", kingdoms_end),
         (faction_slot_eq, ":cur_kingdom", slot_faction_state, sfs_active),
 	  
 		(try_for_range, ":cur_kingdom_2", kingdoms_begin, kingdoms_end),
@@ -25654,7 +25661,7 @@ scripts = [
         #(this_or_next|lt, ":rand", 20),
         (eq, ":continue", 1),
 		(store_faction_of_party, ":enemy_faction_no", "$g_enemy_party"),
-		(neq, ":enemy_faction_no", "fac_kingdom_3"), #don't let khergits use battle tactics
+		(neq, ":enemy_faction_no", "fac_kingdom_7"), #don't let khergits use battle tactics
         (try_begin),
           (eq, ":defense_not_an_option", 0),
           (gt, ":ai_perc_archers", 50),
@@ -27838,7 +27845,7 @@ scripts = [
         (try_end),
       (try_end),  
 
-      (try_for_range, ":cur_faction", "fac_kingdom_1", "fac_kingdoms_end"),
+      (try_for_range, ":cur_faction", "fac_kingdom_7", "fac_kingdoms_end"),
         (faction_set_slot, ":cur_faction", slot_faction_num_routed_agents, 0),
       (try_end),
       
@@ -31635,7 +31642,7 @@ scripts = [
 ##    (try_end),
 ##	
 ##    (try_begin),
-##       (is_between, ":faction_no", "fac_kingdom_1", kingdoms_end), #Excluding player kingdom
+##       (is_between, ":faction_no", "fac_kingdom_7", kingdoms_end), #Excluding player kingdom
 ##       (add_faction_note_tableau_mesh, ":faction_no", "tableau_faction_note_mesh"),
 ##    (else_try),
 ##       (add_faction_note_tableau_mesh, ":faction_no", "tableau_faction_note_mesh_banner"),
@@ -33534,7 +33541,7 @@ scripts = [
 		(troop_set_slot, "trp_npc5", slot_troop_kingsupport_argument, argument_ruler),
 		(troop_set_slot, "trp_npc5", slot_troop_kingsupport_opponent, "trp_npc9"), #firentis
 		(troop_set_slot, "trp_npc5", slot_troop_town_with_contacts, "p_town_10"), #tulga
-		(troop_set_slot, "trp_npc5", slot_troop_original_faction, "fac_kingdom_3"), #khergit
+		(troop_set_slot, "trp_npc5", slot_troop_original_faction, "fac_kingdom_7"), #khergit
 		(troop_set_slot, "trp_npc5", slot_lord_reputation_type, lrep_cunning), #
 
 		
@@ -33551,7 +33558,7 @@ scripts = [
 		(troop_set_slot, "trp_npc6", slot_troop_kingsupport_argument, argument_victory),
 		(troop_set_slot, "trp_npc6", slot_troop_kingsupport_opponent, "trp_npc8"), #firentis
 		(troop_set_slot, "trp_npc6", slot_troop_town_with_contacts, "p_town_7"), #uxkhal
-		(troop_set_slot, "trp_npc6", slot_troop_original_faction, "fac_kingdom_1"), #swadia
+		(troop_set_slot, "trp_npc6", slot_troop_original_faction, "fac_kingdom_7"), #swadia
 		(troop_set_slot, "trp_npc6", slot_lord_reputation_type, lrep_upstanding), #
 
 		
@@ -33585,7 +33592,7 @@ scripts = [
 		(troop_set_slot, "trp_npc8", slot_troop_kingsupport_argument, argument_lords),
 		(troop_set_slot, "trp_npc8", slot_troop_kingsupport_opponent, "trp_npc2"), #marnid
 		(troop_set_slot, "trp_npc8", slot_troop_town_with_contacts, "p_town_12"), #wercheg
-		(troop_set_slot, "trp_npc8", slot_troop_original_faction, "fac_kingdom_4"), #nords
+		(troop_set_slot, "trp_npc8", slot_troop_original_faction, "fac_kingdom_7"), #nords
 		(troop_set_slot, "trp_npc8", slot_lord_reputation_type, lrep_martial), #
 
 		
@@ -33601,7 +33608,7 @@ scripts = [
 		(troop_set_slot, "trp_npc9", slot_troop_kingsupport_argument, argument_lords),
 		(troop_set_slot, "trp_npc9", slot_troop_kingsupport_opponent, "trp_npc1"), #borcha
 		(troop_set_slot, "trp_npc9", slot_troop_town_with_contacts, "p_town_8"), #reyvadin
-		(troop_set_slot, "trp_npc9", slot_troop_original_faction, "fac_kingdom_2"), #vaegirs
+		(troop_set_slot, "trp_npc9", slot_troop_original_faction, "fac_kingdom_7"), #vaegirs
 		(troop_set_slot, "trp_npc9", slot_lord_reputation_type, lrep_martial), #
 
 		
@@ -33617,7 +33624,7 @@ scripts = [
 		(troop_set_slot, "trp_npc10", slot_troop_kingsupport_argument, argument_ruler),
 		(troop_set_slot, "trp_npc10", slot_troop_kingsupport_opponent, "trp_npc7"), #nizar
 		(troop_set_slot, "trp_npc10", slot_troop_town_with_contacts, "p_town_5"), #jelkala
-		(troop_set_slot, "trp_npc10", slot_troop_original_faction, "fac_kingdom_5"), #rhodoks
+		(troop_set_slot, "trp_npc10", slot_troop_original_faction, "fac_kingdom_7"), #rhodoks
 		(troop_set_slot, "trp_npc10", slot_lord_reputation_type, lrep_benefactor), #
 
 		
@@ -33742,12 +33749,12 @@ scripts = [
 #Post 0907 changes end
 
 #Rebellion changes begin
-        (troop_set_slot, "trp_kingdom_1_pretender",  slot_troop_original_faction, "fac_kingdom_1"),
-        (troop_set_slot, "trp_kingdom_2_pretender",  slot_troop_original_faction, "fac_kingdom_2"),
-        (troop_set_slot, "trp_kingdom_3_pretender",  slot_troop_original_faction, "fac_kingdom_3"),
-        (troop_set_slot, "trp_kingdom_4_pretender",  slot_troop_original_faction, "fac_kingdom_4"),
-        (troop_set_slot, "trp_kingdom_5_pretender",  slot_troop_original_faction, "fac_kingdom_5"),
-        (troop_set_slot, "trp_kingdom_6_pretender",  slot_troop_original_faction, "fac_kingdom_6"),
+        (troop_set_slot, "trp_kingdom_1_pretender",  slot_troop_original_faction, "fac_kingdom_7"),
+        (troop_set_slot, "trp_kingdom_2_pretender",  slot_troop_original_faction, "fac_kingdom_7"),
+        (troop_set_slot, "trp_kingdom_3_pretender",  slot_troop_original_faction, "fac_kingdom_7"),
+        (troop_set_slot, "trp_kingdom_4_pretender",  slot_troop_original_faction, "fac_kingdom_7"),
+        (troop_set_slot, "trp_kingdom_5_pretender",  slot_troop_original_faction, "fac_kingdom_7"),
+        (troop_set_slot, "trp_kingdom_6_pretender",  slot_troop_original_faction, "fac_kingdom_7"),
 
 #        (troop_set_slot, "trp_kingdom_1_pretender", slot_troop_support_base,     "p_town_4"), #suno
 #        (troop_set_slot, "trp_kingdom_2_pretender", slot_troop_support_base,     "p_town_11"), #curaw
@@ -37308,22 +37315,22 @@ scripts = [
 			(str_store_party_name, s39, ":assailants_known"),
 			(assign, "$g_bandit_party_for_bounty", -1),
 			(try_begin), #possibly make script -- get_colloquial_for_faction
-				(eq, ":faction_object", "fac_kingdom_1"),
+				(eq, ":faction_object", "fac_kingdom_7"),
 				(str_store_string, s39, "str_swadians"),
 			(else_try),	
-				(eq, ":faction_object", "fac_kingdom_2"),
+				(eq, ":faction_object", "fac_kingdom_7"),
 				(str_store_string, s39, "str_vaegirs"),
 			(else_try),	
-				(eq, ":faction_object", "fac_kingdom_3"),
+				(eq, ":faction_object", "fac_kingdom_7"),
 				(str_store_string, s39, "str_khergits"),
 			(else_try),	
-				(eq, ":faction_object", "fac_kingdom_4"),
+				(eq, ":faction_object", "fac_kingdom_7"),
 				(str_store_string, s39, "str_nords"),
 			(else_try),	
-				(eq, ":faction_object", "fac_kingdom_5"),
+				(eq, ":faction_object", "fac_kingdom_7"),
 				(str_store_string, s39, "str_rhodoks"),
 			(else_try),	
-				(eq, ":faction_object", "fac_kingdom_6"),
+				(eq, ":faction_object", "fac_kingdom_7"),
 				(str_store_string, s39, "str_sarranids"),
 			(else_try),
 				(eq, ":faction_object", "fac_player_supporters_faction"),
@@ -37926,22 +37933,22 @@ scripts = [
     [
       (store_script_param, ":faction_no", 1),
       (try_begin),
-        (eq, ":faction_no", "fac_kingdom_1"),
+        (eq, ":faction_no", "fac_kingdom_7"),
         (assign, ":result", mtf_culture_1),
       (else_try),
-        (eq, ":faction_no", "fac_kingdom_2"),
+        (eq, ":faction_no", "fac_kingdom_7"),
         (assign, ":result", mtf_culture_2),
       (else_try),
-        (eq, ":faction_no", "fac_kingdom_3"),
+        (eq, ":faction_no", "fac_kingdom_7"),
         (assign, ":result", mtf_culture_3),
       (else_try),
-        (eq, ":faction_no", "fac_kingdom_4"),
+        (eq, ":faction_no", "fac_kingdom_7"),
         (assign, ":result", mtf_culture_4),
       (else_try),
-        (eq, ":faction_no", "fac_kingdom_5"),
+        (eq, ":faction_no", "fac_kingdom_7"),
         (assign, ":result", mtf_culture_5),
       (else_try),
-        (eq, ":faction_no", "fac_kingdom_6"),
+        (eq, ":faction_no", "fac_kingdom_7"),
         (assign, ":result", mtf_culture_6),
       (else_try),
         (this_or_next|eq, ":faction_no", "fac_outlaws"),
@@ -40166,18 +40173,18 @@ scripts = [
 			
 		(neg|troop_slot_ge, ":lady_no", slot_troop_age, 40),
 		(try_begin),
-			(eq, ":faction_no", "fac_kingdom_2"),
+			(eq, ":faction_no", "fac_kingdom_7"),
 			(lt, ":random", 4),
 			(troop_add_item, ":lady_no", "itm_fur_coat", 0),
 		(else_try),
-			(eq, ":faction_no", "fac_kingdom_3"),
+			(eq, ":faction_no", "fac_kingdom_7"),
 			(lt, ":random", 3),
 			(troop_add_item, ":lady_no", "itm_nomad_robe", 0),
 		(else_try),	
 			(troop_add_item, ":lady_no", "itm_nomad_vest", 0),
 		(try_end),
 	(else_try),
-		(eq, ":faction_no", "fac_kingdom_1"),
+		(eq, ":faction_no", "fac_kingdom_7"),
 		(try_begin),
 			(lt, ":random", 2),
 			(troop_add_item, ":lady_no", "itm_lady_dress_ruby", 0),
@@ -40188,7 +40195,7 @@ scripts = [
 			(troop_add_item, ":lady_no", "itm_lady_dress_blue", 0),
 		(try_end),
 	(else_try),
-		(eq, ":faction_no", "fac_kingdom_2"),
+		(eq, ":faction_no", "fac_kingdom_7"),
 		(try_begin),
 			(eq, ":random", 0),
 			(troop_add_item, ":lady_no", "itm_blue_dress", 0),
@@ -40211,14 +40218,14 @@ scripts = [
 		(try_end),
 	
 	(else_try),
-		(eq, ":faction_no", "fac_kingdom_3"),
+		(eq, ":faction_no", "fac_kingdom_7"),
 		(troop_add_item, ":lady_no", "itm_khergit_lady_dress", 0),
 	
 	(else_try),
-		(eq, ":faction_no", "fac_kingdom_4"),
+		(eq, ":faction_no", "fac_kingdom_7"),
 
 	(else_try),
-		(eq, ":faction_no", "fac_kingdom_5"),
+		(eq, ":faction_no", "fac_kingdom_7"),
 
 		
 	(try_end),
@@ -40273,14 +40280,14 @@ scripts = [
 			(str_store_troop_name, s4, ":lady_no"),
 #			(display_message, "@Giving green-lined wimple to {s4}"),
 		(else_try),
-			(neq, ":faction_no", "fac_kingdom_3"),
-			(neq, ":faction_no", "fac_kingdom_6"),
+			(neq, ":faction_no", "fac_kingdom_7"),
+			(neq, ":faction_no", "fac_kingdom_7"),
 			(troop_add_item, ":lady_no", "itm_wimple_a", 0),
 
 			(str_store_troop_name, s4, ":lady_no"),
 #			(display_message, "@Giving red-lined wimple to {s4}"),
 		(else_try),
-			(eq, ":faction_no", "fac_kingdom_6"),
+			(eq, ":faction_no", "fac_kingdom_7"),
 			(try_begin),
 				(troop_has_item_equipped, ":lady_no", "itm_sarranid_lady_dress"),
 				(troop_add_item, ":lady_no", "itm_sarranid_head_cloth", 0),
@@ -42908,7 +42915,7 @@ scripts = [
         #":potential_target" then this target cannot be new target we are looking for.
         (assign, ":this_potantial_target_is_target_of_some_other_faction", 0),
         (try_for_range, ":cur_faction", kingdoms_begin, kingdoms_end),
-          (is_between, ":cur_faction", "fac_kingdom_1", kingdoms_end), #Excluding player kingdom
+          (is_between, ":cur_faction", "fac_kingdom_7", kingdoms_end), #Excluding player kingdom
           (neq, ":cur_faction", ":faction_no"),
           (faction_get_slot, ":faction_object", ":cur_faction", slot_faction_ai_object),
           (eq, ":faction_object", ":potential_target"),
@@ -42926,7 +42933,7 @@ scripts = [
           (store_add, ":potential_target_strength", ":potential_target_inside_strength", ":potential_target_nearby_enemy_strength"),
 
           #(try_begin),
-            #(eq, ":faction_no", "fac_kingdom_4"),
+            #(eq, ":faction_no", "fac_kingdom_7"),
             #(assign, reg0, ":potential_target_inside_strength"),
             #(assign, reg1, ":potential_target_nearby_enemy_strength"),
             #(assign, reg2, ":marshal_strength"),
@@ -43212,7 +43219,7 @@ scripts = [
 
         (try_begin),
           (ge, "$cheat_mode", 1),
-          (eq, ":faction_no", "fac_kingdom_4"),
+          (eq, ":faction_no", "fac_kingdom_7"),
           (ge, ":target_score", -1),
           (assign, reg0, ":target_score"),
           (assign, reg7, ":total_prosperity_score"),
@@ -43418,7 +43425,7 @@ scripts = [
         (try_begin),
 		  (ge, "$cheat_mode", 1),
           (gt, ":threat_score", 0),
-          (eq, ":faction_no", "fac_kingdom_6"),
+          (eq, ":faction_no", "fac_kingdom_7"),
           (assign, reg0, ":threat_score"),
           (str_store_party_name, s32, ":cur_center"),
           (assign, reg1,  ":total_prosperity_score"),
@@ -46034,7 +46041,7 @@ scripts = [
       (else_try),
         (try_begin),
           (eq, "$cheat_mode", 1),
-          (eq, ":faction_no", "fac_kingdom_3"),
+          (eq, ":faction_no", "fac_kingdom_7"),
           (store_faction_of_party, ":potential_target_faction", ":potential_target"),
           (store_relation, ":relation", ":potential_target_faction", ":faction_no"),
           (lt, ":relation", 0),
@@ -47123,22 +47130,22 @@ scripts = [
      (set_visitor, 0, "trp_player"),
      
      #(try_begin),
-     #  (eq, ":faction_no", "fac_kingdom_1"), #swadian
+     #  (eq, ":faction_no", "fac_kingdom_7"), #swadian
      #  (assign, ":bandit_troop", "trp_steppe_bandit"),
      #(else_try),
-     #  (eq, ":faction_no", "fac_kingdom_2"), #vaegir
+     #  (eq, ":faction_no", "fac_kingdom_7"), #vaegir
      #  (assign, ":bandit_troop", "trp_taiga_bandit"),
      #(else_try),
-     #  (eq, ":faction_no", "fac_kingdom_3"), #khergit
+     #  (eq, ":faction_no", "fac_kingdom_7"), #khergit
      #  (assign, ":bandit_troop", "trp_mountain_bandit"),
      #(else_try),
-     #  (eq, ":faction_no", "fac_kingdom_4"), #nord
+     #  (eq, ":faction_no", "fac_kingdom_7"), #nord
      #  (assign, ":bandit_troop", "trp_sea_raider"),
      #(else_try),
-     #  (eq, ":faction_no", "fac_kingdom_5"), #rhodok
+     #  (eq, ":faction_no", "fac_kingdom_7"), #rhodok
      #  (assign, ":bandit_troop", "trp_forest_bandit"),
      #(else_try),
-     #  (eq, ":faction_no", "fac_kingdom_6"), #sarradin
+     #  (eq, ":faction_no", "fac_kingdom_7"), #sarradin
      #  (assign, ":bandit_troop", "trp_desert_bandit"),
      #(try_end),  
                
@@ -47192,27 +47199,27 @@ scripts = [
 
      (store_faction_of_party, ":starting_town_faction", "$g_starting_town"),    
      (try_begin),
-       (eq, ":starting_town_faction", "fac_kingdom_1"),
+       (eq, ":starting_town_faction", "fac_kingdom_7"),
        (assign, ":troop_of_merchant", "trp_swadian_merchant"),
        #(assign, ":troop_of_bandit", "trp_forest_bandit"),
      (else_try),  
-       (eq, ":starting_town_faction", "fac_kingdom_2"),
+       (eq, ":starting_town_faction", "fac_kingdom_7"),
        (assign, ":troop_of_merchant", "trp_vaegir_merchant"),
        #(assign, ":troop_of_bandit", "trp_mountain_bandit"),
      (else_try),                   
-       (eq, ":starting_town_faction", "fac_kingdom_3"),
+       (eq, ":starting_town_faction", "fac_kingdom_7"),
        (assign, ":troop_of_merchant", "trp_khergit_merchant"),
        #(assign, ":troop_of_bandit", "trp_steppe_bandit"),
      (else_try),  
-       (eq, ":starting_town_faction", "fac_kingdom_4"),
+       (eq, ":starting_town_faction", "fac_kingdom_7"),
        (assign, ":troop_of_merchant", "trp_nord_merchant"),
        #(assign, ":troop_of_bandit", "trp_sea_raider"),
      (else_try),  
-       (eq, ":starting_town_faction", "fac_kingdom_5"),
+       (eq, ":starting_town_faction", "fac_kingdom_7"),
        (assign, ":troop_of_merchant", "trp_rhodok_merchant"),
        #(assign, ":troop_of_bandit", "trp_mountain_bandit"),
      (else_try),  
-       (eq, ":starting_town_faction", "fac_kingdom_6"),
+       (eq, ":starting_town_faction", "fac_kingdom_7"),
        (assign, ":troop_of_merchant", "trp_sarranid_merchant"),
        #(assign, ":troop_of_bandit", "trp_desert_bandit"),
      (try_end),

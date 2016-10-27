@@ -1334,24 +1334,24 @@ kingdom_titles_female_begin = "str_faction_title_female_player"
 kingdoms_begin = "fac_player_supporters_faction"
 kingdoms_end = "fac_kingdoms_end"
 
-npc_kingdoms_begin = "fac_kingdom_1"
+npc_kingdoms_begin = "fac_kingdom_7"
 npc_kingdoms_end = kingdoms_end
 
 bandits_begin = "trp_bandit"
-bandits_end = "trp_black_khergit_horseman"
+bandits_end = "trp_bandit"
 
 kingdom_ladies_begin = "trp_knight_1_1_wife"
-kingdom_ladies_end = "trp_heroes_end"
+kingdom_ladies_end = "trp_knight_1_1_wife"
 
 #active NPCs in order: companions, kings, lords, pretenders
 
-pretenders_begin = "trp_kingdom_1_pretender"
-pretenders_end = kingdom_ladies_begin
+pretenders_begin = "trp_kingdom_7_pretender"
+pretenders_end = "trp_kingdom_7_pretender"
 
 lords_begin = "trp_knight_1_1"
 lords_end = pretenders_begin
 
-kings_begin = "trp_kingdom_1_lord"
+kings_begin = "trp_kingdom_7_lord"
 kings_end = lords_begin
 
 companions_begin = "trp_npc1"
@@ -1363,7 +1363,7 @@ active_npcs_end = kingdom_ladies_begin
 #If you're a modder and you don't want to go through and switch every kingdom_heroes to active_npcs, simply define a constant: kingdom_heroes_begin = active_npcs_begin., and kingdom_heroes_end = active_npcs_end. I haven't tested for that, but I think it should work.
 
 active_npcs_including_player_begin = "trp_kingdom_heroes_including_player_begin"
-original_kingdom_heroes_begin = "trp_kingdom_1_lord"
+original_kingdom_heroes_begin = "trp_kingdom_7_lord"
 
 heroes_begin = active_npcs_begin
 heroes_end = kingdom_ladies_end
@@ -1376,7 +1376,7 @@ soldiers_end = "trp_town_walker_1"
 ##rebel_factions_begin = "fac_kingdom_1_rebels"
 ##rebel_factions_end =   "fac_kingdoms_end"
 
-pretenders_begin = "trp_kingdom_1_pretender"
+pretenders_begin = "trp_kingdom_7_pretender"
 pretenders_end = active_npcs_end
 #Rebellion changes
 

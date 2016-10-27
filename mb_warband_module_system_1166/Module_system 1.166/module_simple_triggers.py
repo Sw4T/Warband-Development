@@ -64,15 +64,15 @@ simple_triggers = [
           (neg|check_quest_active, "qst_kidnapped_girl"),
           (party_remove_members, "p_main_party", "trp_kidnapped_girl", 1),
         (try_end),
-        #fix for not occupied but belong to a faction lords
-        (try_for_range, ":cur_troop", lords_begin, lords_end),
-          (try_begin),                
-            (troop_slot_eq, ":cur_troop", slot_troop_occupation, slto_inactive),
-            (store_troop_faction, ":cur_troop_faction", ":cur_troop"),
-            (is_between, ":cur_troop_faction", "fac_kingdom_1", kingdoms_end),          
-            (troop_set_slot, ":cur_troop", slot_troop_occupation, slto_kingdom_hero),          
-          (try_end),
-        (try_end),  
+        # fix for not occupied but belong to a faction lords
+        # (try_for_range, ":cur_troop", lords_begin, lords_end),
+          # (try_begin),                
+            # (troop_slot_eq, ":cur_troop", slot_troop_occupation, slto_inactive),
+            # (store_troop_faction, ":cur_troop_faction", ":cur_troop"),
+            # (is_between, ":cur_troop_faction", "fac_kingdom_7", kingdoms_end),          
+            # (troop_set_slot, ":cur_troop", slot_troop_occupation, slto_kingdom_hero),          
+          # (try_end),
+        # (try_end),  
         #fix for an error in 1.105, also fills new slot values
         (call_script, "script_initialize_item_info"),  
         
@@ -197,21 +197,21 @@ simple_triggers = [
       (try_end),
 	]),
 	
-(24, 
-[
-    (try_for_range, ":kingdom_no", npc_kingdoms_begin, npc_kingdoms_end),
-      (faction_get_slot, ":faction_morale", ":kingdom_no",  slot_faction_morale_of_player_troops),
+# (24, 
+# [
+    # (try_for_range, ":kingdom_no", npc_kingdoms_begin, npc_kingdoms_end),
+      # (faction_get_slot, ":faction_morale", ":kingdom_no",  slot_faction_morale_of_player_troops),
 
-	  (store_sub, ":divisor", 140, "$player_right_to_rule"),
-	  (val_div, ":divisor", 14),
-	  (val_max, ":divisor", 1),
+	  # (store_sub, ":divisor", 140, "$player_right_to_rule"),
+	  # (val_div, ":divisor", 14),
+	  # (val_max, ":divisor", 1),
 	  
-      (store_div, ":faction_morale_div_10", ":faction_morale", ":divisor"), #10 is the base, down to 2 for 100 rtr     
-      (val_sub, ":faction_morale", ":faction_morale_div_10"),           
+      # (store_div, ":faction_morale_div_10", ":faction_morale", ":divisor"), #10 is the base, down to 2 for 100 rtr     
+      # (val_sub, ":faction_morale", ":faction_morale_div_10"),           
 
-      (faction_set_slot, ":kingdom_no",  slot_faction_morale_of_player_troops, ":faction_morale"),
-    (try_end),
-]),
+      # (faction_set_slot, ":kingdom_no",  slot_faction_morale_of_player_troops, ":faction_morale"),
+    # (try_end),
+# ]),
 
 	
  (4, #Locate kingdom ladies
@@ -1013,7 +1013,7 @@ simple_triggers = [
           (neq, ":troop_no", ":faction_leader"),
 			
           #I don't know why these are necessary, but they appear to be
-          (neg|is_between, ":troop_no", "trp_kingdom_1_lord", "trp_knight_1_1"),
+          (neg|is_between, ":troop_no", "trp_kingdom_7_lord", "trp_knight_1_1"),
           (neg|is_between, ":troop_no", pretenders_begin, pretenders_end),
 		  
 		  (assign, ":num_centers", 0),		  
@@ -1320,15 +1320,15 @@ simple_triggers = [
     (try_begin),
 		(ge, "$cheat_mode", 1),
 	
-		(try_for_range, ":king", "trp_kingdom_1_lord", "trp_knight_1_1"),		
-			(store_add, ":proper_faction", ":king", "fac_kingdom_1"),
-			(val_sub, ":proper_faction", "trp_kingdom_1_lord"),
+		(try_for_range, ":king", "trp_kingdom_7_lord", "trp_knight_1_1"),		
+			(store_add, ":proper_faction", ":king", "fac_kingdom_7"),
+			(val_sub, ":proper_faction", "trp_kingdom_7_lord"),
 			(store_faction_of_troop, ":actual_faction", ":king"),
 			
 			(neq, ":proper_faction", ":actual_faction"),
 			(neq, ":actual_faction", "fac_commoners"),
 			(ge, "$cheat_mode", 2),
-			(neq, ":king", "trp_kingdom_2_lord"),
+			(neq, ":king", "trp_kingdom_7_lord"),
 			
 			(str_store_troop_name, s4, ":king"),
 			(str_store_faction_name, s5, ":actual_faction"),
@@ -3801,27 +3801,27 @@ simple_triggers = [
 #             (lt, ":troop_morale_addition", -2),
 #             (ge, ":main_party_morale", 28),
 #             (try_begin),
-#               (eq, ":faction_no", "fac_kingdom_1"),  
+#               (eq, ":faction_no", "fac_kingdom_7"),  
 #               (eq, ":swadian_soldiers_are_upset_message_showed", 0),
 #               (str_store_string, s3, "str_swadian_soldiers_are_upset"),
 #               (assign, ":swadian_soldiers_are_upset_message_showed", 1),
 #             (else_try),
-#               (eq, ":faction_no", "fac_kingdom_2"),  
+#               (eq, ":faction_no", "fac_kingdom_7"),  
 #               (eq, ":vaegir_soldiers_are_upset_message_showed", 0),
 #               (str_store_string, s3, "str_vaegir_soldiers_are_upset"),
 #               (assign, ":vaegir_soldiers_are_upset_message_showed", 1),
 #             (else_try),
-#               (eq, ":faction_no", "fac_kingdom_3"),  
+#               (eq, ":faction_no", "fac_kingdom_7"),  
 #               (eq, ":khergit_soldiers_are_upset_message_showed", 0),
 #               (str_store_string, s3, "str_khergit_soldiers_are_upset"),
 #               (assign, ":khergit_soldiers_are_upset_message_showed", 1),
 #             (else_try),
-#               (eq, ":faction_no", "fac_kingdom_4"),  
+#               (eq, ":faction_no", "fac_kingdom_7"),  
 #               (eq, ":nord_soldiers_are_upset_message_showed", 0),
 #               (str_store_string, s3, "str_nord_soldiers_are_upset"),
 #               (assign, ":nord_soldiers_are_upset_message_showed", 1),
 #             (else_try),
-#               (eq, ":faction_no", "fac_kingdom_5"),  
+#               (eq, ":faction_no", "fac_kingdom_7"),  
 #               (eq, ":rhodok_soldiers_are_upset_message_showed", 0),
 #               (str_store_string, s3, "str_rhodok_soldiers_are_upset"),
 #               (assign, ":rhodok_soldiers_are_upset_message_showed", 1),
@@ -3864,10 +3864,10 @@ simple_triggers = [
    [
      (call_script, "script_calculate_castle_prosperities_by_using_its_villages"),
 
-     (store_add, ":fac_kingdom_6_plus_one", "fac_kingdom_6", 1),
+     (store_add, ":fac_kingdom_7_plus_one", "fac_kingdom_7", 1),
 
-     (try_for_range, ":faction_1", "fac_kingdom_1", ":fac_kingdom_6_plus_one"),
-       (try_for_range, ":faction_2", "fac_kingdom_1", ":fac_kingdom_6_plus_one"),
+     (try_for_range, ":faction_1", "fac_kingdom_7", ":fac_kingdom_7_plus_one"),
+       (try_for_range, ":faction_2", "fac_kingdom_7", ":fac_kingdom_7_plus_one"),
          (store_relation, ":faction_relation", ":faction_1", ":faction_2"),
          (str_store_faction_name, s7, ":faction_1"),
          (str_store_faction_name, s8, ":faction_2"),
