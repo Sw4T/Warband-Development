@@ -47640,6 +47640,110 @@ scripts = [
       (agent_set_slot, ":agent_no", slot_agent_bought_horse, -1),
       (assign, reg0, ":total_equipment_cost"),
      ]),
+	 
+	# ("key_is_pressed",
+	# [
+		# (try_begin),
+			# (game_key_clicked, key_c),	
+			# (assign, ":sum", 0),
+			# (try_for_agents, ":agent"),
+				# (val_add, ":sum", 1),
+				# (multiplayer_send_string_to_player, 1, multiplayer_event_show_server_message, "@Hello :agent"),
+			# (try_end),
+			# (multiplayer_send_string_to_player, 1, multiplayer_event_show_server_message, "@Agents detectes : :sum"),
+			# (multiplayer_send_string_to_player, 0, multiplayer_event_show_server_message, "@Hello :agent"),
+			# (multiplayer_send_string_to_player, 2, multiplayer_event_show_server_message, "@Hello :agent"),
+		# (try_end),
+		
+	# ]),
      ###
+	 #script_wse_multiplayer_message_received
+# Called each time a composite multiplayer message is received
+# INPUT
+# script param 1 = sender player no
+# script param 2 = event no
+("wse_multiplayer_message_received", [
+	(store_script_param, ":player_no", 1),
+	(store_script_param, ":event_no", 2),
+]),
 
+#script_wse_game_saved
+# Called each time after game is saved successfully
+("wse_game_saved", [
+]),
+
+#script_wse_chat_message_received
+# Called each time a chat message is received (both for servers and clients)
+# INPUT
+# script param 1 = sender player no
+# script param 2 = chat type (0 = global, 1 = team)
+# s0 = message
+# OUTPUT
+# trigger result = anything non-zero suppresses default chat behavior. Server will not even broadcast messages to clients.
+# result string = changes message text for default chat behavior (if not suppressed).
+("wse_chat_message_received", [
+	(store_script_param, ":player_no", 1),
+	(store_script_param, ":chat_type", 2),
+]),
+
+#script_wse_console_command_received
+# Called each time a command is typed on the dedicated server console or received with RCON (after parsing standard commands)
+# INPUT
+# script param 1 = command type (0 - local, 1 - remote)
+# s0 = text
+# OUTPUT
+# trigger result = anything non-zero if the command succeeded
+# result string = message to display on success (if empty, default message will be used)
+("wse_console_command_received", [
+	(store_script_param, ":command_type", 1),
+]),
+
+#script_wse_get_agent_scale
+# Called each time an agent is created
+# INPUT
+# script param 1 = troop no
+# script param 2 = horse item no
+# script param 3 = horse item modifier
+# script param 4 = player no
+# OUTPUT
+# trigger result = agent scale (fixed point)
+("wse_get_agent_scale", [
+	(store_script_param, ":troop_no", 1),
+	(store_script_param, ":horse_item_no", 2),
+	(store_script_param, ":horse_item_modifier", 3),
+	(store_script_param, ":player_no", 4),
+]),
+
+#script_wse_window_opened
+# Called each time a window (party/inventory/character) is opened
+# INPUT
+# script param 1 = window no
+# script param 2 = window param 1
+# script param 3 = window param 2
+# OUTPUT
+# trigger result = presentation that replaces the window (if not set or negative, window will open normally)
+("wse_window_opened", [
+	(store_script_param, ":window_no", 1),
+	(store_script_param, ":window_param_1", 2),
+	(store_script_param, ":window_param_2", 3),
+]),
+
+#script_game_missile_dives_into_water
+# Called each time a missile dives into water
+# INPUT
+# script param 1 = missile item no
+# script param 2 = missile item modifier
+# script param 3 = launcher item no
+# script param 4 = launcher item modifier
+# script param 5 = shooter agent no
+# script param 6 = missile no
+# pos1 = water impact position and rotation
+("game_missile_dives_into_water", [
+	(store_script_param, ":missile_item_no", 1),
+	(store_script_param, ":missile_item_modifier", 2),
+	(store_script_param, ":launcher_item_no", 3),
+	(store_script_param, ":launcher_item_modifier", 4),
+	(store_script_param, ":shooter_agent_no", 5),
+	(store_script_param, ":missile_no", 6),
+]),
 ]
