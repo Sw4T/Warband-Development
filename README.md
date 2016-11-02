@@ -6,7 +6,7 @@ _Actually developping_ : **Truand Brawl** - A MP Mod for Mount&Blade Warband whe
 
 - Swatosj - Editing, Resources content, Scripting 
 - Marmoutte - Scripting
-- Zixelle - Texturing, Scenes
+- Zixelle - Modeling, Texturing, Scenes
 
 ***
 
@@ -25,7 +25,7 @@ We are using the native module system to create the mod and some tools :
 - [Morghs M&B WB-WFAS Editor](http://mountandblade.mircon.de/wp/morghs-mb-wbwfas-editor/) - GUI to add/edit troops, items, parties...
 - [MABLE](http://www.mbrepository.com/file.php?id=2659) - GUI to edit module_items.py
 
-[W.R.E.C.K](http://forums.taleworlds.com/index.php/topic,325102.0.html) is already integrated within the module system
+[W.R.E.C.K](http://forums.taleworlds.com/index.php/topic,325102.0.html) and [WSE](http://forums.taleworlds.com/index.php/topic,324890.0.html) are already integrated within the module system
 
 ***
 
