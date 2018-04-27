@@ -22,7 +22,7 @@ _Actually developping_ : **Truand Brawl** - A MP Mod for Mount&Blade Warband whe
 
 We are using the native module system to create the mod and some tools :
 - [openBRF](http://www.mbrepository.com/file.php?id=1466) - Open .brf files to preview/import/exports everything like meshes, textures...
-- [Morghs M&B WB-WFAS Editor](http://mountandblade.mircon.de/wp/morghs-mb-wbwfas-editor/) - GUI to add/edit troops, items, parties...
+- [Morghs M&B WB-WFAS Editor](https://drive.google.com/file/d/1cC2UVnQXdsMFxt7PepGbCWtNcOau4CiA/view) - GUI to add/edit troops, items, parties...
 - [MABLE](http://www.mbrepository.com/file.php?id=2659) - GUI to edit module_items.py
 
 [W.R.E.C.K](http://forums.taleworlds.com/index.php/topic,325102.0.html) and [WSE](http://forums.taleworlds.com/index.php/topic,324890.0.html) are already integrated within the module system
@@ -31,4 +31,5 @@ We are using the native module system to create the mod and some tools :
 
 A great tutorial about starting to mod and code in Warband is available in [PDF](http://www.freewebs.com/jikbyond/40kTut/M&B%20Module%20System%20Doc2-3.pdf) or [HTML](http://forums.taleworlds.com/index.php/board,12.0.html)
 
-Tutorial about scripting in warband : http://forums.taleworlds.com/index.php/topic,142422.0.html
+Tutorial about scripting in Mount&Blade Warband : http://forums.taleworlds.com/index.php/topic,142422.0.html
+Video about modding in Mount&Blade Warband : https://www.youtube.com/watch?v=8fAzGhzZfWI
