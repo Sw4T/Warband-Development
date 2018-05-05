@@ -262,6 +262,9 @@ troops = [
    [itm.tutorial_sword,itm.leather_vest,itm.hide_boots],
    str_6|agi_6|level(5),wp(80),knows_common,mercenary_face_1,mercenary_face_2],
 
+  ["truand_multiplayer","Truand","Truands",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac.kingdom_7,
+   [itm.hide_boots],
+   str_12|agi_11|level(10),wp(140),knows_common|knows_ironflesh_4|knows_power_strike_3|knows_athletics_5|knows_riding_3|knows_shield_4,mercenary_face_1, mercenary_face_2],
   ["novice_fighter","Novice Fighter","Novice Fighters",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac.commoners,
    [itm.hide_boots],
    str_6|agi_6|level(5),wp(60),knows_common,mercenary_face_1, mercenary_face_2],

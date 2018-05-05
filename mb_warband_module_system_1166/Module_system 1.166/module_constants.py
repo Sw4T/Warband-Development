@@ -1395,11 +1395,11 @@ ransom_brokers_end   = tavern_travelers_begin
 mercenary_troops_begin = "trp_watchman"
 mercenary_troops_end = "trp_mercenaries_end"
 
-multiplayer_troops_begin = "trp_swadian_crossbowman_multiplayer"
-multiplayer_troops_end = "trp_multiplayer_end"
+multiplayer_troops_begin = "trp_truand_multiplayer"
+multiplayer_troops_end = "trp_novice_fighter"
 
-multiplayer_ai_troops_begin = "trp_swadian_crossbowman_multiplayer_ai"
-multiplayer_ai_troops_end = multiplayer_troops_begin
+multiplayer_ai_troops_begin = "trp_truand_multiplayer"
+multiplayer_ai_troops_end = "trp_novice_fighter"
 
 multiplayer_scenes_begin = "scn_multi_scene_1"
 multiplayer_scenes_end = "scn_multiplayer_maps_end"
