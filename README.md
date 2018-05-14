@@ -26,6 +26,12 @@ We are looking for some map-makers, scripters, 3D designers who want to make thi
 
 ***
 
+## Supported match types 
+
+_Deathmatch_
+
+***
+
 We are using the native module system to create the mod and some tools :
 - [openBRF](http://www.mbrepository.com/file.php?id=1466) - Open .brf files to preview/import/exports everything like meshes, textures...
 - [Morghs M&B WB-WFAS Editor](https://drive.google.com/file/d/1cC2UVnQXdsMFxt7PepGbCWtNcOau4CiA/view) - GUI to add/edit troops, items, parties...
