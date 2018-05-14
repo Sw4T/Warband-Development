@@ -1802,3 +1802,21 @@ ACHIEVEMENT_QUEEN = 77,
 ACHIEVEMENT_EMPRESS = 78,
 ACHIEVEMENT_TALK_OF_THE_TOWN = 79,
 ACHIEVEMENT_LADY_OF_THE_LAKE = 80,
+
+##########################
+# TRUAND BRAWL CONSTANTS #
+##########################
+tb_random_type_one_handed = 0,
+tb_random_type_two_handed = 1,
+tb_random_type_polearm = 2,
+tb_random_type_thrown = 3,
+tb_random_type_armor = 4,
+tb_random_type_helmet = 5,
+tb_random_type_glove = 6,
+tb_random_type_boots = 7,
+tb_random_type_shield = 8,
+tb_random_type_bow = 9,
+tb_random_type_crossbow = 10,
+tb_random_type_unarmored = 11,
+tb_random_type_unequiped = 12,
+tb_TOTAL_RANDOM_EVENTS = 13,
