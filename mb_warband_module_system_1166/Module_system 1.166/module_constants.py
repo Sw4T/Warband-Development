@@ -1335,7 +1335,7 @@ kingdoms_begin = "fac_player_supporters_faction"
 kingdoms_end = "fac_kingdoms_end"
 
 npc_kingdoms_begin = "fac_kingdom_7"
-npc_kingdoms_end = kingdoms_end
+npc_kingdoms_end = "fac_kingdoms_end"
 
 bandits_begin = "trp_bandit"
 bandits_end = "trp_bandit"

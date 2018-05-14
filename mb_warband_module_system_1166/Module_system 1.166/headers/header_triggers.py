@@ -91,13 +91,21 @@ ti_on_agent_knocked_down      = -27.0 # Agent has been knocked down, used in com
     # trigger param 1 = defeated agent_id
     # trigger param 2 = attacker agent_id
 
-ti_on_agent_hit               = -28.0 # Agent has been damaged with a weapon attack
-    # trigger param 1 = damage inflicted agent_id
-    # trigger param 2 = attacker agent_id
-    # trigger param 3 = inflicted damage
-    # reg0            = weapon item_id
-    # pos0            = position of the hit area, rotation fields contain the direction of the blow
-    # If (set_trigger_result) is used in the code with operation parameter equal or greater than zero, it will override the inflicted damage.
+ti_on_agent_hit = -28.0 #can only be used in module_mission_templates triggers
+# Trigger Param 1: receiver agent no
+# Trigger Param 2: dealer agent no
+# Trigger Param 3: inflicted damage
+# Trigger Param 4: hit bone
+# Trigger Param 5: missile item kind no
+# Trigger Param 6: raw damage (before being soaked by armor)
+# Trigger Param 7: item modifier
+# Trigger Param 8: missile item modifier
+# Trigger Param 9: damage type
+# Register 0: item kind no
+# Register 1: hit bone
+# Position Register 0: position of the blow
+#                      rotation gives the direction of the blow
+# Trigger Result: if set, damage dealt to agent
 
 ti_on_leave_area              = -30.0 # Player has walked to scene border and activated it to leave the area.
 
@@ -378,21 +386,6 @@ gk_quick_save = 48
 gk_crouch = 49
 gk_order_7 = 50
 gk_order_8 = 51
-ti_on_agent_hit = -28.0 #can only be used in module_mission_templates triggers
-# Trigger Param 1: receiver agent no
-# Trigger Param 2: dealer agent no
-# Trigger Param 3: inflicted damage
-# Trigger Param 4: hit bone
-# Trigger Param 5: missile item kind no
-# Trigger Param 6: raw damage (before being soaked by armor)
-# Trigger Param 7: item modifier
-# Trigger Param 8: missile item modifier
-# Trigger Param 9: damage type
-# Register 0: item kind no
-# Register 1: hit bone
-# Position Register 0: position of the blow
-#                      rotation gives the direction of the blow
-# Trigger Result: if set, damage dealt to agent
 
 ti_on_scene_prop_stepped_on = -100.0 #can only be used in module_scene_props triggers
 # Trigger Param 1: agent no

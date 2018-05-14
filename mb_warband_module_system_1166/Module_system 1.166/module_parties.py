@@ -38,6 +38,7 @@ pf_village = pf_is_static|pf_always_visible|pf_hide_defenders|pf_label_small
 parties = [
   ("main_party","Main Party",icon.player|pf_limit_members, no_menu, pt.none,fac.player_faction,0,ai_bhvr_hold,0,(17, 52.5),[(trp.player,1,0)]),
   ("temp_party","{!}temp_party",pf_disabled, no_menu, pt.none, fac.commoners,0,ai_bhvr_hold,0,(0,0),[]),
+  ("warp_temp","{!}warp_temp",pf_disabled, no_menu, pt.none, fac.commoners,0,ai_bhvr_hold,0,(0,0),[]),
   ("camp_bandits","{!}camp_bandits",pf_disabled, no_menu, pt.none, fac.outlaws,0,ai_bhvr_hold,0,(1,1),[(trp.temp_troop,3,0)]),
 #parties before this point are hardwired. Their order should not be changed.
 

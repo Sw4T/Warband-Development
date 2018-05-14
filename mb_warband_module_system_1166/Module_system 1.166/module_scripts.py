@@ -1023,72 +1023,6 @@ scripts = [
       (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_d"),
       (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_e"),
 
-      (try_for_range, ":cur_item", all_items_begin, all_items_end),
-        (try_for_range, ":cur_faction", npc_kingdoms_begin, npc_kingdoms_end),
-          (store_sub, ":faction_index", ":cur_faction", npc_kingdoms_begin),
-          (val_add, ":faction_index", slot_item_multiplayer_faction_price_multipliers_begin),
-          (item_set_slot, ":cur_item", ":faction_index", 100), #100 is the default price multiplier
-        (try_end),
-      (try_end),
-      (store_sub, ":swadian_price_slot", "fac_kingdom_7", npc_kingdoms_begin),
-      (val_add, ":swadian_price_slot", slot_item_multiplayer_faction_price_multipliers_begin),
-      (store_sub, ":vaegir_price_slot", "fac_kingdom_7", npc_kingdoms_begin),
-      (val_add, ":vaegir_price_slot", slot_item_multiplayer_faction_price_multipliers_begin),
-      (store_sub, ":khergit_price_slot", "fac_kingdom_7", npc_kingdoms_begin),
-      (val_add, ":khergit_price_slot", slot_item_multiplayer_faction_price_multipliers_begin),
-      (store_sub, ":nord_price_slot", "fac_kingdom_7", npc_kingdoms_begin),
-      (val_add, ":nord_price_slot", slot_item_multiplayer_faction_price_multipliers_begin),
-      (store_sub, ":rhodok_price_slot", "fac_kingdom_7", npc_kingdoms_begin),
-      (val_add, ":rhodok_price_slot", slot_item_multiplayer_faction_price_multipliers_begin),
-      (store_sub, ":sarranid_price_slot", "fac_kingdom_7", npc_kingdoms_begin),
-      (val_add, ":sarranid_price_slot", slot_item_multiplayer_faction_price_multipliers_begin),
-
-      (item_set_slot, "itm_awlpike", ":swadian_price_slot", 80),
-      (item_set_slot, "itm_awlpike_long", ":swadian_price_slot", 90),
-      (item_set_slot, "itm_sword_medieval_a", ":swadian_price_slot", 80),
-      (item_set_slot, "itm_sword_medieval_b", ":swadian_price_slot", 80),
-      (item_set_slot, "itm_sword_medieval_b_small", ":swadian_price_slot", 80),
-      (item_set_slot, "itm_sword_medieval_c", ":swadian_price_slot", 80),
-      (item_set_slot, "itm_sword_medieval_c_small", ":swadian_price_slot", 80),
-      (item_set_slot, "itm_leather_boots", ":swadian_price_slot", 90),
-      (item_set_slot, "itm_mail_chausses", ":swadian_price_slot", 80),
-      (item_set_slot, "itm_splinted_greaves", ":swadian_price_slot", 80),
-      (item_set_slot, "itm_plate_boots", ":swadian_price_slot", 80),
-      (item_set_slot, "itm_courser", ":swadian_price_slot", 90),
-      (item_set_slot, "itm_hunter", ":swadian_price_slot", 75),
-      (item_set_slot, "itm_norman_helmet", ":swadian_price_slot", 75),
-      (item_set_slot, "itm_helmet_with_neckguard", ":swadian_price_slot", 75),
-      (item_set_slot, "itm_red_gambeson", ":swadian_price_slot", 75),
-      (item_set_slot, "itm_darts", ":swadian_price_slot", 50),
-      (item_set_slot, "itm_war_darts", ":swadian_price_slot", 50),
-      (item_set_slot, "itm_tab_shield_heater_d", ":swadian_price_slot", 80),
-      (item_set_slot, "itm_brigandine_red", ":swadian_price_slot", 75),
-      (item_set_slot, "itm_bastard_sword_b", ":swadian_price_slot", 65),
-      (item_set_slot, "itm_bastard_sword_a", ":swadian_price_slot", 85),
-
-      (item_set_slot, "itm_steppe_horse", ":khergit_price_slot", 120),
-      (item_set_slot, "itm_courser", ":khergit_price_slot", 80),
-      (item_set_slot, "itm_hunter", ":khergit_price_slot", 80),
-      (item_set_slot, "itm_warhorse_steppe", ":khergit_price_slot", 120),
-      (item_set_slot, "itm_one_handed_war_axe_a", ":khergit_price_slot", 300),
-      (item_set_slot, "itm_tribal_warrior_outfit", ":khergit_price_slot", 140),
-
-      (item_set_slot, "itm_leather_gloves", ":sarranid_price_slot", 50),
-      (item_set_slot, "itm_short_bow", ":sarranid_price_slot", 50),
-      (item_set_slot, "itm_barbed_arrows", ":sarranid_price_slot", 80),
-      (item_set_slot, "itm_jarid", ":sarranid_price_slot", 85),
-      (item_set_slot, "itm_javelin", ":sarranid_price_slot", 85),
-      
-      (item_set_slot, "itm_lamellar_vest", ":vaegir_price_slot", 130),
-      (item_set_slot, "itm_awlpike", ":vaegir_price_slot", 150),
-      (item_set_slot, "itm_scimitar", ":vaegir_price_slot", 130),
-      (item_set_slot, "itm_scimitar_b", ":vaegir_price_slot", 150),
-      (item_set_slot, "itm_tab_shield_kite_a", ":vaegir_price_slot", 120),
-      (item_set_slot, "itm_tab_shield_kite_b", ":vaegir_price_slot", 120),
-      (item_set_slot, "itm_tab_shield_kite_c", ":vaegir_price_slot", 120),
-      (item_set_slot, "itm_tab_shield_kite_d", ":vaegir_price_slot", 120),
-      (item_set_slot, "itm_javelin", ":vaegir_price_slot", 120),
-
       (try_for_range, ":cur_horse", horses_begin, horses_end),
           (item_set_slot, ":cur_horse", slot_item_multiplayer_item_class, multi_item_class_type_horse),
           (call_script, "script_multiplayer_set_item_available_for_troop", ":cur_horse", "trp_truand_multiplayer"),
@@ -1100,6 +1034,8 @@ scripts = [
       (end_try),
 
       (try_for_range, ":cur_one_handed_weapon", weapons_begin, weapons_end),
+          (item_get_type, ":item_type", ":cur_one_handed_weapon"),
+          (eq, ":item_type", itp_type_one_handed_wpn),
           (item_set_slot, ":cur_one_handed_weapon", slot_item_multiplayer_item_class, multi_item_class_type_sword),
           (call_script, "script_multiplayer_set_item_available_for_troop", ":cur_one_handed_weapon", "trp_truand_multiplayer"),
       (end_try),
@@ -6975,6 +6911,7 @@ scripts = [
          (val_div, ":initial_gold", 100),
          (player_set_gold, ":player_no", ":initial_gold"),
          (call_script, "script_multiplayer_send_initial_information", ":player_no"),
+         (multiplayer_send_string_to_player, ":player_no", multiplayer_event_show_server_message, "@Welcome to the Beta version of Truand Brawl !"),
        (try_end),
      (try_end),
      ]),
@@ -9359,6 +9296,7 @@ scripts = [
           (eq, ":event_type", multiplayer_event_show_server_message),
           (display_message, "str_server_s0", 0xFFFF6666),
         (try_end),
+
       (try_end),
      ]),
 
@@ -46645,94 +46583,732 @@ scripts = [
 		# (try_end),
 		
 	# ]),
-     ###
-	 #script_wse_multiplayer_message_received
-# Called each time a composite multiplayer message is received
-# INPUT
-# script param 1 = sender player no
-# script param 2 = event no
-("wse_multiplayer_message_received", [
-	(store_script_param, ":player_no", 1),
-	(store_script_param, ":event_no", 2),
-]),
+  ###################################
+# Common Warband ARray Processing #
+###################################
+# Functional programming using Party Slots as arrays (or stacks)
+# Parties are the only way to dynamically allocate memory in WB scripts
+# Slots are already arrays of integers (or IDs), making them ideal for storage
+# Slot zero is reserved for the number of elements
 
-#script_wse_game_saved
-# Called each time after game is saved successfully
-("wse_game_saved", [
-]),
+# Part I - Building Blocks
+##########################
 
-#script_wse_chat_message_received
-# Called each time a chat message is received (both for servers and clients)
-# INPUT
-# script param 1 = sender player no
-# script param 2 = chat type (0 = global, 1 = team)
-# s0 = message
-# OUTPUT
-# trigger result = anything non-zero suppresses default chat behavior. Server will not even broadcast messages to clients.
-# result string = changes message text for default chat behavior (if not suppressed).
-("wse_chat_message_received", [
-	(store_script_param, ":player_no", 1),
-	(store_script_param, ":chat_type", 2),
-]),
+  # script_warp_array_clear
+  # Clears an array by setting its length to zero
+  # Input: arg1 = array_id
+  # Output: nothing
+  ("warp_array_clear",
+  [ (store_script_param, ":array_id", 1),
+    (party_set_slot, ":array_id", 0, 0),
+  ]),
 
-#script_wse_console_command_received
-# Called each time a command is typed on the dedicated server console or received with RCON (after parsing standard commands)
-# INPUT
-# script param 1 = command type (0 - local, 1 - remote)
-# s0 = text
-# OUTPUT
-# trigger result = anything non-zero if the command succeeded
-# result string = message to display on success (if empty, default message will be used)
-("wse_console_command_received", [
-	(store_script_param, ":command_type", 1),
-]),
+  # script_warp_array_length
+  # Returns the length of an array
+  # Input: arg1 = array_id
+  # Output: reg0 = length
+  ("warp_array_length",
+  [ (store_script_param, ":array_id", 1),
+    (party_get_slot, reg0, ":array_id", 0),
+  ]), 
 
-#script_wse_get_agent_scale
-# Called each time an agent is created
-# INPUT
-# script param 1 = troop no
-# script param 2 = horse item no
-# script param 3 = horse item modifier
-# script param 4 = player no
-# OUTPUT
-# trigger result = agent scale (fixed point)
-("wse_get_agent_scale", [
-	(store_script_param, ":troop_no", 1),
-	(store_script_param, ":horse_item_no", 2),
-	(store_script_param, ":horse_item_modifier", 3),
-	(store_script_param, ":player_no", 4),
-]),
+  # script_warp_array_init_value
+  # Fills the array with (arg2) repetitions of (arg3)
+  # Input: arg1 = array_id
+  #        arg2 = length
+  #        arg3 = value
+  # Output: nothing
+  ("warp_array_init_value",
+  [ (store_script_param, ":array_id", 1),
+    (store_script_param, ":length", 2),
+    (store_script_param, ":value", 3),
+  
+    (party_set_slot, ":array_id", 0, ":length"),
+    (val_add, ":length", 1),
+    (try_for_range, ":i", 1, ":length"),
+        (party_set_slot, ":array_id", ":i", ":value"),
+    (try_end),
+  ]), 
+ 
+  # script_warp_array_init_range
+  # Fills the array with the numbers/IDs from (arg2) to (arg3)
+  # Input: arg1 = array_id
+  #        arg2 = first
+  #        arg2 = end
+  # Output: nothing
+  ("warp_array_init_range",
+  [ (store_script_param, ":array_id", 1),
+    (store_script_param, ":first", 2),
+    (store_script_param, ":end", 3),
+  
+    (assign, ":slot", 0),
+    (try_for_range, ":i", ":first", ":end"),
+        (val_add, ":slot", 1),
+        (party_set_slot, ":array_id", ":slot", ":i"),
+    (try_end),
+    (party_set_slot, ":array_id", 0, ":slot"),
+  ]), 
+ 
+  # script_warp_array_init_random
+  # Fills the array with (arg2) random numbers in the range between (arg3) and (arg4)
+  # Input: arg1 = array_id
+  #        arg2 = length
+  #        arg3 = min_value
+  #        arg4 = max_value
+  # Output: nothing
+  ("warp_array_init_random",
+  [ (store_script_param, ":array_id", 1),
+    (store_script_param, ":length", 2),
+    (store_script_param, ":min", 3),
+    (store_script_param, ":max", 4),
+  
+    (party_set_slot, ":array_id", 0, ":length"),
+        (val_add, ":length", 1),
+    (try_for_range, ":i", 1, ":length"),
+        (store_random_in_range, ":value", ":min", ":max"),
+        (party_set_slot, ":array_id", ":i", ":value"),
+    (try_end),
+  ]), 
+ 
+  # script_warp_array_push
+  # Appends an element to an array
+  # Input: arg1 = array_id
+  #        arg2 = element
+  # Output: nothing
+  ("warp_array_push",
+  [ (store_script_param, ":array_id", 1),
+    (store_script_param, ":element", 2),
+  
+    (party_get_slot, ":length", ":array_id", 0),
+    (val_add, ":length", 1),
+    (party_set_slot, ":array_id", ":length", ":element"),
+    (party_set_slot, ":array_id", 0, ":length"),
+  ]),
+ 
+  # script_cf_warp_array_pop
+  # Removes the last element and writes it to reg0
+  # Fails if the array is empty
+  # Input: arg1 = array_id
+  # Output: reg0 = popped element
+  ("cf_warp_array_pop",
+  [ (store_script_param, ":array_id", 1),
+  
+    (party_get_slot, ":length", ":array_id", 0),
+    (gt, ":length", 0),
+    (party_get_slot, reg0, ":array_id", ":length"),
+    (val_sub, ":length", 1),
+    (party_set_slot, ":array_id", 0, ":length"),
+  ]),
+ 
+  # script_warp_array_remove_last
+  # Removes the last element if it exists
+  # Input: arg1 = array_id
+  # Output: nothing
+  ("warp_array_remove_last",
+  [ (store_script_param, ":array_id", 1),
+  
+    (party_get_slot, ":length", ":array_id", 0),
+    (val_sub, ":length", 1),
+    (val_max, ":length", 0),
+    (party_set_slot, ":array_id", 0, ":length"),
+  ]),
+ 
+  # script_cf_warp_array_last
+  # Writes the last element to reg0
+  # Fails if the array is empty
+  # Input: arg1 = array_id
+  # Output: reg0 = last element
+  ("cf_warp_array_last",
+  [ (store_script_param, ":array_id", 1),
+  
+    (party_get_slot, ":length", ":array_id", 0),
+    (gt, ":length", 0),
+    (party_get_slot, reg0, ":array_id", ":length"),
+  ]),
+ 
+  # script_cf_warp_array_set
+  # Sets the (arg2)th element to (arg3)
+  # Fails if the array is too small
+  # Input: arg1 = array_id
+  #        arg2 = index
+  #        arg3 = value
+  # Output: nothing
+  ("cf_warp_array_set",
+  [ (store_script_param, ":array_id", 1),
+    (store_script_param, ":index", 2),
+    (store_script_param, ":value", 3),
+  
+    (gt, ":index", 0),
+    (store_sub, ":index-1", ":index", 1),
+    (party_slot_ge, ":array_id", 0, ":index-1"),
+    (try_begin),
+        (party_slot_eq, ":array_id", 0, ":index-1"),
+        (party_set_slot, ":array_id", 0, ":index"),
+    (try_end),
+    (party_set_slot, ":array_id", ":index", ":value"),
+  ]),
+ 
+  # script_cf_warp_array_get
+  # Writes the (arg2)ths element to reg0
+  # Fails if the index is out of bounds
+  # Input: arg1 = array_id
+  #        arg2 = index
+  # Output: reg0 = value
+  ("cf_warp_array_get",
+  [ (store_script_param, ":array_id", 1),
+    (store_script_param, ":index", 2),
+  
+    (gt, ":index", 0),
+    (party_slot_ge, ":array_id", 0, ":index"),
+    (party_get_slot, reg0, ":array_id", ":index"),
+  ]),
+ 
+  # script_warp_array_copy
+  # Copies array 1 from array 2
+  # Input: arg1 = dest_array
+  #        arg2 = src_array
+  # Output: nothing
+  ("warp_array_copy",
+  [ (store_script_param, ":dest_array", 1),
+    (store_script_param, ":src_array", 2),
+   
+    (party_get_slot, ":length", ":src_array", 0),
+    (party_set_slot, ":dest_array", 0, ":length"),
+    (val_add, ":length", 1),
+    (try_for_range, ":i", 1, ":length"),
+        (party_get_slot, ":v", ":src_array", ":i"),
+        (party_set_slot, ":dest_array", ":i", ":v"),
+    (try_end),
+  ]),
+   
+  # script_cf_warp_array_copy_range
+  # Copies the subrange (arg2)..(arg3) from array 1 to array 2
+  # Input: arg1 = dest_array
+  #        arg2 = src_array
+  #        arg3 = first
+  #        arg4 = end
+  #       
+  # Output: nothing
+  ("cf_warp_array_copy_range",
+  [ (store_script_param, ":dest_array", 1),
+    (store_script_param, ":src_array", 4),
+    (store_script_param, ":first", 2),
+    (store_script_param, ":end", 3),
+  
+    (store_sub,":last",":end",1),
+    (party_slot_ge, ":src_array",0,":last"), # Is the source array long enough?
+    (assign, ":j", 0),
+    (try_for_range, ":i", ":first", ":end"),
+        (val_add,":j",1), # count the elements written
+        (party_get_slot, ":v", ":src_array", ":i"),
+        (party_set_slot, ":dest_array", ":j", ":v"),
+    (try_end),
+    (party_set_slot, ":dest_array", 0, ":j"),
+  ]),
+ 
+  # script_warp_array_reverse
+  # Reverses the array in place
+  # Input: arg1 = array_id
+  # Output: nothing
+  ("warp_array_reverse",
+  [ (store_script_param, ":array_id", 1),
+  
+    (party_get_slot, ":last", ":array_id", 0),
+    (try_for_range, ":i", 1, ":last"),
+        (gt,":last",":i"), # otherwise, we're done
+        (party_get_slot, ":v1", ":array_id", ":i"),
+        (party_get_slot, ":v2", ":array_id", ":last"),
+        (party_set_slot, ":array_id", ":i", ":v2"),
+        (party_set_slot, ":array_id", ":last", ":v1"),
+        (val_sub,":last",1),
+    (try_end),
+  ]),
+ 
+  # script_warp_array_filter
+  # Removes all elements that fail the check of cf_filter
+  # Input: arg1 = array_id
+  #        arg2 = cf_filter
+  # Output: nothing
+  ("warp_array_filter",
+  [ (store_script_param, ":array_id", 1),
+    (store_script_param, ":cf_filter", 2),
 
-#script_wse_window_opened
-# Called each time a window (party/inventory/character) is opened
-# INPUT
-# script param 1 = window no
-# script param 2 = window param 1
-# script param 3 = window param 2
-# OUTPUT
-# trigger result = presentation that replaces the window (if not set or negative, window will open normally)
-("wse_window_opened", [
-	(store_script_param, ":window_no", 1),
-	(store_script_param, ":window_param_1", 2),
-	(store_script_param, ":window_param_2", 3),
-]),
+    (party_get_slot, ":end", ":array_id", 0),
+    (val_add, ":end", 1),
+    (assign, ":matches", 0),
+    (try_for_range, ":i", 1, ":end"),
+        (party_get_slot, ":ce", ":array_id", ":i"),
+        (call_script,":cf_filter",":ce"),
+        (val_add,":matches",1),
+        (gt,":i",":matches"),
+        (party_set_slot, ":array_id", ":matches", ":ce"),
+    (try_end),
+    (party_set_slot, ":array_id", 0, ":matches"),
+  ]),
+ 
+  # script_warp_array_map
+  # Applies a mapping function (p1->reg0) to every element and writes the result in its place
+  # Elements are removed if the mapping function fails
+  # Input: arg1 = array_id
+  #        arg2 = cf_map
+  # Output: nothing
+  ("warp_array_map",
+  [ (store_script_param, ":array_id", 1),
+    (store_script_param, ":cf_map", 2),
+  
+    (party_get_slot, ":end", ":array_id", 0),
+    (val_add, ":end", 1),
+    (assign, ":matches", 0),
+    (try_for_range, ":i", 1, ":end"),
+        (party_get_slot, ":ce", ":array_id", ":i"),
+        (call_script,":cf_map",":ce"),
+        (val_add,":matches",1),
+        (party_set_slot, ":array_id", ":matches", reg0),
+    (try_end),
+    (party_set_slot, ":array_id", 0, ":matches"),
+  ]),
+ 
+  # script_warp_array_unique
+  # Makes sure the array contains each element only once
+  # Input: arg1 = array_id
+  # Output: nothing
+  ("warp_array_unique",
+  [ (store_script_param, ":array_id", 1),
+  
+    (party_get_slot, ":end", ":array_id", 0),
+    (val_add, ":end", 1),
+    (assign, ":unique", 0),
+    (try_for_range, ":i", 1, ":end"),
+        (party_get_slot, ":ce", ":array_id", ":i"),
+        (assign,":found",0),
+        (try_for_range, ":j", 1, ":i"),
+            (party_slot_eq, ":array_id", ":j", ":ce"),
+            (assign,":found",1),
+            (assign,":j",":i"),
+        (try_end),
+        (eq,":found",0),
+        (val_add,":unique",1),
+        (gt,":i",":unique"),
+        (party_set_slot, ":array_id", ":unique", ":ce"),
+    (try_end),
+    (party_set_slot, ":array_id", 0, ":unique"),
+  ]),
 
-#script_game_missile_dives_into_water
-# Called each time a missile dives into water
-# INPUT
-# script param 1 = missile item no
-# script param 2 = missile item modifier
-# script param 3 = launcher item no
-# script param 4 = launcher item modifier
-# script param 5 = shooter agent no
-# script param 6 = missile no
-# pos1 = water impact position and rotation
-("game_missile_dives_into_water", [
-	(store_script_param, ":missile_item_no", 1),
-	(store_script_param, ":missile_item_modifier", 2),
-	(store_script_param, ":launcher_item_no", 3),
-	(store_script_param, ":launcher_item_modifier", 4),
-	(store_script_param, ":shooter_agent_no", 5),
-	(store_script_param, ":missile_no", 6),
-]),
+  # script_warp_array_sort
+  # Sorts the array using natural merge sort and a function cf_order(a,b) that fails iff a,b is the wrong order
+  # Input: arg1 = array_id
+  #        arg2 = cf_order
+  # Output: nothing
+  ("warp_array_sort",
+  [ (store_script_param, ":array_id", 1),
+    (store_script_param, ":cf_order", 2),
+  
+    (party_get_slot, ":end", ":array_id", 0),
+    (val_add, ":end", 1),
+    (call_script,"script_warp_array_sort_range_aux",":array_id","p_warp_temp",1,":end",":cf_order"),
+    (try_begin),
+        (eq,reg0,"p_warp_temp"),
+        (try_for_range, ":i", 1, ":end"),
+            (party_get_slot, ":v", "p_warp_temp", ":i"),
+            (party_set_slot, ":array_id", ":i", ":v"),
+        (try_end),
+    (try_end),
+  ]),
+ 
+  # script_warp_array_sort_range
+  # Sorts only a subrange of the array; otherwise same as "script_warp_array_sort"
+  # Input: arg1 = array_id
+  #        arg2 = first
+  #        arg3 = end
+  #        arg4 = cf_order
+  # Output: nothing
+  ("warp_array_sort_range",
+  [ (store_script_param, ":array_id", 1),
+    (store_script_param, ":first", 2),
+    (store_script_param, ":end", 3),
+    (store_script_param, ":cf_order", 4),
+  
+    (call_script,"script_warp_array_sort_range_aux",":array_id","p_warp_temp",":first",":end",":cf_order"),
+    (try_begin),
+        (eq,reg0,"p_warp_temp"),
+        (try_for_range, ":i", ":first", ":end"),
+            (party_get_slot, ":v", "p_warp_temp", ":i"),
+            (party_set_slot, ":array_id", ":i", ":v"),
+        (try_end),
+    (try_end),
+  ]),
+ 
+  # Auxiliary function; recursively performs one round of mergesort from array_1 to array_2 and writes the sorted array_id to reg0 when done
+  ("warp_array_sort_range_aux",
+  [ (store_script_param, ":array_1", 1),
+    (store_script_param, ":array_2", 2),
+    (store_script_param, ":first", 3),
+    (store_script_param, ":end", 4),
+    (store_script_param, ":cf_order", 5),
+  
+    (assign,":p1",1),
+    (assign,":p2",-1),
+    (assign,":sorted",1),
+
+    (store_add, ":second", ":first", 1),
+    (store_sub, ":last", ":end", 1),
+    (try_for_range, ":i", ":second", ":last"),
+        (store_sub, ":i-1", ":i", 1),
+        (party_get_slot, ":val_a", ":array_1", ":i-1"),
+        (party_get_slot, ":val_b", ":array_1", ":i"),
+        (try_begin),
+            (call_script,":cf_order", ":val_a", ":val_b"),
+        (else_try), # Check failed -> wrong order!
+            (assign,":sorted",0),
+            (try_begin),
+                (le,":p2",0),
+                (assign,":p2",":i"),
+            (else_try),
+                (call_script,"script_warp_array_merge_range_aux",":array_1",":array_2",":p1",":p2",":i",":cf_order"),
+                (assign,":p1",":i"),
+                (assign,":p2",-1),
+            (try_end),
+        (try_end),
+    (try_end),
+    (try_begin), # Merge last two runs (if there are)
+        (gt,":p2",0),
+        (lt,":p2",":end"),
+        (call_script,"script_warp_array_merge_range_aux",":array_1",":array_2",":p1",":p2",":end",":cf_order"),
+    (else_try), # Or copy the last run (if necessary)
+        (lt,":p1",":end"),
+        (eq,":sorted",0), # otherwise, just return array_1
+        (try_for_range, ":i", ":p1", ":end"),
+            (party_get_slot, ":v", ":array_1", ":i"),
+            (party_set_slot, ":array_2", ":i", ":v"),
+        (try_end),
+    (try_end),
+    (try_begin),
+        (eq,":sorted",1), # Am I done yet?
+        (assign,reg0,":array_1"),
+    (else_try),
+        (call_script,"script_warp_array_sort_range_aux",":array_2",":array_1",":first",":end",":cf_order"),
+    (try_end),
+  ]), 
+  ("warp_array_merge_range_aux",
+  [ (store_script_param, ":array_1", 1),
+    (store_script_param, ":array_2", 2),
+    (store_script_param, ":pos1", 3),
+    (store_script_param, ":pos2", 4),
+    (store_script_param, ":pos3", 5),
+    (store_script_param, ":cf_order", 6),
+  
+    (assign,":c1",":pos1"),
+    (assign,":c2",":pos2"),
+  
+    (try_for_range, ":i", ":pos1", ":pos3"),
+        (try_begin),
+            (eq,":c1",":pos2"),
+            (party_get_slot, ":v", ":array_1", ":c2"),
+            (party_set_slot, ":array_2", ":i", ":v"),
+            (val_add,":c2",1),
+        (else_try),
+            (eq,":c2",":pos3"),
+            (party_get_slot, ":v", ":array_1", ":c1"),
+            (party_set_slot, ":array_2", ":i", ":v"),
+            (val_add,":c1",1),
+        (else_try),
+            (party_get_slot, ":val_a", ":array_1", ":c1"),
+            (party_get_slot, ":val_b", ":array_1", ":c2"),
+            (try_begin),
+                (call_script,":cf_order", ":val_a", ":val_b"),
+                (party_get_slot, ":v", ":array_1", ":c1"),
+                (party_set_slot, ":array_2", ":i", ":v"),
+                (val_add,":c1",1),
+            (else_try),
+                (party_get_slot, ":v", ":array_1", ":c2"),
+                (party_set_slot, ":array_2", ":i", ":v"),
+                (val_add,":c2",1),
+            (try_end),
+        (try_end),
+    (try_end),
+  ]), 
+ 
+  # script_warp_array_shuffle
+  # Shuffles the array (puts all elements in random order)
+  # Input: arg1 = array_id
+  # Output: nothing
+  ("warp_array_shuffle",
+  [ (store_script_param, ":array_id", 1),
+  
+    (party_get_slot, ":end", ":array_id", 0),
+    (val_add, ":end", 1),
+    (call_script,"script_warp_array_shuffle_range",":array_id",1,":end"),
+  ]),
+ 
+  # script_warp_array_shuffle_range
+  # Shuffles a subrange of the array
+  # Input: arg1 = array_id
+  #        arg2 = first
+  #        arg3 = end
+  # Output: nothing
+  ("warp_array_shuffle_range",
+  [ (store_script_param, ":array_id", 1),
+    (store_script_param, ":first", 2),
+    (store_script_param, ":end", 3),
+
+    (try_for_range, ":i", ":first", ":end"),
+        (store_random_in_range,":j",":i",":end"),
+        (neq,":i",":j"),
+        (party_get_slot, ":vi", ":array_id", ":i"),
+        (party_get_slot, ":vj", ":array_id", ":j"),
+        (party_set_slot, ":array_id", ":i", ":vj"),
+        (party_set_slot, ":array_id", ":j", ":vi"),
+    (try_end),
+  ]),
+ 
+  # script_warp_print_array
+  # Writes an array's content to s3, using a map function and custom separators
+  # e.g. (1,4,6,9),"script_warp_roman","@ or ","@ or maybe" -> "I or IV or VI or maybe IX"
+  # Input: arg1 = array_id
+  #      arg2 = script that writes the ID's name to s0 - MUST NOT TOUCH s1, s2 or s3!
+  # Set before calling:
+  #      s1 = middle separator (usually comma or space)
+  #      s2 = last separator (usually and)
+  # Output: s3 = List of strings returned by arg4
+  ("warp_print_array",
+  [
+    (store_script_param, ":array_id", 1),
+    (store_script_param, ":script_name", 2),
+  
+    (party_get_slot, ":array_last", ":array_id", 0),
+    (str_clear,s3),
+  
+    (try_begin),
+        (eq,":array_last",1),
+        (party_get_slot, ":v", ":array_id", ":array_last"),
+        (call_script,":script_name",":v"),
+        (str_store_string,s3,"@{s0}"),
+    (else_try),
+        (ge,":array_last",2),
+        (party_get_slot, ":v", ":array_id", 1),
+        (call_script,":script_name",":v"),
+        (str_store_string,s3,"@{s0}"),
+        (try_for_range, ":i", 2, ":array_last"),
+            (party_get_slot, ":v", ":array_id", ":i"),
+            (call_script,":script_name",":v"),
+            (str_store_string,s3,"@{s3}{s1}{s0}"),
+        (try_end),
+        (party_get_slot, ":v", ":array_id", ":array_last"),
+        (call_script,":script_name",":v"),
+        (str_store_string,s3,"@{s3}{s2}{s0}"),
+    (try_end),
+  ]),
+ 
+  # script_warp_print_array_comma
+  # Writes an array's content to s1, separated by commas and using a map function
+  # e.g. (1,4,6,9),"script_warp_roman" -> "I, IV, VI, IX"
+  # Input: arg1 = array_id
+  #      arg2 = script that writes the ID's name to s0 - MUST NOT TOUCH s1!
+  # Output: s1 = List of strings returned by arg4
+  ("warp_print_array_comma",
+  [ (store_script_param, ":array_id", 1),
+    (store_script_param, ":script_name", 2),
+  
+    (party_get_slot, ":array_last", ":array_id", 0),
+    (store_add,":array_end",":array_last",1),
+    (str_clear,s1),
+  
+    (try_begin),
+        (eq,":array_last",1),
+        (party_get_slot, ":v", ":array_id", ":array_last"),
+        (call_script,":script_name",":v"),
+        (str_store_string,s1,"@{s0}"),
+    (else_try),
+        (ge,":array_last",2),
+        (party_get_slot, ":v", ":array_id", 1),
+        (call_script,":script_name",":v"),
+        (str_store_string,s1,"@{s0}"),
+        (try_for_range, ":i", 2, ":array_end"),
+            (party_get_slot, ":v", ":array_id", ":i"),
+            (call_script,":script_name",":v"),
+            (str_store_string,s1,"@{s1}, {s0}"),
+        (try_end),
+    (try_end),
+  ]),
+ 
+  # script_warp_print_array_and
+  # Writes an array's content to s1, separated by commas, a final "and" and using a map function
+  # e.g. (1,4,6,9),"script_warp_roman" -> "I, IV, VI and IX"
+  # Input: arg1 = array_id
+  #      arg2 = script that writes the ID's name to s0 - MUST NOT TOUCH s1!
+  # Output: s1 = List of strings returned by arg4
+  ("warp_print_array_and",
+  [ (store_script_param, ":array_id", 1),
+    (store_script_param, ":script_name", 2),
+  
+    (party_get_slot, ":array_last", ":array_id", 0),
+    (str_clear,s1),
+  
+    (try_begin),
+        (eq,":array_last",1),
+        (party_get_slot, ":v", ":array_id", ":array_last"),
+        (call_script,":script_name",":v"),
+        (str_store_string,s1,"@{s0}"),
+    (else_try),
+        (ge,":array_last",2),
+        (party_get_slot, ":v", ":array_id", 1),
+        (call_script,":script_name",":v"),
+        (str_store_string,s1,"@{s0}"),
+        (try_for_range, ":i", 2, ":array_last"),
+            (party_get_slot, ":v", ":array_id", ":i"),
+            (call_script,":script_name",":v"),
+            (str_store_string,s1,"@{s1}, {s0}"),
+        (try_end),
+        (party_get_slot, ":v", ":array_id", ":array_last"),
+        (call_script,":script_name",":v"),
+        (str_store_string,s1,"@{s1} and {s0}"),
+    (try_end),
+  ]),
+ 
+# Part II - Helper Scripts
+##########################
+  # script_warp_number
+  # Takes a number and writes it to s0
+  # Input: arg1 = number
+  # Output: s0 = number string
+  ("warp_number",
+  [ (store_script_param, ":number", 1),
+    (assign,reg0,":number"),
+    (str_store_string,s0,"@{reg0}"),
+  ]),
+  # script_warp_roman
+  # Takes a number and writes its roman numeral to s0
+  # Input: arg1 = number
+  # Output: s0 = roman numeral
+  ("warp_roman",
+  [ (store_script_param, ":number", 1),
+
+    (try_begin),
+        (gt,":number",0),
+        (str_clear,s0),
+        (call_script,"script_warp_roman_aux",":number"),
+    (else_try),
+        (eq,":number",0),
+        (str_store_string,s0,"@0"),
+    (else_try),
+        (store_sub,":neg_number",0,":number"),
+        (str_clear,s0),
+        (call_script,"script_warp_roman_aux",":neg_number"),
+        (str_store_string,s0,"@-{s0}"),
+    (try_end),
+  ]),
+  # Recursive auxiliary function; requires empty s0 and n>0 at the beginning
+  ("warp_roman_aux",
+  [ (store_script_param, ":number", 1),
+
+    (try_begin),
+        (ge,":number",1000),
+        (store_sub,":rest",":number",1000),
+        (call_script,"script_warp_roman_aux",":rest"),
+        (str_store_string,s0,"@M{s0}"),
+    (else_try),
+        (ge,":number",900),
+        (store_sub,":rest",":number",900),
+        (call_script,"script_warp_roman_aux",":rest"),
+        (str_store_string,s0,"@CM{s0}"),
+    (else_try),
+        (ge,":number",500),
+        (store_sub,":rest",":number",500),
+        (call_script,"script_warp_roman_aux",":rest"),
+        (str_store_string,s0,"@D{s0}"),
+    (else_try),
+        (ge,":number",400),
+        (store_sub,":rest",":number",400),
+        (call_script,"script_warp_roman_aux",":rest"),
+        (str_store_string,s0,"@CD{s0}"),
+    (else_try),
+        (ge,":number",100),
+        (store_sub,":rest",":number",100),
+        (call_script,"script_warp_roman_aux",":rest"),
+        (str_store_string,s0,"@C{s0}"),
+    (else_try),
+        (ge,":number",90),
+        (store_sub,":rest",":number",90),
+        (call_script,"script_warp_roman_aux",":rest"),
+        (str_store_string,s0,"@XC{s0}"),
+    (else_try),
+        (ge,":number",50),
+        (store_sub,":rest",":number",50),
+        (call_script,"script_warp_roman_aux",":rest"),
+        (str_store_string,s0,"@L{s0}"),
+    (else_try),
+        (ge,":number",40),
+        (store_sub,":rest",":number",40),
+        (call_script,"script_warp_roman_aux",":rest"),
+        (str_store_string,s0,"@XL{s0}"),
+    (else_try),
+        (ge,":number",10),
+        (store_sub,":rest",":number",10),
+        (call_script,"script_warp_roman_aux",":rest"),
+        (str_store_string,s0,"@X{s0}"),
+    (else_try),
+        (ge,":number",9),
+        (store_sub,":rest",":number",9),
+        (call_script,"script_warp_roman_aux",":rest"),
+        (str_store_string,s0,"@IX{s0}"),
+    (else_try),
+        (ge,":number",5),
+        (store_sub,":rest",":number",5),
+        (call_script,"script_warp_roman_aux",":rest"),
+        (str_store_string,s0,"@V{s0}"),
+    (else_try),
+        (ge,":number",4),
+        (store_sub,":rest",":number",4),
+        (call_script,"script_warp_roman_aux",":rest"),
+        (str_store_string,s0,"@IV{s0}"),
+    (else_try),
+        (ge,":number",1),
+        (store_sub,":rest",":number",1),
+        (call_script,"script_warp_roman_aux",":rest"),
+        (str_store_string,s0,"@I{s0}"),
+    (try_end),
+  ]),
+# More printing
+  ("warp_troop_name",[(store_script_param, ":troop", 1), (str_store_troop_name, s0, ":troop")]),
+  ("warp_party_name",[(store_script_param, ":party", 1), (str_store_party_name, s0, ":party")]),
+  ("warp_item_name",[(store_script_param, ":item", 1), (str_store_item_name, s0, ":item")]),
+# Some basic sorting functions
+  ("cf_ascending",
+  [ (store_script_param, ":a", 1),
+    (store_script_param, ":b", 2),
+    (ge,":b",":a"),
+  ]),
+  ("cf_descending",
+  [ (store_script_param, ":a", 1),
+    (store_script_param, ":b", 2),
+    (ge,":a",":b"),
+  ]),
+
+  ########################
+  # TRUAND BRAWL SCRIPTS #
+  ########################
+  ("randomize_weapons_for_agent",
+    [
+      (store_script_param_1, ":agent_id"),
+      (store_sub, reg0, weapons_end, weapons_begin),
+      (assign, ":next_step", 0),
+      (try_for_range, ":i", 0, 999),
+          # (try_begin),
+            (neq, ":next_step", 1),
+            (store_random_in_range, ":random", 0, reg0),
+            (store_add, ":item_id", weapons_begin, ":random"),
+            (str_store_item_name, s0, ":item_id"),
+            (display_message, "@Current item : {s0}"),
+            (item_get_type, ":item_type", ":item_id"),
+            (try_begin),
+                (eq, ":item_type", itp_type_one_handed_wpn),
+                # (this_or_next|eq, ":item_type", itp_type_two_handed_wpn),
+                (agent_equip_item, ":agent_id", ":item_id"),
+                (agent_set_wielded_item, ":agent_id", ":item_id"),
+                (assign, ":next_step", 1),
+            (end_try),
+          # (end_try),
+
+      (end_try),
+  ]),
 ]
