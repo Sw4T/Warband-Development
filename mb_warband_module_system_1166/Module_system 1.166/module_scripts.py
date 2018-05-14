@@ -963,6 +963,9 @@ scripts = [
   # none
   ("game_quick_start",
     [
+      #random seed
+      (assign, "$random_seed", 156814235),  
+
       #for quick battle mode
       (assign, "$g_is_quick_battle", 0),
       (assign, "$g_quick_battle_game_type", 0),
@@ -1028,62 +1031,83 @@ scripts = [
           (call_script, "script_multiplayer_set_item_available_for_troop", ":cur_horse", "trp_truand_multiplayer"),
       (end_try),
 
+      # Sorting armors for multiplayer
       (try_for_range, ":cur_armor", armors_begin, armors_end),
-          (item_set_slot, ":cur_armor", slot_item_multiplayer_item_class, multi_item_class_type_light_armor),
-          (call_script, "script_multiplayer_set_item_available_for_troop", ":cur_armor", "trp_truand_multiplayer"),
+          (item_get_type, ":item_type", ":cur_armor"),
+          (try_begin),
+              (eq, ":item_type", itp_type_head_armor),
+              (item_set_slot, ":cur_armor", slot_item_multiplayer_item_class, multi_item_class_type_light_helm),
+          (else_try),
+              (eq, ":item_type", itp_type_hand_armor),
+              (item_set_slot, ":cur_armor", slot_item_multiplayer_item_class, multi_item_class_type_glove),
+          (else_try),
+              (eq, ":item_type", itp_type_body_armor),
+              (item_set_slot, ":cur_armor", slot_item_multiplayer_item_class, multi_item_class_type_light_armor),
+          (end_try),
       (end_try),
 
-      (try_for_range, ":cur_one_handed_weapon", weapons_begin, weapons_end),
-          (item_get_type, ":item_type", ":cur_one_handed_weapon"),
-          (eq, ":item_type", itp_type_one_handed_wpn),
-          (item_set_slot, ":cur_one_handed_weapon", slot_item_multiplayer_item_class, multi_item_class_type_sword),
-          (call_script, "script_multiplayer_set_item_available_for_troop", ":cur_one_handed_weapon", "trp_truand_multiplayer"),
+      # Sorting weapons for multiplayer
+      (try_for_range, ":cur_weapon", weapons_begin, weapons_end),
+          (item_get_type, ":item_type", ":cur_weapon"),
+          (try_begin),
+              (eq, ":item_type", itp_type_one_handed_wpn),
+              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_sword),
+          (else_try),
+              (eq, ":item_type", itp_type_two_handed_wpn),
+              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_two_handed_sword),
+          (else_try),
+              (eq, ":item_type", itp_type_bow),
+              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_bow),
+          (else_try),
+              (eq, ":item_type", itp_type_crossbow),
+              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_crossbow),
+          (else_try),
+              (eq, ":item_type", itp_type_polearm),
+              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_crossbow),
+          (else_try),
+              (eq, ":item_type", itp_type_arrows),
+              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_arrow),
+          (else_try),
+              (eq, ":item_type", itp_type_bolts),
+              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_bolt),
+          (else_try),
+              (eq, ":item_type", itp_type_shield),
+              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_small_shield),
+          (else_try),
+              (eq, ":item_type", itp_type_thrown),
+              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_throwing),
+          (end_try),           
       (end_try),
+	  
+      #axe
+      (item_set_slot, "itm_axe", slot_item_multiplayer_item_class, multi_item_class_type_axe),
+      (item_set_slot, "itm_great_long_bardiche", slot_item_multiplayer_item_class, multi_item_class_type_two_handed_axe),
 
-      #arrows
-      (item_set_slot, "itm_khergit_arrows", slot_item_multiplayer_item_class, multi_item_class_type_arrow),
+      #picks
+      (item_set_slot, "itm_club_with_spike_head", slot_item_multiplayer_item_class, multi_item_class_type_war_picks),
+  	  
+  	  #Cleavers
+      (item_set_slot, "itm_shortened_military_scythe", slot_item_multiplayer_item_class, multi_item_class_type_cleavers),
+      (item_set_slot, "itm_sarranid_mace_1", slot_item_multiplayer_item_class, multi_item_class_type_blunt),
+  	  
+      #lance
+      (item_set_slot, "itm_great_lance", slot_item_multiplayer_item_class, multi_item_class_type_lance),
 
-    #bolts
-    (item_set_slot, "itm_steel_bolts", slot_item_multiplayer_item_class, multi_item_class_type_bolt),
+      #shields
+      (item_set_slot, "itm_tab_shield_round_a", slot_item_multiplayer_item_class, multi_item_class_type_small_shield),
+      (item_set_slot, "itm_spear", slot_item_multiplayer_item_class, multi_item_class_type_spear),
 
-    #bows
-    (item_set_slot, "itm_crossbow", slot_item_multiplayer_item_class, multi_item_class_type_bow),
+      #throwing
+      (item_set_slot, "itm_darts", slot_item_multiplayer_item_class, multi_item_class_type_throwing),
     
-    #swords
-    (item_set_slot, "itm_sword_medieval_a", slot_item_multiplayer_item_class, multi_item_class_type_sword),
-    (item_set_slot, "itm_arabian_sword_d", slot_item_multiplayer_item_class, multi_item_class_type_two_handed_sword),
-	  
-    #axe
-    (item_set_slot, "itm_axe", slot_item_multiplayer_item_class, multi_item_class_type_axe),
-    (item_set_slot, "itm_great_long_bardiche", slot_item_multiplayer_item_class, multi_item_class_type_two_handed_axe),
-
-
-    #picks
-    (item_set_slot, "itm_club_with_spike_head", slot_item_multiplayer_item_class, multi_item_class_type_war_picks),
-	  
-	  #Cleavers
-    (item_set_slot, "itm_shortened_military_scythe", slot_item_multiplayer_item_class, multi_item_class_type_cleavers),
-    (item_set_slot, "itm_sarranid_mace_1", slot_item_multiplayer_item_class, multi_item_class_type_blunt),
-	  
-    #lance
-    (item_set_slot, "itm_great_lance", slot_item_multiplayer_item_class, multi_item_class_type_lance),
-
-    #shields
-    (item_set_slot, "itm_tab_shield_round_a", slot_item_multiplayer_item_class, multi_item_class_type_small_shield),
-
-    # (item_set_slot, "itm_spear", slot_item_multiplayer_item_class, multi_item_class_type_spear),
-
-    #throwing
-    (item_set_slot, "itm_darts", slot_item_multiplayer_item_class, multi_item_class_type_throwing),
-  
-    #boots
-    (item_set_slot, "itm_hide_boots", slot_item_multiplayer_item_class, multi_item_class_type_light_foot),
-	  
-    #helmets
-    (item_set_slot, "itm_vaegir_mask", slot_item_multiplayer_item_class, multi_item_class_type_light_helm),
-	  
-	  #gloves
-    (item_set_slot, "itm_leather_gloves", slot_item_multiplayer_item_class, multi_item_class_type_glove),
+      #boots
+      (item_set_slot, "itm_hide_boots", slot_item_multiplayer_item_class, multi_item_class_type_light_foot),
+  	  
+      #helmets
+      (item_set_slot, "itm_vaegir_mask", slot_item_multiplayer_item_class, multi_item_class_type_light_helm),
+  	  
+  	  #gloves
+      (item_set_slot, "itm_leather_gloves", slot_item_multiplayer_item_class, multi_item_class_type_glove),
 
   ]),
 
@@ -47284,31 +47308,65 @@ scripts = [
     (ge,":a",":b"),
   ]),
 
+  # script_rand
+  # Input: arg1 = min arg2 = max
+  # Output: reg0 = random_number
+  # Will only work up to about a billion
+  ("rand",
+    [
+      (store_script_param_1, ":min"),
+      (store_script_param_2, ":max"),
+        
+      (val_mul,"$rand_seed",1664525), # see: Numerical Recipes in C
+      (val_add,"$rand_seed",1013904223), # Any two odd, relatively prime numbers larger than 65536 will do
+
+      (val_sub,":max",":min"),
+      (try_begin),
+        (gt,":max",1),
+        # Handle negative numbers; store_mod is not safe there!
+        (store_mod,":r","$rand_seed",1024*1024*1024),
+        (try_begin),
+          (lt, ":r", 0),
+          (val_add,":r",1024*1024*1024),
+        (try_end),
+        (store_div,":range",1024*1024*1024,":max"),
+        (val_div,":r",":range"),
+        (try_begin),
+          # Make sure we didn't exceed our range.
+          # Should happen very rarely, so we can afford to be lazy and use recursion.
+          (eq,":r",":max"),
+          (call_script,"script_rand",0,":max"),
+          (val_add,reg0,":min"),
+        (else_try),
+          (store_add,reg0,":min",":r"),
+        (try_end),
+      (else_try),
+        (assign,reg0,":min"),
+      (try_end),
+  ]),
+
   ########################
   # TRUAND BRAWL SCRIPTS #
   ########################
   ("randomize_weapons_for_agent",
     [
       (store_script_param_1, ":agent_id"),
-      (store_sub, reg0, weapons_end, weapons_begin),
+      (store_sub, ":total_weapons", weapons_end, weapons_begin),
       (assign, ":next_step", 0),
       (try_for_range, ":i", 0, 999),
-          # (try_begin),
-            (neq, ":next_step", 1),
-            (store_random_in_range, ":random", 0, reg0),
-            (store_add, ":item_id", weapons_begin, ":random"),
-            (str_store_item_name, s0, ":item_id"),
-            (display_message, "@Current item : {s0}"),
-            (item_get_type, ":item_type", ":item_id"),
-            (try_begin),
-                (eq, ":item_type", itp_type_one_handed_wpn),
-                # (this_or_next|eq, ":item_type", itp_type_two_handed_wpn),
-                (agent_equip_item, ":agent_id", ":item_id"),
-                (agent_set_wielded_item, ":agent_id", ":item_id"),
-                (assign, ":next_step", 1),
-            (end_try),
-          # (end_try),
-
+          (neq, ":next_step", 1),
+          (call_script, "script_rand", 0, ":total_weapons"),
+          (store_add, ":item_id", weapons_begin, reg0),
+          (str_store_item_name, s0, ":item_id"),
+          (display_message, "@Current item : {s0}"),
+          (item_get_type, ":item_type", ":item_id"),
+          (try_begin),
+              (eq, ":item_type", itp_type_one_handed_wpn),
+              # (this_or_next|eq, ":item_type", itp_type_two_handed_wpn),
+              (agent_equip_item, ":agent_id", ":item_id"),
+              (agent_set_wielded_item, ":agent_id", ":item_id"),
+              (assign, ":next_step", 1),
+          (end_try),
       (end_try),
   ]),
 ]
