@@ -1031,84 +1031,53 @@ scripts = [
           (call_script, "script_multiplayer_set_item_available_for_troop", ":cur_horse", "trp_truand_multiplayer"),
       (end_try),
 
-      # Sorting armors for multiplayer
-      (try_for_range, ":cur_armor", armors_begin, armors_end),
-          (item_get_type, ":item_type", ":cur_armor"),
-          (try_begin),
-              (eq, ":item_type", itp_type_head_armor),
-              (item_set_slot, ":cur_armor", slot_item_multiplayer_item_class, multi_item_class_type_light_helm),
-          (else_try),
-              (eq, ":item_type", itp_type_hand_armor),
-              (item_set_slot, ":cur_armor", slot_item_multiplayer_item_class, multi_item_class_type_glove),
-          (else_try),
-              (eq, ":item_type", itp_type_body_armor),
-              (item_set_slot, ":cur_armor", slot_item_multiplayer_item_class, multi_item_class_type_light_armor),
-          (end_try),
-      (end_try),
+      # # Sorting armors for multiplayer
+      # (try_for_range, ":cur_armor", armors_begin, armors_end),
+      #     (item_get_type, ":item_type", ":cur_armor"),
+      #     (try_begin),
+      #         (eq, ":item_type", itp_type_head_armor),
+      #         (item_set_slot, ":cur_armor", slot_item_multiplayer_item_class, multi_item_class_type_light_helm),
+      #     (else_try),
+      #         (eq, ":item_type", itp_type_hand_armor),
+      #         (item_set_slot, ":cur_armor", slot_item_multiplayer_item_class, multi_item_class_type_glove),
+      #     (else_try),
+      #         (eq, ":item_type", itp_type_body_armor),
+      #         (item_set_slot, ":cur_armor", slot_item_multiplayer_item_class, multi_item_class_type_light_armor),
+      #     (end_try),
+      # (end_try),
 
-      # Sorting weapons for multiplayer
-      (try_for_range, ":cur_weapon", weapons_begin, weapons_end),
-          (item_get_type, ":item_type", ":cur_weapon"),
-          (try_begin),
-              (eq, ":item_type", itp_type_one_handed_wpn),
-              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_sword),
-          (else_try),
-              (eq, ":item_type", itp_type_two_handed_wpn),
-              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_two_handed_sword),
-          (else_try),
-              (eq, ":item_type", itp_type_bow),
-              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_bow),
-          (else_try),
-              (eq, ":item_type", itp_type_crossbow),
-              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_crossbow),
-          (else_try),
-              (eq, ":item_type", itp_type_polearm),
-              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_spear),
-          (else_try),
-              (eq, ":item_type", itp_type_arrows),
-              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_arrow),
-          (else_try),
-              (eq, ":item_type", itp_type_bolts),
-              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_bolt),
-          (else_try),
-              (eq, ":item_type", itp_type_shield),
-              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_small_shield),
-          (else_try),
-              (eq, ":item_type", itp_type_thrown),
-              (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_throwing),
-          (end_try),           
-      (end_try),
-	  
-      #axe
-      (item_set_slot, "itm_axe", slot_item_multiplayer_item_class, multi_item_class_type_axe),
-      (item_set_slot, "itm_great_long_bardiche", slot_item_multiplayer_item_class, multi_item_class_type_two_handed_axe),
-
-      #picks
-      (item_set_slot, "itm_club_with_spike_head", slot_item_multiplayer_item_class, multi_item_class_type_war_picks),
-  	  
-  	  #Cleavers
-      (item_set_slot, "itm_shortened_military_scythe", slot_item_multiplayer_item_class, multi_item_class_type_cleavers),
-      (item_set_slot, "itm_sarranid_mace_1", slot_item_multiplayer_item_class, multi_item_class_type_blunt),
-  	  
-      #lance
-      (item_set_slot, "itm_great_lance", slot_item_multiplayer_item_class, multi_item_class_type_lance),
-
-      #shields
-      (item_set_slot, "itm_tab_shield_round_a", slot_item_multiplayer_item_class, multi_item_class_type_small_shield),
-      (item_set_slot, "itm_spear", slot_item_multiplayer_item_class, multi_item_class_type_spear),
-
-      #throwing
-      (item_set_slot, "itm_darts", slot_item_multiplayer_item_class, multi_item_class_type_throwing),
-    
-      #boots
-      (item_set_slot, "itm_hide_boots", slot_item_multiplayer_item_class, multi_item_class_type_light_foot),
-  	  
-      #helmets
-      (item_set_slot, "itm_vaegir_mask", slot_item_multiplayer_item_class, multi_item_class_type_light_helm),
-  	  
-  	  #gloves
-      (item_set_slot, "itm_leather_gloves", slot_item_multiplayer_item_class, multi_item_class_type_glove),
-
+      # # Sorting weapons for multiplayer
+      # (try_for_range, ":cur_weapon", weapons_begin, weapons_end),
+      #     (item_get_type, ":item_type", ":cur_weapon"),
+      #     (try_begin),
+      #         (eq, ":item_type", itp_type_one_handed_wpn),
+      #         (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_sword),
+      #     (else_try),
+      #         (eq, ":item_type", itp_type_two_handed_wpn),
+      #         (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_two_handed_sword),
+      #     (else_try),
+      #         (eq, ":item_type", itp_type_bow),
+      #         (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_bow),
+      #     (else_try),
+      #         (eq, ":item_type", itp_type_crossbow),
+      #         (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_crossbow),
+      #     (else_try),
+      #         (eq, ":item_type", itp_type_polearm),
+      #         (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_spear),
+      #     (else_try),
+      #         (eq, ":item_type", itp_type_arrows),
+      #         (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_arrow),
+      #     (else_try),
+      #         (eq, ":item_type", itp_type_bolts),
+      #         (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_bolt),
+      #     (else_try),
+      #         (eq, ":item_type", itp_type_shield),
+      #         (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_small_shield),
+      #     (else_try),
+      #         (eq, ":item_type", itp_type_thrown),
+      #         (item_set_slot, ":cur_weapon", slot_item_multiplayer_item_class, multi_item_class_type_throwing),
+      #     (end_try),           
+      # (end_try),
   ]),
 
   #script_get_army_size_from_slider_value
@@ -47369,6 +47338,7 @@ scripts = [
       (store_script_param_1, ":weapon_type"),
       (try_begin),
           (this_or_next|eq, itp_type_one_handed_wpn, ":weapon_type"),
+          (this_or_next|eq, itp_type_polearm, ":weapon_type"),
           (eq, itp_type_two_handed_wpn, ":weapon_type"),
           (assign, ":index_begin", weapons_begin),
           (assign, ":index_end", weapons_end),
@@ -47376,6 +47346,7 @@ scripts = [
           (this_or_next|eq, itp_type_bow, ":weapon_type"),
           (this_or_next|eq, itp_type_arrows, ":weapon_type"),
           (this_or_next|eq, itp_type_bolts, ":weapon_type"),
+          (this_or_next|eq, itp_type_thrown, ":weapon_type"),
           (eq, itp_type_crossbow, ":weapon_type"),
           (assign, ":index_begin", ranged_weapons_begin),
           (assign, ":index_end", ranged_weapons_end),
@@ -47414,7 +47385,7 @@ scripts = [
           (item_get_type, ":item_type", ":random_item_id"),
           (try_begin),
               (eq, ":item_type", ":armor_type"),
-              (assign, reg1, ":random_item_id"), #TODO ARMOR SORTING  
+              (assign, reg1, ":random_item_id"),
               (assign, ":done", 1),   
           (end_try),
       (end_try),
@@ -47422,10 +47393,10 @@ scripts = [
 
   # Input: arg1 = Agent ID
   # Output: -
-  ("randomize_weapons_for_agent",
+  ("randomize_equipement_for_agent",
     [
       (store_script_param_1, ":agent_id"),
-      (call_script, "script_rand", 0, tb_TOTAL_RANDOM_EVENTS),
+      (call_script, "script_rand", 0, tb_TOTAL_RANDOM_EVENTS), # Stores the result in reg0
       (try_begin), # Weapons part
           (eq, reg0, tb_random_type_one_handed),
           (call_script, "script_random_weapon_from_type", itp_type_one_handed_wpn),
@@ -47462,14 +47433,51 @@ scripts = [
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
           (call_script, "script_random_weapon_from_type", itp_type_thrown),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
-      (else_try),
-          (is_between, reg0, tb_random_type_armor, tb_random_type_shield),
-          (call_script, "script_random_armor_from_type", itp_type_body_armor),
-          (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
-          (call_script, "script_random_armor_from_type", itp_type_hand_armor),
-          (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
+      (end_try),
+      (neq, reg0, tb_random_type_unequiped),
+      (call_script, "script_randomize_armor_for_agent",":agent_id"),
+  ]),
+
+  # Input: arg1 = Agent ID
+  # Output: -
+  # % chance of randomising an item 
+  # Helmet : 70%
+  # Body armor : 80%
+  # Gloves : 50%
+  # Boots : 60%
+  ("randomize_armor_for_agent",
+    [
+      (store_script_param_1, ":agent_id"),
+      # Helmet
+      (call_script, "script_rand", 1, 10), # Stores the result in reg0
+      (try_begin),
+          (le, reg0, 7),
           (call_script, "script_random_armor_from_type", itp_type_head_armor),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
-      (end_try),
+      (try_end),
+
+      # Body armor
+      (call_script, "script_rand", 1, 10), # Stores the result in reg0
+      (try_begin),
+          (le, reg0, 8),
+          (call_script, "script_random_armor_from_type", itp_type_body_armor),
+          (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
+      (try_end),
+
+      # Boots
+      (call_script, "script_rand", 1, 10), # Stores the result in reg0
+      (try_begin),
+          (le, reg0, 6),
+          (call_script, "script_random_armor_from_type", itp_type_foot_armor),
+          (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
+      (try_end),
+
+      # Gloves
+      (call_script, "script_rand", 1, 10), # Stores the result in reg0
+      (try_begin),
+          (le, reg0, 5),
+          (call_script, "script_random_armor_from_type", itp_type_hand_armor),
+          (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
+      (try_end),
   ]),
 ]
