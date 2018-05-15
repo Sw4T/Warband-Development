@@ -1,4 +1,4 @@
-# Warband-Development
+# Warband Module Development 
 
 _Actually developping_ : **Truand Brawl** - A MP Mod for Mount&Blade Warband where you fight with many differents classes, weapons and stuff but in a totally random way. We're aiming to release a version with deathmatch implemented over little maps and some basic random stuff like positioning or weapons.
 
@@ -43,6 +43,8 @@ We are using the native module system to create the mod and some tools :
 
 A great tutorial about starting to mod and code in Warband is available in [PDF](http://www.freewebs.com/jikbyond/40kTut/M&B%20Module%20System%20Doc2-3.pdf) or [HTML](http://forums.taleworlds.com/index.php/board,12.0.html)
 
-Tutorial about scripting in warband : http://forums.taleworlds.com/index.php/topic,142422.0.html
+Tutorial about scripting in warband: http://forums.taleworlds.com/index.php/topic,142422.0.html
 
-Importing items from mods : https://www.youtube.com/watch?v=JHUd-Pp-SSw
+Tutorial about handling multiplayer events: https://forums.taleworlds.com/index.php/topic,94854.0.html
+
+Importing items from mods: https://www.youtube.com/watch?v=JHUd-Pp-SSw
