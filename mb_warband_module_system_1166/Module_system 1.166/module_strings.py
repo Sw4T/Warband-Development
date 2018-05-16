@@ -4093,4 +4093,7 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("ranged_weapons_are_disallowed", "Ranged weapons are disallowed."),
   ("ranged_weapons_are_allowed", "Ranged weapons are allowed."),
   ("duel_starts_in_reg0_seconds", "Duel starts in {reg0} seconds..."),
+
+  # Truand Brawl strings
+  ("event_boost_damage", "You've been earned a {reg0}% damage bonus !"),
 ]

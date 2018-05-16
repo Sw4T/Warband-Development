@@ -8018,7 +8018,7 @@ mission_templates = [
              (try_end),             
            (try_end),
            (eq, ":spawn_new", 1),
-           #(call_script, "script_multiplayer_buy_agent_equipment", ":player_no"),
+           (call_script, "script_multiplayer_buy_agent_equipment", ":player_no"),
 
            (troop_get_inventory_slot, ":has_item", ":player_troop", ek_horse),
            (try_begin),

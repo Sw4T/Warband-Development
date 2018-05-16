@@ -6974,6 +6974,16 @@ scripts = [
        (else_try), #killing enemy
          (ge, ":killer_agent_no", 0),
          (ge, ":dead_agent_no", 0),
+         # Troops have a chance to gain bonus
+         (call_script, "script_rand", 0, 5),
+         (try_begin),
+            (le, reg0, 3),
+            # (agent_get_wielded_item, ":agent_wield_item", ":killer_agent_id", 0),
+            # (item_get_type, ":item_type", ":agent_wield_item"),
+            (call_script, "script_rand", 110, 170),
+            #(agent_set_damage_modifier, ":killer_agent_no", reg0),
+            (multiplayer_send_int_to_server, multiplayer_event_boost_damage, reg0),
+         (try_end),
          (agent_is_human, ":dead_agent_no"),
          (agent_is_human, ":killer_agent_no"),
          (try_begin),
@@ -8851,6 +8861,13 @@ scripts = [
           (eq, ":event_type", multiplayer_event_return_renaming_server_allowed),
           (store_script_param, ":value", 3),
           (assign, "$g_multiplayer_renaming_server_allowed", ":value"),
+
+         # Truand Brawl client multiplayer events
+        (else_try),
+          (eq, ":event_type", multiplayer_event_boost_damage),
+              (store_script_param, ":percent_of_bonus", 1),
+              (store_sub, reg0, ":percent_of_bonus", 100),
+              (display_message, "str_event_boost_damage", 0xFFFF6666),
         (else_try),
           (eq, ":event_type", multiplayer_event_return_changing_game_type_allowed),
           (store_script_param, ":value", 3),
@@ -9288,8 +9305,6 @@ scripts = [
         (else_try),
           (eq, ":event_type", multiplayer_event_show_server_message),
           (display_message, "str_server_s0", 0xFFFF6666),
-        (try_end),
-
       (try_end),
      ]),
 
@@ -47319,6 +47334,20 @@ scripts = [
   # TRUAND BRAWL SCRIPTS #
   ########################
 
+  ("initialize_multiplayer_for_player",
+    [
+      (multiplayer_get_my_player, ":my_player_no"),
+      (assign, "$g_confirmation_result", 0),
+      (assign, "$g_waiting_for_confirmation_to_terminate", 1),
+      (player_get_team_no, "$g_confirmation_team_backup", ":my_player_no"),
+      (player_set_troop_id, ":my_player_no", "trp_truand_multiplayer"),
+      (player_get_troop_id, "$g_confirmation_troop_backup", ":my_player_no"),
+      (multiplayer_send_int_to_server, multiplayer_event_change_team_no, 0),
+      (player_set_team_no, ":my_player_no", 0),
+      (assign, "$g_multiplayer_ready_for_spawning_agent", 1),
+      (assign, "$g_waiting_for_confirmation_to_terminate", 0),
+  ]),
+
   # Input: arg1 = Agent ID / arg2 = Item ID
   # Output: -
   ("agent_equip_and_wield_item",
@@ -47375,6 +47404,7 @@ scripts = [
   # Output: reg1 = Equipement ID
   ("random_armor_from_type",
     [
+      (multiplayer_is_server),
       (store_script_param_1, ":armor_type"),
       (store_sub, ":total_armors", armors_end, armors_begin),
       (assign, ":done", 0),
@@ -47395,6 +47425,7 @@ scripts = [
   # Output: -
   ("randomize_equipement_for_agent",
     [
+      (multiplayer_is_server),
       (store_script_param_1, ":agent_id"),
       (call_script, "script_rand", 0, tb_TOTAL_RANDOM_EVENTS), # Stores the result in reg0
       (try_begin), # Weapons part

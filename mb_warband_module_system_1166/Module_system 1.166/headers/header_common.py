@@ -119,6 +119,9 @@ multiplayer_event_cancel_duel                                 = 110
 multiplayer_event_show_server_message                         = 111
 multiplayer_event_return_disallow_ranged_weapons              = 112
 
+# Truand Brawl multiplayer events
+multiplayer_event_boost_damage = 113
+
 #multiplayer message types
 multiplayer_message_type_auto_team_balance_done      = 2
 multiplayer_message_type_auto_team_balance_next      = 3
