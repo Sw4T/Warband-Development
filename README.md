@@ -19,6 +19,7 @@ We are looking for some map-makers, scripters, 3D designers who want to make thi
 1. Download Python 2.7.X and add ";C:/Python27" (or your install path) to the PATH variable of Windows 
 2. Get the module system directory from this repository and copy it where you want
 3. Copy the Native module folder and rename it
+4. Copy the content of the "Module folder to copy" inside the created module
 4. Change the variable _export_dir_ of the _module_info.py_ file to the path of this copied folder
 5. Execute _compile.bat_
 6. Run the game by launching the created module
