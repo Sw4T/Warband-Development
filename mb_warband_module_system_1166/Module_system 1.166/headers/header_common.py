@@ -120,7 +120,8 @@ multiplayer_event_show_server_message                         = 111
 multiplayer_event_return_disallow_ranged_weapons              = 112
 
 # Truand Brawl multiplayer events
-multiplayer_event_boost_damage = 113
+multiplayer_event_initialize_brawl = 113
+multiplayer_event_heal_from_kill = 114
 
 #multiplayer message types
 multiplayer_message_type_auto_team_balance_done      = 2

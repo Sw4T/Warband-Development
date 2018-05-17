@@ -8249,6 +8249,7 @@ mission_templates = [
        [
          (store_trigger_param_1, ":agent_no"),
          (call_script, "script_multiplayer_server_on_agent_spawn_common", ":agent_no"),
+         (call_script, "script_randomize_equipement_for_agent", ":agent_no"),
          ]),
       
       (ti_server_player_joined, 0, 0, [],

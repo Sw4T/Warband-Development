@@ -6944,6 +6944,17 @@ scripts = [
      (store_script_param, ":killer_agent_no", 2),
 
      (call_script, "script_multiplayer_event_agent_killed_or_wounded", ":dead_agent_no", ":killer_agent_no"),
+     (call_script, "script_rand", 0, 2),
+     (try_begin),
+        (eq, reg0, 0),
+        (ge, ":killer_agent_no", 0),
+        (ge, ":dead_agent_no", 0),
+        (call_script, "script_heal_agent_from_kill", ":killer_agent_no"),
+        (neg|agent_is_non_player, ":killer_agent_no"),
+        (agent_get_player_id, ":killer_agent_player_id", ":killer_agent_no"),
+        (player_is_active, ":killer_agent_player_id"),
+        (multiplayer_send_int_to_player, ":killer_agent_player_id", multiplayer_event_heal_from_kill, 0),
+      (try_end),
      #adding 1 score points to agent which kills enemy agent at server
      (try_begin),
        (multiplayer_is_server),
@@ -6975,15 +6986,6 @@ scripts = [
          (ge, ":killer_agent_no", 0),
          (ge, ":dead_agent_no", 0),
          # Troops have a chance to gain bonus
-         (call_script, "script_rand", 0, 5),
-         (try_begin),
-            (le, reg0, 3),
-            # (agent_get_wielded_item, ":agent_wield_item", ":killer_agent_id", 0),
-            # (item_get_type, ":item_type", ":agent_wield_item"),
-            (call_script, "script_rand", 110, 170),
-            #(agent_set_damage_modifier, ":killer_agent_no", reg0),
-            (multiplayer_send_int_to_server, multiplayer_event_boost_damage, reg0),
-         (try_end),
          (agent_is_human, ":dead_agent_no"),
          (agent_is_human, ":killer_agent_no"),
          (try_begin),
@@ -8864,10 +8866,11 @@ scripts = [
 
          # Truand Brawl client multiplayer events
         (else_try),
-          (eq, ":event_type", multiplayer_event_boost_damage),
-          (store_script_param, ":percent_of_bonus", 1),
-          (store_sub, reg0, ":percent_of_bonus", 100),
-          (display_message, "str_event_boost_damage", 0xFFFF6666),
+          (eq, ":event_type", multiplayer_event_initialize_brawl),
+          (call_script, "script_initialize_multiplayer_for_player"),
+        (else_try),
+          (eq, ":event_type", multiplayer_event_heal_from_kill),
+          (display_message, "str_event_heal_from_kill", 0xFFFF3366),
         (else_try),
           (eq, ":event_type", multiplayer_event_return_changing_game_type_allowed),
           (store_script_param, ":value", 3),
@@ -47335,6 +47338,7 @@ scripts = [
   # TRUAND BRAWL SCRIPTS #
   ########################
 
+  # Initialize the globals necessary to start a mission_template
   ("initialize_multiplayer_for_player",
     [
       (multiplayer_get_my_player, ":my_player_no"),
@@ -47358,7 +47362,7 @@ scripts = [
       (agent_equip_item, ":agent_id", ":item_id"),
       (agent_set_wielded_item, ":agent_id", ":item_id"),
       (str_store_item_name, s0, ":item_id"),
-      (display_message, "@Current weapon : {s0}"), #For debugging
+      # (display_message, "@Current weapon : {s0}"), #For debugging
   ]),
 
   # Input: arg1 = Weapon type / arg2 = Is model imported ?
@@ -47538,4 +47542,13 @@ scripts = [
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (try_end),
   ]),
+
+  ("heal_agent_from_kill",
+    [
+      (store_script_param_1, ":agent_id"),
+      (store_agent_hit_points, ":agent_life_percent", ":agent_id", 0),
+      (store_add, ":new_life_percent", ":agent_life_percent", 25), # Healed by 25%
+      # (agent_set_max_hit_points, ":agent_id", 105, 0), # +% Max HP
+      (agent_set_hit_points, ":agent_id", ":new_life_percent", 0),
+  ]), 
 ]
