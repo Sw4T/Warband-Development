@@ -47361,12 +47361,17 @@ scripts = [
       (display_message, "@Current weapon : {s0}"), #For debugging
   ]),
 
-  # Input: arg1 = Weapon type
+  # Input: arg1 = Weapon type / arg2 = Is model imported ?
   # Output: reg1 = Weapon ID
   ("random_weapon_from_type",
     [
-      (store_script_param_1, ":weapon_type"),
+      (store_script_param, ":weapon_type", 1),
+      (store_script_param, ":is_imported", 2),
       (try_begin),
+          (eq, ":is_imported", 1),
+          (assign, ":index_begin", imported_weapons_begin),
+          (assign, ":index_end", imported_weapons_end),
+      (else_try),
           (this_or_next|eq, itp_type_one_handed_wpn, ":weapon_type"),
           (this_or_next|eq, itp_type_polearm, ":weapon_type"),
           (eq, itp_type_two_handed_wpn, ":weapon_type"),
@@ -47401,18 +47406,29 @@ scripts = [
       (end_try),
   ]),
 
-  # Input: arg1 = Equipement type
+  # Input: arg1 = Equipement type / arg2 = Is model imported ?
   # Output: reg1 = Equipement ID
   ("random_armor_from_type",
     [
       (multiplayer_is_server),
-      (store_script_param_1, ":armor_type"),
-      (store_sub, ":total_armors", armors_end, armors_begin),
+      (store_script_param, ":armor_type", 1),
+      (store_script_param, ":is_imported", 2),
+      (try_begin),
+          (eq, ":is_imported", 1),
+          (store_sub, ":total_armors", imported_armors_end, imported_armors_begin),
+      (else_try),
+          (store_sub, ":total_armors", armors_end, armors_begin),
+      (end_try),
       (assign, ":done", 0),
       (try_for_range, ":i", 0, 999), # Number of maximum tries for randomising the desired weapon 
           (neq, ":done", 1),
           (call_script, "script_rand", 0, ":total_armors"),
-          (store_add, ":random_item_id", armors_begin, reg0),
+          (try_begin),
+              (eq, ":is_imported", 1),
+              (store_add, ":random_item_id", imported_armors_begin, reg0),
+          (else_try),
+              (store_add, ":random_item_id", armors_begin, reg0),
+          (end_try),
           (item_get_type, ":item_type", ":random_item_id"),
           (try_begin),
               (eq, ":item_type", ":armor_type"),
@@ -47431,66 +47447,70 @@ scripts = [
       (call_script, "script_rand", 0, tb_TOTAL_RANDOM_EVENTS), # Stores the result in reg0
       (try_begin), # Weapons part
           (eq, reg0, tb_random_type_one_handed),
-          (call_script, "script_random_weapon_from_type", itp_type_one_handed_wpn),
+          (call_script, "script_random_weapon_from_type", itp_type_one_handed_wpn, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
-          (call_script, "script_random_weapon_from_type", itp_type_shield),
+          (call_script, "script_random_weapon_from_type", itp_type_shield, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (else_try),
           (eq, reg0, tb_random_type_two_handed),
-          (call_script, "script_random_weapon_from_type", itp_type_two_handed_wpn),
+          (call_script, "script_random_weapon_from_type", itp_type_two_handed_wpn, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (else_try),
           (eq, reg0, tb_random_type_polearm),
-          (call_script, "script_random_weapon_from_type", itp_type_polearm),
+          (call_script, "script_random_weapon_from_type", itp_type_polearm, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (else_try),
           (eq, reg0, tb_random_type_bow),
-          (call_script, "script_random_weapon_from_type", itp_type_bow),
+          (call_script, "script_random_weapon_from_type", itp_type_bow, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
-          (call_script, "script_random_weapon_from_type", itp_type_arrows),
+          (call_script, "script_random_weapon_from_type", itp_type_arrows, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (else_try),
           (eq, reg0, tb_random_type_crossbow),
-          (call_script, "script_random_weapon_from_type", itp_type_crossbow),
+          (call_script, "script_random_weapon_from_type", itp_type_crossbow, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
-          (call_script, "script_random_weapon_from_type", itp_type_bolts),
-          (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
+          (call_script, "script_random_weapon_from_type", itp_type_bolts, 0),
+          (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1, 0),
       (else_try),
           (eq, reg0, tb_random_type_shield),
-          (call_script, "script_random_weapon_from_type", itp_type_shield),
+          (call_script, "script_random_weapon_from_type", itp_type_shield, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (else_try),
           (eq, reg0, tb_random_type_thrown),
-          (call_script, "script_random_weapon_from_type", itp_type_thrown),
+          (call_script, "script_random_weapon_from_type", itp_type_thrown, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
-          (call_script, "script_random_weapon_from_type", itp_type_thrown),
+          (call_script, "script_random_weapon_from_type", itp_type_thrown, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (else_try),
-          (eq, reg0, tb_random_type_unequiped),
-          (call_script, "script_agent_equip_and_wield_item",":agent_id", "itm_iron_man_head"),
-          (call_script, "script_agent_equip_and_wield_item",":agent_id", "itm_iron_man_body"),
-          (call_script, "script_agent_equip_and_wield_item",":agent_id", "itm_iron_man_boots"),
-          (display_message, "@Iron Man has spawned !"),
+          (eq, reg0, tb_random_type_special), #BETA : It gives imported models
+          (call_script, "script_rand", imported_weapons_begin, imported_weapons_end), # Stores the result in reg0
+          (call_script, "script_agent_equip_and_wield_item",":agent_id", reg0),
+          (call_script, "script_rand", imported_weapons_begin, imported_weapons_end), # Stores the result in reg0
+          (call_script, "script_agent_equip_and_wield_item",":agent_id", reg0),
+          (call_script, "script_agent_equip_and_wield_item",":agent_id", "itm_special_arrows"),
+          (call_script, "script_randomize_armor_for_agent",":agent_id", 1),
+          (display_message, "@Bonus stuff spawned on an agent !"),
       (end_try),
-      (neq, reg0, tb_random_type_unequiped),
-      (call_script, "script_randomize_armor_for_agent",":agent_id"),
+      (neq, reg0, tb_random_type_special),
+      (call_script, "script_randomize_armor_for_agent",":agent_id", 0),
   ]),
 
-  # Input: arg1 = Agent ID
+  # Input: arg1 = Agent ID / arg2 = Is model imported ?
   # Output: -
   # % chance of randomising an item 
-  # Helmet : 70%
+  # Helmet : 80%
   # Body armor : 80%
-  # Gloves : 50%
-  # Boots : 60%
+  # Gloves : 60%
+  # Boots : 70%
   ("randomize_armor_for_agent",
     [
-      (store_script_param_1, ":agent_id"),
+      (store_script_param, ":agent_id", 1),
+      (store_script_param, ":is_imported", 2),
       # Helmet
       (call_script, "script_rand", 1, 10), # Stores the result in reg0
       (try_begin),
-          (le, reg0, 7),
-          (call_script, "script_random_armor_from_type", itp_type_head_armor),
+          (le, reg0, 8),
+          (call_script, "script_random_armor_from_type", itp_type_head_armor, ":is_imported"),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (try_end),
 
@@ -47498,23 +47518,23 @@ scripts = [
       (call_script, "script_rand", 1, 10), # Stores the result in reg0
       (try_begin),
           (le, reg0, 8),
-          (call_script, "script_random_armor_from_type", itp_type_body_armor),
+          (call_script, "script_random_armor_from_type", itp_type_body_armor, ":is_imported"),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (try_end),
 
       # Boots
       (call_script, "script_rand", 1, 10), # Stores the result in reg0
       (try_begin),
-          (le, reg0, 6),
-          (call_script, "script_random_armor_from_type", itp_type_foot_armor),
+          (le, reg0, 7),
+          (call_script, "script_random_armor_from_type", itp_type_foot_armor, ":is_imported"),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (try_end),
 
       # Gloves
       (call_script, "script_rand", 1, 10), # Stores the result in reg0
       (try_begin),
-          (le, reg0, 5),
-          (call_script, "script_random_armor_from_type", itp_type_hand_armor),
+          (le, reg0, 6),
+          (call_script, "script_random_armor_from_type", itp_type_hand_armor, ":is_imported"),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (try_end),
   ]),

@@ -1813,6 +1813,10 @@ tb_random_type_thrown = 3,
 tb_random_type_shield = 4,
 tb_random_type_bow = 5,
 tb_random_type_crossbow = 6,
-tb_random_type_unarmored = 7,
-tb_random_type_unequiped = 8,
-tb_TOTAL_RANDOM_EVENTS = 9,
+tb_random_type_special = 7,
+tb_TOTAL_RANDOM_EVENTS = 8,
+
+imported_weapons_begin = "itm_damascus_scimitar"
+imported_weapons_end = "itm_cudgel"
+imported_armors_begin = "itm_iron_man_body"
+imported_armors_end = weapons_begin
