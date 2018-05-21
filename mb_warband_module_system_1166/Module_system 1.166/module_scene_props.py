@@ -2989,4 +2989,14 @@ scene_props = [
  ("rock_bridge_a",0,"rock_bridge_a","bo_rock_bridge_a", []),
  ("suspension_bridge_a",0,"suspension_bridge_a","bo_suspension_bridge_a", []),
  ("mine_a",0,"mine_a","bo_mine_a", []),
+
+ ############################
+ # TRUAND BRAWL SCENE PROPS #
+ ############################
+ ("remparts_gothique",0,"remparts_gothique","remparts_gothique", []),
+ ("remparts_gothique_mur",0,"remparts_gothique_mur","remparts_gothique_mur", []),
+ ("remparts_gothique_porte",0,"remparts_gothique_porte","remparts_gothique_porte", []),
+ ("remparts_basse",0,"remparts_basse","remparts_basse", []),
+ ("mur",0,"mur","mur", []),
+
 ]

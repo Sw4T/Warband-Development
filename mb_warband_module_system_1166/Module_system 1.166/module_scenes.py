@@ -1199,8 +1199,8 @@ scenes = [
     [],[],"outer_terrain_plain"),
 
   # # Imported maps
-  # ("multi_scene_castle_ruins",sf_generate,"none", "none", (0,0),(100,100),-100,"0x000000013002ab630004651800000d7a00007f3100002701",
-  #   [],[],"outer_terrain_plain"),
+  ("multi_scene_castle_ruins_v2",sf_generate,"none", "none", (0,0),(100,100),-100,"0x000000013002ab630004651800000d7a00007f3100002701",
+    [],[],"outer_terrain_plain"),
   # ("multi_scene_dreiecksdorf",sf_generate,"none", "none", (0,0),(100,100),-100,"0x000000013002ab630004651800000d7a00007f3100002701",
   #   [],[],"outer_terrain_plain"),
 

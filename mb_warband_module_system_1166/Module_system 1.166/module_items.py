@@ -686,8 +686,12 @@ items = [
 #TWO-HANDED
 ["estoc", "Estoc", [("estoc",0)], itp_type_two_handed_wpn|itp_merchandise| itp_two_handed|itp_primary, itc_greatsword|itcf_carry_sword_back,
  670 , weight(2.75)|difficulty(10)|spd_rtng(102) | weapon_length(110)|swing_damage(40 , cut) | thrust_damage(28 ,  pierce),imodbits_sword_high ],
- ["lowlander_sword", "Estoc", [("lowlander_sword",0)], itp_type_two_handed_wpn|itp_merchandise| itp_two_handed|itp_primary, itc_greatsword|itcf_carry_sword_back,
- 670 , weight(2.75)|difficulty(10)|spd_rtng(98) | weapon_length(110)|swing_damage(42 , cut) | thrust_damage(20 ,  pierce),imodbits_sword_high ],
+["flambergee", "Flambergee", [("flambergeeee",0)], itp_type_two_handed_wpn|itp_merchandise| itp_two_handed|itp_primary, itc_greatsword|itcf_carry_sword_back,
+ 670 , weight(3)|difficulty(10)|spd_rtng(98) | weapon_length(110)|swing_damage(42 , cut) | thrust_damage(20 ,  pierce),imodbits_sword_high ],
+["lowlander_sword", "Lowlander Sword", [("lowlander_sword",0)], itp_type_two_handed_wpn|itp_merchandise| itp_two_handed|itp_primary, itc_greatsword|itcf_carry_sword_back,
+ 670 , weight(2.75)|difficulty(10)|spd_rtng(98) | weapon_length(120)|swing_damage(42 , cut) | thrust_damage(22 ,  pierce),imodbits_sword_high ],
+["scottish_claymore", "Scottish Claymore", [("scottish_claymore",0)], itp_type_two_handed_wpn|itp_merchandise| itp_two_handed|itp_primary, itc_greatsword|itcf_carry_sword_back,
+ 670 , weight(2.75)|difficulty(10)|spd_rtng(98) | weapon_length(110)|swing_damage(40 , cut) | thrust_damage(24 ,  pierce),imodbits_sword_high ],
 ["war_mace", "War Mace", [("war_mace",0)], itp_type_two_handed_wpn|itp_can_knock_down|itp_merchandise| itp_primary|itp_wooden_parry, itc_scimitar|itcf_carry_sword_back, 
 317 , weight(5)|difficulty(0)|spd_rtng(89) | weapon_length(89)|swing_damage(35 , blunt) | thrust_damage(0 ,  pierce),imodbits_sword_high ],
 
@@ -707,15 +711,15 @@ items = [
 ["royal_guard_shield_2", "Royal Guard Shield", [("shield_2",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield, 118, weight(3)|hit_points(480)|body_armor(3)|spd_rtng(90)|shield_width(100),imodbits_shield ],
 ["nordic_royal_shield", "Nordic Royal Shield", [("shield_1",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield, 118, weight(3)|hit_points(480)|body_armor(3)|spd_rtng(92)|shield_width(98),imodbits_shield ],
 ["empire_english_shield_1", "Empire English Shield", [("empire_english_shield_1",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield, 118, weight(3)|hit_points(480)|body_armor(3)|spd_rtng(92)|shield_width(98),imodbits_shield ],
-["empire_french_shield", "Empire French Shield", [("empire_english_shield_1",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield, 118, weight(3)|hit_points(480)|body_armor(3)|spd_rtng(92)|shield_width(98),imodbits_shield ],
+["empire_french_shield", "Empire French Shield", [("empire_french_shield_1",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield, 118, weight(3)|hit_points(480)|body_armor(3)|spd_rtng(92)|shield_width(98),imodbits_shield ],
 ["order_lion_shield", "Order of the Lion Shield", [("empire_english_shield_2",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield, 118, weight(3)|hit_points(520)|body_armor(3)|spd_rtng(95)|shield_width(98),imodbits_shield ],
 ["empire_english_shield_2", "Empire English Shield", [("empire_english_shield_4",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield, 118, weight(3)|hit_points(480)|body_armor(3)|spd_rtng(92)|shield_width(98),imodbits_shield ],
 ["empire_english_shield_3", "Empire English Shield", [("empire_english_shield_3",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield, 118, weight(3)|hit_points(480)|body_armor(3)|spd_rtng(92)|shield_width(98),imodbits_shield ],
-["empire_french_shield_1", "Empire French Shield", [("empire_french_shield_1",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield, 118, weight(3)|hit_points(480)|body_armor(3)|spd_rtng(92)|shield_width(98),imodbits_shield ],
-["empire_french_shield_2", "Empire French Shield", [("empire_french_shield_2",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield, 118, weight(3)|hit_points(480)|body_armor(3)|spd_rtng(92)|shield_width(98),imodbits_shield ],
-
+["empire_french_shield_1", "Empire French Shield", [("empire_french_shield_2",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield, 118, weight(3)|hit_points(480)|body_armor(3)|spd_rtng(92)|shield_width(98),imodbits_shield ],
+["empire_french_shield_2", "Empire French Shield", [("empire_french_shield_3",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield, 118, weight(3)|hit_points(480)|body_armor(3)|spd_rtng(92)|shield_width(98),imodbits_shield ],
 
 #END OF IMPORTS
+
 ["cudgel",         "Cudgel", [("club",0)], itp_type_one_handed_wpn|itp_merchandise| itp_primary|itp_wooden_parry|itp_wooden_attack, itc_scimitar, 
 4 , weight(2.5)|difficulty(0)|spd_rtng(99) | weapon_length(70)|swing_damage(13 , blunt) | thrust_damage(0 ,  pierce),imodbits_none ],
 ["hammer",         "Hammer", [("iron_hammer_new",0)], itp_type_one_handed_wpn|itp_can_knock_down|itp_merchandise| itp_primary|itp_wooden_parry, itc_scimitar, 
