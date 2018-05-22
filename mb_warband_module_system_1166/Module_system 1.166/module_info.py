@@ -6,7 +6,7 @@
 # Several possible variants for export_dir variable:
 
 # Warband being installed to C:/Games
-export_dir = "D:/Steam/steamapps/common/MountBlade Warband/Modules/Truand Brawl 0.1"
+export_dir = "D:/Steam/steamapps/common/MountBlade Warband/Modules/Random Academy Brawl 0.1"
 
 # Warband being installed to default path on Windows XP or Vista
 #export_dir = "C:/Programs Files/Mount&Blade Warband/Modules/Native/"

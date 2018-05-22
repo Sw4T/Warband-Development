@@ -6904,7 +6904,7 @@ scripts = [
          (val_div, ":initial_gold", 100),
          (player_set_gold, ":player_no", ":initial_gold"),
          (call_script, "script_multiplayer_send_initial_information", ":player_no"),
-         (multiplayer_send_string_to_player, ":player_no", multiplayer_event_show_server_message, "@Welcome to the Beta version of Truand Brawl !"),
+         (multiplayer_send_string_to_player, ":player_no", multiplayer_event_show_server_message, "@Welcome to the BETA version of Random Academy Brawl !"),
        (try_end),
      (try_end),
      ]),
