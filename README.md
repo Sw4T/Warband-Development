@@ -29,7 +29,7 @@ We are looking for some map-makers, scripters, 3D designers who want to make thi
 
 ## Supported match types 
 
-_Deathmatch_
+_Deathmatch_, _Team Deathmatch_
 
 ***
 
