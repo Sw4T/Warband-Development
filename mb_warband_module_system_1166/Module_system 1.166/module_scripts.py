@@ -6942,19 +6942,31 @@ scripts = [
    [
      (store_script_param, ":dead_agent_no", 1),
      (store_script_param, ":killer_agent_no", 2),
-
      (call_script, "script_multiplayer_event_agent_killed_or_wounded", ":dead_agent_no", ":killer_agent_no"),
-     (call_script, "script_rand", 0, 2),
+
+     ## Extra bonus for the killing unit 
      (try_begin),
-        (eq, reg0, 0),
         (ge, ":killer_agent_no", 0),
         (ge, ":dead_agent_no", 0),
-        (call_script, "script_heal_agent_from_kill", ":killer_agent_no"),
-        (neg|agent_is_non_player, ":killer_agent_no"),
-        (agent_get_player_id, ":killer_agent_player_id", ":killer_agent_no"),
-        (player_is_active, ":killer_agent_player_id"),
-        (multiplayer_send_int_to_player, ":killer_agent_player_id", multiplayer_event_heal_from_kill, 0),
-      (try_end),
+        (agent_is_alive, ":killer_agent_no"),
+        (call_script, "script_rand", 0, 4),
+        (try_begin),
+            (eq, reg0, 0), # Healing bonus
+            (call_script, "script_heal_agent_from_kill", ":killer_agent_no"),
+            (assign, ":event_code", multiplayer_event_heal_from_kill),            
+        (else_try),
+            (eq, reg0, 1), # Speed bonus
+            (call_script, "script_speed_boost_agent_from_kill", ":killer_agent_no"),
+            (assign, ":event_code", multiplayer_event_speed_from_kill),
+        (try_end),
+        (try_begin),
+            (neg|agent_is_non_player, ":killer_agent_no"),
+            (agent_get_player_id, ":killer_agent_player_id", ":killer_agent_no"),
+            (player_is_active, ":killer_agent_player_id"),
+            (multiplayer_send_int_to_player, ":killer_agent_player_id", ":event_code", 0),
+        (try_end),
+     (try_end),
+
      #adding 1 score points to agent which kills enemy agent at server
      (try_begin),
        (multiplayer_is_server),
@@ -6985,7 +6997,6 @@ scripts = [
        (else_try), #killing enemy
          (ge, ":killer_agent_no", 0),
          (ge, ":dead_agent_no", 0),
-         # Troops have a chance to gain bonus
          (agent_is_human, ":dead_agent_no"),
          (agent_is_human, ":killer_agent_no"),
          (try_begin),
@@ -8871,6 +8882,9 @@ scripts = [
         (else_try),
           (eq, ":event_type", multiplayer_event_heal_from_kill),
           (display_message, "str_event_heal_from_kill", 0xFFFF3366),
+          (else_try),
+          (eq, ":event_type", multiplayer_event_speed_from_kill),
+          (display_message, "str_event_speed_from_kill", 0xFFFF3366),
         (else_try),
           (eq, ":event_type", multiplayer_event_return_changing_game_type_allowed),
           (store_script_param, ":value", 3),
@@ -47453,8 +47467,6 @@ scripts = [
           (eq, reg0, tb_random_type_one_handed),
           (call_script, "script_random_weapon_from_type", itp_type_one_handed_wpn, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
-          (call_script, "script_random_weapon_from_type", itp_type_shield, 0),
-          (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (else_try),
           (eq, reg0, tb_random_type_two_handed),
           (call_script, "script_random_weapon_from_type", itp_type_two_handed_wpn, 0),
@@ -47550,5 +47562,13 @@ scripts = [
       (store_add, ":new_life_percent", ":agent_life_percent", 25), # Healed by 25%
       # (agent_set_max_hit_points, ":agent_id", 105, 0), # +% Max HP
       (agent_set_hit_points, ":agent_id", ":new_life_percent", 0),
-  ]), 
+  ]),  
+
+  ("speed_boost_agent_from_kill",
+    [
+      (store_script_param_1, ":agent_id"),
+      (agent_set_slot, ":agent_id", slot_agent_is_speed_boosted, 1),
+      (agent_set_slot, ":agent_id", slot_agent_speed_time_remaining, 4),
+      (agent_set_speed_modifier, ":agent_id", 175),
+  ]),  
 ]

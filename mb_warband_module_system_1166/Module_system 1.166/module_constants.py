@@ -80,7 +80,10 @@ slot_agent_duel_start_time        = 22
 slot_agent_walker_occupation      = 25
 #Equipment cost fix
 slot_agent_bought_horse           = 26
-###
+
+## Truand Brawl slots
+slot_agent_is_speed_boosted = 27
+slot_agent_speed_time_remaining = 28
     
 ########################################################
 ##  FACTION SLOTS          #############################

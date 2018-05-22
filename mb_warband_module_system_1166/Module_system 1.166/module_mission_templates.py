@@ -7984,6 +7984,28 @@ mission_templates = [
       #  (set_shader_param_float4, "@user_value_float4", 10, 20, 30, 40),
       #  (set_shader_param_float4x4, "@user_value_float4x4", 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120),
       #   ]),
+
+      # Speed boost check
+      (1, 0, 0, [],
+        [
+          (try_for_agents, ":current_agent"),
+              (try_begin),
+                (ge, ":current_agent", 0),
+                (agent_get_slot, ":is_speed_boosted", ":current_agent", slot_agent_is_speed_boosted),
+                (try_begin),
+                    (eq, ":is_speed_boosted", 1),
+                    (agent_get_slot, ":seconds_remaining", ":current_agent", slot_agent_speed_time_remaining),
+                    (val_sub, ":seconds_remaining", 1),
+                    (agent_set_slot, ":current_agent", slot_agent_speed_time_remaining, ":seconds_remaining"),
+                    (try_begin),
+                        (le, ":seconds_remaining", 0),
+                        (agent_set_speed_modifier, ":current_agent", 100),
+                        (agent_set_slot, ":current_agent", slot_agent_is_speed_boosted, 0),
+                    (try_end),
+                (try_end),
+              (try_end),
+          (try_end),
+        ]),
       
       (1, 0, 0, [],
        [

@@ -662,8 +662,9 @@ items = [
 ["iron_man_body", "Iron Man Suit", [("gtxbody",0)], itp_merchandise| itp_type_body_armor|itp_covers_legs ,0, 5000 , weight(30)|abundance(100)|head_armor(0)|body_armor(55)|leg_armor(22)|difficulty(10) ,imodbits_armor ],
 ["iron_man_head", "Iron Man Helmet", [("gtxhead",0)], itp_merchandise|itp_type_head_armor|itp_covers_head,0, 2500 , weight(8)|abundance(100)|head_armor(55)|body_armor(0)|leg_armor(0)|difficulty(10) ,imodbits_plate ],
 ["iron_man_boots", "Iron Man Boots", [("gtxshoes",0)], itp_merchandise|itp_type_foot_armor|itp_covers_legs,0, 2500 , weight(10)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(30)|difficulty(10) ,imodbits_armor ],
-["priest_1", "Priest Robe", [("priest_1",0)], itp_merchandise| itp_type_body_armor|itp_covers_legs ,0, 230 , weight(12)|abundance(100)|head_armor(0)|body_armor(12)|leg_armor(4)|difficulty(10) ,imodbits_armor ],
-["priest_2", "Priest Dress", [("priest_2",0)], itp_merchandise| itp_type_body_armor|itp_covers_legs ,0, 230 , weight(12)|abundance(100)|head_armor(0)|body_armor(14)|leg_armor(5)|difficulty(10) ,imodbits_armor ],
+["priest_robe", "Priest Robe", [("priest_1",0)], itp_merchandise| itp_type_body_armor|itp_covers_legs ,0, 230 , weight(8)|abundance(100)|head_armor(0)|body_armor(12)|leg_armor(4)|difficulty(10) ,imodbits_armor ],
+["priest_dress", "Priest Dress", [("priest_2",0)], itp_merchandise| itp_type_body_armor|itp_covers_legs ,0, 230 , weight(7)|abundance(100)|head_armor(0)|body_armor(14)|leg_armor(5)|difficulty(10) ,imodbits_armor ],
+["aussie_infantry_armor", "Aussie Infantry Armor", [("armor2",0)], itp_merchandise| itp_type_body_armor|itp_covers_legs ,0, 230 , weight(22)|abundance(100)|head_armor(0)|body_armor(32)|leg_armor(12)|difficulty(10) ,imodbits_armor ],
 
 #WEAPONS START
 ["wooden_stick",         "Wooden Stick", [("wooden_stick",0)], itp_type_one_handed_wpn|itp_merchandise| itp_primary|itp_wooden_parry|itp_wooden_attack, itc_scimitar, 
@@ -677,10 +678,13 @@ items = [
 ["damascus_scimitar", "Damascus Scimitar", [("damascus_scimitar",0)], itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_scimitar|itcf_carry_sword_left_hip, 
 1005 , weight(2.5)|difficulty(8)|spd_rtng(98) | weapon_length(95)|swing_damage(36 , cut) | thrust_damage(0 ,  pierce),imodbits_sword ],
 ["triblade", "Iron Triblade", [("tri_blade",0)], itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_scimitar|itcf_carry_sword_left_hip, 
-1005 , weight(2.5)|difficulty(8)|spd_rtng(110) | weapon_length(70)|swing_damage(35 , cut) | thrust_damage(0 ,  pierce),imodbits_sword ],
+1005 , weight(2.5)|difficulty(8)|spd_rtng(105) | weapon_length(70)|swing_damage(35 , cut) | thrust_damage(0 ,  pierce),imodbits_sword ],
 ["triblade_a", "Iron Triblade", [("tri_blade_a",0)], itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_scimitar|itcf_carry_sword_left_hip, 
-1005 , weight(2.5)|difficulty(8)|spd_rtng(105) | weapon_length(70)|swing_damage(32 , cut) | thrust_damage(0 ,  pierce),imodbits_sword ],
-["antique_mace", "Antique Mac", [("mace_new",0)], itp_type_one_handed_wpn|itp_can_knock_down|itp_merchandise| itp_primary|itp_wooden_parry, itc_scimitar|itcf_carry_mace_left_hip, 
+1005 , weight(2.5)|difficulty(8)|spd_rtng(102) | weapon_length(70)|swing_damage(32 , cut) | thrust_damage(0 ,  pierce),imodbits_sword ],
+["runed_sword", "Runed Sword", [("goodstudysword",0)], itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_scimitar|itcf_carry_sword_left_hip, 
+1005 , weight(2.5)|difficulty(8)|spd_rtng(95) | weapon_length(82)|swing_damage(29 , cut) | thrust_damage(0 ,  pierce),imodbits_sword ],
+
+["antique_mace", "Antique Mace", [("mace_new",0)], itp_type_one_handed_wpn|itp_can_knock_down|itp_merchandise| itp_primary|itp_wooden_parry, itc_scimitar|itcf_carry_mace_left_hip, 
 317 , weight(2.5)|difficulty(0)|spd_rtng(89) | weapon_length(85)|swing_damage(31 , blunt) | thrust_damage(0 ,  pierce),imodbits_mace ],
 
 #TWO-HANDED
@@ -696,7 +700,7 @@ items = [
 317 , weight(5)|difficulty(0)|spd_rtng(89) | weapon_length(89)|swing_damage(35 , blunt) | thrust_damage(0 ,  pierce),imodbits_sword_high ],
 
 #BOWS
-["dragon_bow", "Dragon bow", [("bow_1",0),("long_bow_carry",ixmesh_carry)], itp_type_bow |itp_merchandise|itp_primary|itp_two_handed ,itcf_shoot_bow|itcf_carry_bow_back, 
+["dragon_bow", "Dragon Bow", [("bow_1",0),("long_bow_carry",ixmesh_carry)], itp_type_bow |itp_merchandise|itp_primary|itp_two_handed ,itcf_shoot_bow|itcf_carry_bow_back, 
 145 , weight(1.75)|difficulty(3)|spd_rtng(90) | shoot_speed(70) | thrust_damage(24 ,  pierce),imodbits_bow ],
 
 #POLEARMS

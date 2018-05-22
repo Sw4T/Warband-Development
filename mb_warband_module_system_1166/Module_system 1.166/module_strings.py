@@ -4095,5 +4095,6 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("duel_starts_in_reg0_seconds", "Duel starts in {reg0} seconds..."),
 
   # Truand Brawl strings
-  ("event_heal_from_kill", "You've been healed by 25% for your last kill"),
+  ("event_heal_from_kill", "You've been healed by 25% for your last kill."),
+  ("event_speed_from_kill", "You've got speed boosted by 175% for your last kill."),
 ]
