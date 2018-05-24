@@ -119,10 +119,15 @@ multiplayer_event_cancel_duel                                 = 110
 multiplayer_event_show_server_message                         = 111
 multiplayer_event_return_disallow_ranged_weapons              = 112
 
-# Truand Brawl multiplayer events
+# Random Academy Brawl multiplayer events
 multiplayer_event_initialize_brawl = 113
 multiplayer_event_heal_from_kill = 114
 multiplayer_event_speed_from_kill = 115
+multiplayer_event_spawn_demon = 116
+
+# Imported events
+mp_agent_play_sound_client = 117
+mp_shield_bash_server = 118
 
 #multiplayer message types
 multiplayer_message_type_auto_team_balance_done      = 2
@@ -598,4 +603,6 @@ fp124 = 124
 fp125 = 125
 fp126 = 126
 fp127 = 127
+
+
 

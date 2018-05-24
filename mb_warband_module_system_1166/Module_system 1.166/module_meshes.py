@@ -597,4 +597,9 @@ meshes = [
   ("mp_ui_host_maps_18", 0, "mp_ui_host_maps_d3", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("mp_ui_host_maps_19", 0, "mp_ui_host_maps_e2", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("mp_ui_host_maps_20", 0, "mp_ui_host_maps_e1", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+
+  #################################
+  ## RANDOM ACADEMY BRAWL MESHES ##
+  #################################
+  ("guaishou1", 0, "guaishou1", 0, 0, 0, 0, 0, 0, 1, 1, 1),
 ]

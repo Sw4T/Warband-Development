@@ -28,6 +28,32 @@ from compiler import *
 pilgrim_disguise = [itm.pilgrim_hood,itm.pilgrim_disguise,itm.practice_staff, itm.throwing_daggers]
 af_castle_lord = af_override_horse | af_override_weapons| af_require_civilian
 
+###################################
+## RANDOM ACADEMY BRAWL TRIGGERS ##
+###################################
+mp_shield_bash = (
+  0, 0, 0,
+  [
+    (game_key_is_down, gk_defend),
+    (game_key_clicked, gk_attack),
+    (game_in_multiplayer_mode),
+  ],
+  [   
+    (multiplayer_send_message_to_server, mp_shield_bash_server),
+  ])
+
+spawn_demons = (
+  190, 0, 0, [],
+  [   
+    (call_script, "script_rand", 0, 2),
+    (try_begin),
+        (eq, reg0, 0),
+        (call_script, "script_spawn_demon_at_random_position_from_agent"),
+    (end_try),
+  ])
+  
+## END CUSTOM TRIGGERS
+
 multiplayer_server_check_belfry_movement = (
   0, 0, 0, [],
   [
@@ -7886,8 +7912,9 @@ mission_templates = [
      ],
     [
       #multiplayer_server_check_belfry_movement,      
-     
+      mp_shield_bash,
       multiplayer_server_check_polls,
+      spawn_demons,
 
       (ti_on_agent_spawn, 0, 0, [],
        [
@@ -14738,6 +14765,4 @@ mission_templates = [
          ]),
       ],
   ),
-
-
 ]

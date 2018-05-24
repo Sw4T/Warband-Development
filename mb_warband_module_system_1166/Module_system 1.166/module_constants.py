@@ -1398,10 +1398,10 @@ ransom_brokers_end   = tavern_travelers_begin
 mercenary_troops_begin = "trp_watchman"
 mercenary_troops_end = "trp_mercenaries_end"
 
-multiplayer_troops_begin = "trp_truand_multiplayer"
+multiplayer_troops_begin = "trp_douchebag_multiplayer"
 multiplayer_troops_end = "trp_novice_fighter"
 
-multiplayer_ai_troops_begin = "trp_truand_multiplayer"
+multiplayer_ai_troops_begin = "trp_douchebag_multiplayer"
 multiplayer_ai_troops_end = "trp_novice_fighter"
 
 multiplayer_scenes_begin = "scn_multi_scene_1"
@@ -1566,6 +1566,8 @@ maximum_price_factor = 10000
 village_prod_min = 0 #was -5
 village_prod_max = 20 #was 20
 
+# Items indexes
+
 trade_goods_begin = "itm_spice"
 trade_goods_end = "itm_siege_supply"
 food_begin = "itm_smoked_fish"
@@ -1582,6 +1584,8 @@ weapons_begin = "itm_wooden_stick"
 weapons_end = "itm_wooden_shield"
 ranged_weapons_begin = "itm_darts"
 ranged_weapons_end = "itm_torch"
+ammunitions_begin = "itm_arrows"
+ammunitions_end = "itm_demon_fist"
 armors_begin = "itm_leather_gloves"
 armors_end = "itm_wooden_stick"
 shields_begin = "itm_wooden_shield"

@@ -976,7 +976,7 @@ scripts = [
       (assign, "$g_quick_battle_army_1_size", 25),
       (assign, "$g_quick_battle_army_2_size", 25),
 
-      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_infantry, "trp_truand_multiplayer"),
+      # (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_infantry, "trp_douchebag_multiplayer"),
 
       #for multiplayer mode
       (assign, "$g_multiplayer_selected_map", multiplayer_scenes_begin),
@@ -1028,7 +1028,7 @@ scripts = [
 
       (try_for_range, ":cur_horse", horses_begin, horses_end),
           (item_set_slot, ":cur_horse", slot_item_multiplayer_item_class, multi_item_class_type_horse),
-          (call_script, "script_multiplayer_set_item_available_for_troop", ":cur_horse", "trp_truand_multiplayer"),
+          (call_script, "script_multiplayer_set_item_available_for_troop", ":cur_horse", "trp_douchebag_multiplayer"),
       (end_try),
 
       # # Sorting armors for multiplayer
@@ -8000,6 +8000,84 @@ scripts = [
         ###############
         #SERVER EVENTS#
         ###############
+        (eq, ":event_type", mp_shield_bash_server),
+        #Get sender data & max players.
+        (player_is_active, ":player_no"),
+        (player_get_agent_id, ":agent_no", ":player_no"),
+        (agent_is_active, ":agent_no"),
+        (get_max_players, ":max_players"),
+
+        #Check if the sender is in the correct condition.
+        (agent_get_wielded_item, ":shield", ":agent_no", 1), #Offhand item.
+        (item_get_type, ":itm_type", ":shield"),
+        (eq, ":itm_type", itp_type_shield),
+        # (is_between, ":shield", shields_begin, shields_end),
+        (agent_get_defend_action, ":action", ":agent_no"),
+        (eq, ":action", 2), #Blocking.
+        (agent_get_animation, ":anim", ":agent_no", 0),
+        (neq, ":anim", "anim_shield_bash"),
+        (agent_get_horse, ":horse", ":agent_no"),
+        (eq, ":horse", -1), #No horse
+        #If everything is correct, then set the sender agent up for bash.
+        (agent_set_animation, ":agent_no", "anim_shield_bash"),
+        (player_get_troop_id, ":troop_no", ":player_no"),
+        (troop_get_type, ":type_no", ":troop_no"),
+        (try_begin),
+            (eq, ":type_no", tf_male),
+            (try_for_range, ":player", 0, ":max_players"),
+              (player_is_active, ":player"),
+              (multiplayer_send_2_int_to_player, ":player", mp_agent_play_sound_client, ":agent_no", "snd_man_yell"),
+            (try_end),
+        (else_try),
+            (eq, ":type_no", tf_female),
+            (try_for_range, ":player", 0, ":max_players"),
+                (player_is_active, ":player"),
+                (multiplayer_send_2_int_to_player, ":player", mp_agent_play_sound_client, ":agent_no", "snd_woman_yell"),
+            (try_end),
+        (try_end),
+
+        #Bash. Get the closest agent within 175cm~1.75m.
+        (agent_get_position, pos1, ":agent_no"),
+        (assign, ":minimum_distance", 200),
+        (assign, ":victim", -1),
+        (try_for_agents, ":suspect"),
+            (neq, ":suspect", ":agent_no"), #Suspect can't be our local agent.
+            (agent_is_active, ":suspect"),
+            (agent_is_alive, ":suspect"),
+            (agent_is_human, ":suspect"),
+          
+            #Compare distances.
+            (agent_get_position, pos2, ":suspect"),
+            (neg|position_is_behind_position, pos2, pos1),
+            (get_distance_between_positions, ":distance", pos1, pos2),
+            (le, ":distance", ":minimum_distance"),
+            
+            #If distance is sufficient..
+            (assign, ":minimum_distance", ":distance"),
+            (assign, ":victim", ":suspect"),
+        (try_end),
+
+        #If we have the victim, aka the closest agent, then deal with him. Else, do nothing.
+        (ge, ":victim", 0),
+        (agent_get_horse, ":horse", ":victim"),
+        (eq, ":horse", -1), #No horse.
+        (try_for_range, ":player", 0, ":max_players"),
+            (player_is_active, ":player"),
+            (multiplayer_send_2_int_to_player, ":player", mp_agent_play_sound_client, ":victim", "snd_wooden_hit_low_armor_high_damage"),
+        (try_end),
+        (agent_get_position, pos2, ":victim"),
+        (position_move_y, pos2, -25),
+        (position_get_distance_to_ground_level, ":distance", pos2),
+        (try_begin),
+            (le, ":distance", 25),
+            (agent_set_position, ":victim", pos2),
+            (agent_set_animation, ":victim", "anim_shield_strike"),
+        (else_try),
+            (gt, ":distance", 25),
+            (agent_set_animation, ":victim", "anim_shield_strike"),
+        (try_end),
+
+      (else_try),
         (eq, ":event_type", multiplayer_event_set_item_selection),
         (store_script_param, ":slot_no", 3),
         (store_script_param, ":value", 4),
@@ -8875,7 +8953,14 @@ scripts = [
           (store_script_param, ":value", 3),
           (assign, "$g_multiplayer_renaming_server_allowed", ":value"),
 
-         # Truand Brawl client multiplayer events
+        # Imported client multiplayer events
+        (else_try),
+          (eq, ":event_type", mp_agent_play_sound_client),
+          (store_script_param, ":agent", 3),
+          (store_script_param, ":sound", 4),
+          (agent_play_sound, ":agent", ":sound"),
+
+         # Random Academy Brawl client multiplayer events
         (else_try),
           (eq, ":event_type", multiplayer_event_initialize_brawl),
           (call_script, "script_initialize_multiplayer_for_player"),
@@ -8885,6 +8970,9 @@ scripts = [
           (else_try),
           (eq, ":event_type", multiplayer_event_speed_from_kill),
           (display_message, "str_event_speed_from_kill", 0xFFFF3366),
+        (else_try),
+          (eq, ":event_type", multiplayer_event_spawn_demon),
+          (display_message, "@A demon have spawned and is coming for you !", 0xFFFFFF66),
         (else_try),
           (eq, ":event_type", multiplayer_event_return_changing_game_type_allowed),
           (store_script_param, ":value", 3),
@@ -47348,9 +47436,9 @@ scripts = [
   ]),
 
 
-  ########################
-  # TRUAND BRAWL SCRIPTS #
-  ########################
+  ################################
+  # RANDOM ACADEMY BRAWL SCRIPTS #
+  ################################
 
   # Initialize the globals necessary to start a mission_template
   ("initialize_multiplayer_for_player",
@@ -47359,7 +47447,7 @@ scripts = [
       (assign, "$g_confirmation_result", 0),
       (assign, "$g_waiting_for_confirmation_to_terminate", 1),
       (player_get_team_no, "$g_confirmation_team_backup", ":my_player_no"),
-      (player_set_troop_id, ":my_player_no", "trp_truand_multiplayer"),
+      (player_set_troop_id, ":my_player_no", "trp_douchebag_multiplayer"),
       (player_get_troop_id, "$g_confirmation_troop_backup", ":my_player_no"),
       (multiplayer_send_int_to_server, multiplayer_event_change_team_no, 0),
       (player_set_team_no, ":my_player_no", 0),
@@ -47375,6 +47463,16 @@ scripts = [
       (store_script_param, ":item_id", 2),
       (agent_equip_item, ":agent_id", ":item_id"),
       (agent_set_wielded_item, ":agent_id", ":item_id"),
+      (item_get_type, ":item_type", ":item_id"),
+      (try_begin),
+          (eq, ":item_type", itp_type_bow),
+          (call_script, "script_random_weapon_from_type", itp_type_arrows, 0),
+          (agent_equip_item, ":agent_id", reg1),
+      (else_try),
+          (eq, ":item_type", itp_type_crossbow),
+          (call_script, "script_random_weapon_from_type", itp_type_bolts, 0),
+          (agent_equip_item, ":agent_id", reg1),
+      (end_try),
       (str_store_item_name, s0, ":item_id"),
       # (display_message, "@Current weapon : {s0}"), #For debugging
   ]),
@@ -47397,12 +47495,16 @@ scripts = [
           (assign, ":index_end", weapons_end),
       (else_try),
           (this_or_next|eq, itp_type_bow, ":weapon_type"),
-          (this_or_next|eq, itp_type_arrows, ":weapon_type"),
-          (this_or_next|eq, itp_type_bolts, ":weapon_type"),
+          (this_or_next|eq, itp_type_crossbow, ":weapon_type"),
           (this_or_next|eq, itp_type_thrown, ":weapon_type"),
           (eq, itp_type_crossbow, ":weapon_type"),
           (assign, ":index_begin", ranged_weapons_begin),
           (assign, ":index_end", ranged_weapons_end),
+      (else_try),
+          (this_or_next|eq, itp_type_bolts, ":weapon_type"),
+          (eq, itp_type_arrows, ":weapon_type"),   
+          (assign, ":index_begin", ammunitions_begin),
+          (assign, ":index_end", ammunitions_end),          
       (else_try),
           (eq, itp_type_shield, ":weapon_type"),
           (assign, ":index_begin", shields_begin),
@@ -47462,6 +47564,8 @@ scripts = [
     [
       (multiplayer_is_server),
       (store_script_param_1, ":agent_id"),
+      (agent_get_troop_id, ":agent_type", ":agent_id"),
+      (eq, ":agent_type", "trp_douchebag_multiplayer"),
       (call_script, "script_rand", 0, tb_TOTAL_RANDOM_EVENTS), # Stores the result in reg0
       (try_begin), # Weapons part
           (eq, reg0, tb_random_type_one_handed),
@@ -47479,14 +47583,10 @@ scripts = [
           (eq, reg0, tb_random_type_bow),
           (call_script, "script_random_weapon_from_type", itp_type_bow, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
-          (call_script, "script_random_weapon_from_type", itp_type_arrows, 0),
-          (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (else_try),
           (eq, reg0, tb_random_type_crossbow),
           (call_script, "script_random_weapon_from_type", itp_type_crossbow, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
-          (call_script, "script_random_weapon_from_type", itp_type_bolts, 0),
-          (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1, 0),
       (else_try),
           (eq, reg0, tb_random_type_shield),
           (call_script, "script_random_weapon_from_type", itp_type_shield, 0),
@@ -47501,9 +47601,6 @@ scripts = [
           (eq, reg0, tb_random_type_special), #BETA : It gives imported models
           (call_script, "script_rand", imported_weapons_begin, imported_weapons_end), # Stores the result in reg0
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg0),
-          (call_script, "script_rand", imported_weapons_begin, imported_weapons_end), # Stores the result in reg0
-          (call_script, "script_agent_equip_and_wield_item",":agent_id", reg0),
-          (call_script, "script_agent_equip_and_wield_item",":agent_id", "itm_special_arrows"),
           (call_script, "script_randomize_armor_for_agent",":agent_id", 1),
           (display_message, "@Bonus stuff spawned on an agent !"),
       (end_try),
@@ -47555,6 +47652,8 @@ scripts = [
       (try_end),
   ]),
 
+  # Input: arg1 = Agent ID
+  # Output: -
   ("heal_agent_from_kill",
     [
       (store_script_param_1, ":agent_id"),
@@ -47564,6 +47663,8 @@ scripts = [
       (agent_set_hit_points, ":agent_id", ":new_life_percent", 0),
   ]),  
 
+  # Input: arg1 = Agent ID
+  # Output: -
   ("speed_boost_agent_from_kill",
     [
       (store_script_param_1, ":agent_id"),
@@ -47571,4 +47672,71 @@ scripts = [
       (agent_set_slot, ":agent_id", slot_agent_speed_time_remaining, 4),
       (agent_set_speed_modifier, ":agent_id", 175),
   ]),  
+
+  ("store_current_agents_in_array",
+    [
+      (get_max_players, ":max_players"),
+      (call_script, "script_warp_array_init_range", "p_agents_array", ":max_players", 0),
+      (try_for_agents, ":agent_no"),
+          (call_script, "script_cf_validate_agent", ":agent_no"),
+          (call_script, "script_warp_array_push", "p_agents_array", ":agent_no"),
+      (end_try),
+  ]), 
+
+  # Input: arg1 = Array ID
+  # Output: reg0 = Random element from array
+  ("get_random_from_array",
+    [
+      (store_script_param, ":array_id", 1),
+      (call_script, "script_warp_array_length", "p_agents_array"),
+      (assign, ":array_lenght", reg0),
+      (call_script, "script_rand", 0, ":array_lenght"),
+      (assign, ":random_index", reg0),
+      (try_for_range, ":i", 0, ":array_lenght"),
+          (eq, ":i", ":random_index"),
+          (call_script, "script_cf_warp_array_get", ":array_id", ":random_index"),
+          (val_add, ":i", 999), # BREAK
+      (end_try),
+  ]), 
+
+  # Input: arg1 = Multiplayer event ID
+  # Output: -
+  ("send_event_basic_message_to_players",
+    [
+      (store_script_param, ":event_message", 1),
+      (multiplayer_is_server),
+      (try_for_players, ":player_no"),
+          (player_is_active, ":player_no"),
+          (multiplayer_send_int_to_player, ":player_no", ":event_message", 0),
+      (end_try),
+  ]),
+
+  ("spawn_demon_at_random_position_from_agent",
+    [
+      (call_script, "script_store_current_agents_in_array"), # Stores in array-party : p_agents_array
+      (call_script, "script_warp_array_length", "p_agents_array"),
+      (display_message, "@{reg0} current agents spotted"),
+      (call_script, "script_get_random_from_array", "p_agents_array"),
+      (ge, reg0, 0), # Is the agent a valid agent ?
+      (agent_get_position, pos1, reg0),
+      (call_script, "script_rand", 500, 900), # Stores the result in reg0
+      (position_move_x, pos1, reg0),
+      (position_move_y, pos1, reg0),     
+      (set_spawn_position, pos1),
+      (spawn_agent, "trp_demon_1"),
+      (call_script, "script_send_event_basic_message_to_players", multiplayer_event_spawn_demon),
+  ]),
+
+  #########################
+  ## CONDITION FUNCTIONS ##
+  #########################
+  ("cf_validate_agent", [
+    (store_script_param, ":agent", 1),    
+    (agent_is_active, ":agent"),
+    #(neg|agent_is_non_player, ":agent"),#DEBUG
+    (agent_is_alive, ":agent"),
+    (agent_is_human, ":agent"),
+    (gt, ":agent", 0), 
+]),
+
 ]

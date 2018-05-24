@@ -2994,8 +2994,8 @@ scene_props = [
  # TRUAND BRAWL SCENE PROPS #
  ############################
  ("remparts_gothique",0,"remparts_gothique","remparts_gothique", []),
- ("remparts_gothique_mur",0,"remparts_gothique_mur","remparts_gothique_mur", []),
- ("remparts_gothique_porte",0,"remparts_gothique_porte","remparts_gothique_porte", []),
+ ("remparts_gothique_mur",0,"remparts_gothique_mur","bo_remparts_gothique_mur", []),
+ ("remparts_gothique_porte",0,"remparts_gothique_porte","bo_remparts_gothique_porte", []),
  ("remparts_basse",0,"remparts_basse","remparts_basse", []),
  ("mur",0,"mur","mur", []),
 
