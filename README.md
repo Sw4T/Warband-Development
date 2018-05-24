@@ -1,6 +1,6 @@
 # Warband Module Development 
 
-_Actually developping_ : **Truand Brawl** - A MP Mod for Mount&Blade Warband where you fight with many differents classes, weapons and stuff but in a totally random way. We're aiming to release a version with deathmatch implemented over little maps and some basic random stuff like positioning or weapons.
+_Actually developping_ : **Random Academy Brawl** - A MP Mod for Mount&Blade Warband where you fight with many differents classes, weapons and stuff but in a totally random way. We're aiming to release a version with deathmatch implemented over little maps and some basic random stuff like positioning or weapons.
 
 We are looking for some map-makers, scripters, 3D designers who want to make this a *real garbage*...
 
