@@ -8009,6 +8009,7 @@ scripts = [
 
         #Check if the sender is in the correct condition.
         (agent_get_wielded_item, ":shield", ":agent_no", 1), #Offhand item.
+        (ge, ":shield", 0),
         (item_get_type, ":itm_type", ":shield"),
         (eq, ":itm_type", itp_type_shield),
         # (is_between, ":shield", shields_begin, shields_end),
@@ -47496,8 +47497,7 @@ scripts = [
       (else_try),
           (this_or_next|eq, itp_type_bow, ":weapon_type"),
           (this_or_next|eq, itp_type_crossbow, ":weapon_type"),
-          (this_or_next|eq, itp_type_thrown, ":weapon_type"),
-          (eq, itp_type_crossbow, ":weapon_type"),
+          (eq, itp_type_thrown, ":weapon_type"),
           (assign, ":index_begin", ranged_weapons_begin),
           (assign, ":index_end", ranged_weapons_end),
       (else_try),
@@ -47530,7 +47530,6 @@ scripts = [
   # Output: reg1 = Equipement ID
   ("random_armor_from_type",
     [
-      (multiplayer_is_server),
       (store_script_param, ":armor_type", 1),
       (store_script_param, ":is_imported", 2),
       (try_begin),
@@ -47566,45 +47565,50 @@ scripts = [
       (store_script_param_1, ":agent_id"),
       (agent_get_troop_id, ":agent_type", ":agent_id"),
       (eq, ":agent_type", "trp_douchebag_multiplayer"),
-      (call_script, "script_rand", 0, tb_TOTAL_RANDOM_EVENTS), # Stores the result in reg0
+      (call_script, "script_rand", 0, TOTAL_RANDOM_EVENTS), # Stores the result in reg0
+      (assign, ":random_event", reg0),
+      (try_begin), 
+          (eq, reg0, random_type_special_unit),
+          (call_script, "script_rand", 0, TOTAL_SPECIAL_UNITS), # Stores the result in reg0
+          (call_script, "script_equip_special_unit_armor_for_agent", ":agent_id", reg0),
+      (end_try),
+      
       (try_begin), # Weapons part
-          (eq, reg0, tb_random_type_one_handed),
+          (eq, reg0, random_type_one_handed),
           (call_script, "script_random_weapon_from_type", itp_type_one_handed_wpn, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (else_try),
-          (eq, reg0, tb_random_type_two_handed),
+          (eq, reg0, random_type_two_handed),
           (call_script, "script_random_weapon_from_type", itp_type_two_handed_wpn, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (else_try),
-          (eq, reg0, tb_random_type_polearm),
+          (eq, reg0, random_type_polearm),
           (call_script, "script_random_weapon_from_type", itp_type_polearm, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (else_try),
-          (eq, reg0, tb_random_type_bow),
+          (eq, reg0, random_type_bow),
           (call_script, "script_random_weapon_from_type", itp_type_bow, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (else_try),
-          (eq, reg0, tb_random_type_crossbow),
+          (eq, reg0, random_type_crossbow),
           (call_script, "script_random_weapon_from_type", itp_type_crossbow, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (else_try),
-          (eq, reg0, tb_random_type_shield),
+          (eq, reg0, random_type_shield),
           (call_script, "script_random_weapon_from_type", itp_type_shield, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (else_try),
-          (eq, reg0, tb_random_type_thrown),
+          (eq, reg0, random_type_thrown),
           (call_script, "script_random_weapon_from_type", itp_type_thrown, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
           (call_script, "script_random_weapon_from_type", itp_type_thrown, 0),
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg1),
       (else_try),
-          (eq, reg0, tb_random_type_special), #BETA : It gives imported models
+          (eq, reg0, random_type_special_weapon), #BETA : It gives imported models
           (call_script, "script_rand", imported_weapons_begin, imported_weapons_end), # Stores the result in reg0
           (call_script, "script_agent_equip_and_wield_item",":agent_id", reg0),
-          (call_script, "script_randomize_armor_for_agent",":agent_id", 1),
-          (display_message, "@Bonus stuff spawned on an agent !"),
       (end_try),
-      (neq, reg0, tb_random_type_special),
+      (neq, ":random_event", random_type_special_unit),
       (call_script, "script_randomize_armor_for_agent",":agent_id", 0),
   ]),
 
@@ -47654,6 +47658,28 @@ scripts = [
 
   # Input: arg1 = Agent ID
   # Output: -
+  ("equip_special_unit_armor_for_agent",
+    [
+      (store_script_param, ":agent_id", 1),
+      (store_script_param, ":special_unit", 2),
+      (try_begin),
+          (eq, ":special_unit", special_unit_darth_maul),
+          (agent_equip_item, ":agent_id", "itm_darth_maul_armor"),
+          (agent_equip_item, ":agent_id", "itm_darth_maul_head"),
+      (else_try),
+          (eq, ":special_unit", special_unit_mace_windu),     
+          (agent_equip_item, ":agent_id", "itm_mace_windu_armor"),
+          (agent_equip_item, ":agent_id", "itm_mace_windu_head"),    
+      (else_try),
+          (eq, ":special_unit", special_unit_iron_man),     
+          (agent_equip_item, ":agent_id", "itm_iron_man_armor"), 
+          (agent_equip_item, ":agent_id", "itm_iron_man_head"), 
+          (agent_equip_item, ":agent_id", "itm_iron_man_boots"), 
+      (end_try),
+  ]),
+  
+  # Input: arg1 = Agent ID
+  # Output: -
   ("heal_agent_from_kill",
     [
       (store_script_param_1, ":agent_id"),
@@ -47673,6 +47699,7 @@ scripts = [
       (agent_set_speed_modifier, ":agent_id", 175),
   ]),  
 
+  # Stores every agent on the scene to "p_agents_array"
   ("store_current_agents_in_array",
     [
       (get_max_players, ":max_players"),
@@ -47701,21 +47728,27 @@ scripts = [
 
   # Input: arg1 = Multiplayer event ID
   # Output: -
-  ("send_event_basic_message_to_players",
+  ("force_push",
     [
-      (store_script_param, ":event_message", 1),
-      (multiplayer_is_server),
-      (try_for_players, ":player_no"),
-          (player_is_active, ":player_no"),
-          (multiplayer_send_int_to_player, ":player_no", ":event_message", 0),
-      (end_try),
+      (call_script, "script_store_current_agents_in_array"), # Stores in array-party : p_agents_array
+      (call_script, "script_get_random_from_array", "p_agents_array"),
+      (assign, ":random_agent",reg0),
+
+      (set_fixed_point_multiplier, 100),
+      (agent_get_look_position, pos1, ":random_agent"),
+      (position_move_z,pos1, 160, 1),
+      (position_get_rotation_around_z, ":z_rot", pos1),
+      (val_add, ":z_rot", 180),
+      (init_position, pos4),
+      (position_rotate_z, pos4, ":z_rot"),
+      (agent_get_position, pos2, ":random_agent"),
+      (position_copy_rotation, pos2, pos4),
+      (agent_set_position, ":random_agent", pos2),
   ]),
 
   ("spawn_demon_at_random_position_from_agent",
     [
       (call_script, "script_store_current_agents_in_array"), # Stores in array-party : p_agents_array
-      (call_script, "script_warp_array_length", "p_agents_array"),
-      (display_message, "@{reg0} current agents spotted"),
       (call_script, "script_get_random_from_array", "p_agents_array"),
       (ge, reg0, 0), # Is the agent a valid agent ?
       (agent_get_position, pos1, reg0),
@@ -47725,6 +47758,18 @@ scripts = [
       (set_spawn_position, pos1),
       (spawn_agent, "trp_demon_1"),
       (call_script, "script_send_event_basic_message_to_players", multiplayer_event_spawn_demon),
+  ]),
+
+  # Input: arg1 = Multiplayer event ID
+  # Output: -
+  ("send_event_basic_message_to_players",
+    [
+      (store_script_param, ":event_message", 1),
+      (multiplayer_is_server),
+      (try_for_players, ":player_no"),
+          (player_is_active, ":player_no"),
+          (multiplayer_send_int_to_player, ":player_no", ":event_message", 0),
+      (end_try),
   ]),
 
   #########################

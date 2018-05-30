@@ -1714,8 +1714,32 @@ arena_grand_prize = 250
 
 #Additions
 price_adjustment = 25 #the percent by which a trade at a center alters price
-
 fire_duration = 4 #fires takes 4 hours
+
+##################################
+# RANDOM ACADEMY BRAWL CONSTANTS #
+##################################
+random_type_one_handed = 0
+random_type_two_handed = 1
+random_type_polearm = 2
+random_type_thrown = 3
+random_type_shield = 4
+random_type_bow = 5
+random_type_crossbow = 6
+random_type_special_weapon = 7
+random_type_special_unit = 8
+TOTAL_RANDOM_EVENTS = 9 #To increase by 1 every added type
+
+imported_weapons_begin = "itm_damascus_scimitar"
+imported_weapons_end = "itm_cudgel"
+imported_armors_begin = "itm_priest_robe"
+imported_armors_end = weapons_begin
+
+special_unit_darth_maul = 0
+special_unit_mace_windu = 1
+special_unit_iron_man = 2
+TOTAL_SPECIAL_UNITS = 3 #To increase by 1 every added unit
+
 
 #NORMAL ACHIEVEMENTS
 ACHIEVEMENT_NONE_SHALL_PASS = 1,
@@ -1809,21 +1833,3 @@ ACHIEVEMENT_QUEEN = 77,
 ACHIEVEMENT_EMPRESS = 78,
 ACHIEVEMENT_TALK_OF_THE_TOWN = 79,
 ACHIEVEMENT_LADY_OF_THE_LAKE = 80,
-
-##########################
-# TRUAND BRAWL CONSTANTS #
-##########################
-tb_random_type_one_handed = 0,
-tb_random_type_two_handed = 1,
-tb_random_type_polearm = 2,
-tb_random_type_thrown = 3,
-tb_random_type_shield = 4,
-tb_random_type_bow = 5,
-tb_random_type_crossbow = 6,
-tb_random_type_special = 7,
-tb_TOTAL_RANDOM_EVENTS = 8,
-
-imported_weapons_begin = "itm_damascus_scimitar"
-imported_weapons_end = "itm_cudgel"
-imported_armors_begin = "itm_iron_man_body"
-imported_armors_end = weapons_begin

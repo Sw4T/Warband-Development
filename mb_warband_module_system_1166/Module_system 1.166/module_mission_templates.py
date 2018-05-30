@@ -42,6 +42,15 @@ mp_shield_bash = (
     (multiplayer_send_message_to_server, mp_shield_bash_server),
   ])
 
+force_push = (
+  0, 0, 0,
+  [
+    (game_key_is_down, gk_drop_weapon),
+  ],
+  [   
+    (call_script, "script_force_push"),
+  ])
+
 spawn_demons = (
   190, 0, 0, [],
   [   
@@ -7912,9 +7921,10 @@ mission_templates = [
      ],
     [
       #multiplayer_server_check_belfry_movement,      
-      mp_shield_bash,
+      #mp_shield_bash,
       multiplayer_server_check_polls,
       spawn_demons,
+      force_push,
 
       (ti_on_agent_spawn, 0, 0, [],
        [
