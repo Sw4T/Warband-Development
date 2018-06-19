@@ -263,14 +263,19 @@ troops = [
    str_6|agi_6|level(5),wp(80),knows_common,mercenary_face_1,mercenary_face_2],
 
   # HERE IS THE DOUCHEBAG
-  ["douchebag_multiplayer","Douchebag","Douchebags",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac.kingdom_7,[],
-   str_16|agi_10|level(10),wp_one_handed (110) | wp_two_handed (110) | wp_polearm (120) | wp_archery (125) | wp_crossbow (140) | wp_throwing (100), 
-   knows_common|knows_power_draw_3|knows_ironflesh_4|knows_power_strike_4|knows_athletics_5|knows_riding_3|knows_shield_4,mercenary_face_1, mercenary_face_2],
+  ["douchebag_multiplayer","Douchebag","Douchebags",tf_guarantee_all,no_scene,reserved,fac.kingdom_7,[],
+   str_16|agi_10|level(10), wp_one_handed (110) | wp_two_handed (110) | wp_polearm (120) | wp_archery (125) | wp_crossbow (140) | wp_throwing (100), 
+   knows_common|knows_power_draw_3|knows_ironflesh_4|knows_power_strike_3|knows_athletics_5|knows_riding_3|knows_shield_4,mercenary_face_1, mercenary_face_2],
 
   # SPECIAL BRAWL UNITS
-  ["demon_1","Demon","Demons",tf_guarantee_boots|tf_guarantee_armor,no_scene,0,fac.commoners,
-   [itm.demon_armor, itm.demon_boots, itm.demon_head, itm.demon_hand, itm.demon_fist],str_30|agi_10|level(20),wp(300),knows_common|knows_ironflesh_5|knows_power_strike_5, 0],
+  ["demon_1","Demon","Demons", tf_guarantee_all,no_scene, 0, fac.commoners,
+   [itm.demon_armor, itm.demon_boots, itm.demon_head, itm.demon_hand, itm.demon_fist],str_30|agi_10|level(20), wp(300),knows_common|knows_ironflesh_5|knows_power_strike_5, 0],
+  ["darth_maul","Darth Maul","Darth Maul",tf_guarantee_all,no_scene, 0, fac.commoners,
+   [itm.darth_maul_armor, itm.leather_gloves, itm.lightsaber_red, itm.boots_nothing],str_20|agi_12|level(10) ,wp(180),knows_common|knows_ironflesh_5|knows_power_strike_5, 0],
+  ["mace_windu","Mace Windu","Mace Windu",tf_guarantee_all,no_scene, 0, fac.commoners,
+   [itm.mace_windu_armor, itm.leather_gloves, itm.lightsaber_green, itm.boots_nothing],str_18|agi_14|level(10), wp(180),knows_common|knows_ironflesh_5|knows_power_strike_4, 0],
   
+
   ["novice_fighter","Novice Fighter","Novice Fighters",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac.commoners,
    [itm.hide_boots],
    str_6|agi_6|level(5),wp(60),knows_common,mercenary_face_1, mercenary_face_2],

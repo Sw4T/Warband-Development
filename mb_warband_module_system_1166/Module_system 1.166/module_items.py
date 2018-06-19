@@ -671,11 +671,22 @@ items = [
 ["flambergee", "Flambergee", [("flambergeeee",0)], itp_type_two_handed_wpn|itp_merchandise| itp_two_handed|itp_primary, itc_greatsword|itcf_carry_sword_back,
  670 , weight(3)|difficulty(10)|spd_rtng(98) | weapon_length(110)|swing_damage(42 , cut) | thrust_damage(20 ,  pierce),imodbits_sword_high ],
 ["lowlander_sword", "Lowlander Sword", [("lowlander_sword",0)], itp_type_two_handed_wpn|itp_merchandise| itp_two_handed|itp_primary, itc_greatsword|itcf_carry_sword_back,
- 670 , weight(2.75)|difficulty(10)|spd_rtng(98) | weapon_length(120)|swing_damage(42 , cut) | thrust_damage(22 ,  pierce),imodbits_sword_high ],
+ 670 , weight(2.75)|difficulty(10)|spd_rtng(98) | weapon_length(105)|swing_damage(42 , cut) | thrust_damage(22 ,  pierce),imodbits_sword_high ],
 ["scottish_claymore", "Scottish Claymore", [("scottish_claymore",0)], itp_type_two_handed_wpn|itp_merchandise| itp_two_handed|itp_primary, itc_greatsword|itcf_carry_sword_back,
  670 , weight(2.75)|difficulty(10)|spd_rtng(98) | weapon_length(110)|swing_damage(40 , cut) | thrust_damage(24 ,  pierce),imodbits_sword_high ],
 ["war_mace", "War Mace", [("war_mace",0)], itp_type_two_handed_wpn|itp_can_knock_down|itp_merchandise| itp_primary|itp_wooden_parry, itc_scimitar|itcf_carry_sword_back, 
 317 , weight(5)|difficulty(0)|spd_rtng(89) | weapon_length(89)|swing_damage(35 , blunt) | thrust_damage(0 ,  pierce),imodbits_sword_high ],
+
+["lightsaber_red", "Double Red Lightsaber", [("lightsaber_double_red",0)], itp_wooden_attack|itp_wooden_parry|itp_type_two_handed_wpn| itp_two_handed|itp_primary, itc_lightsaber_standard,
+ 500 , weight(3)|difficulty(8)|spd_rtng(89) | weapon_length(105)|swing_damage(67 , cut) | thrust_damage(87 ,  pierce),imodbits_sword_high,
+ [(ti_on_weapon_attack, [(store_trigger_param_1, ":agent"),(agent_play_sound, ":agent", "snd_lightsaber_swing")])]],
+ ["lightsaber_blue", "Blue Lightsaber", [("lightsaber_blue_ai",0)], itp_wooden_attack|itp_wooden_parry|itp_type_two_handed_wpn| itp_two_handed|itp_primary, itc_lightsaber_standard,
+ 500 , weight(3)|difficulty(8)|spd_rtng(89) | weapon_length(99)|swing_damage(70 , cut) | thrust_damage(85 ,  pierce),imodbits_sword_high,
+ [(ti_on_weapon_attack, [(store_trigger_param_1, ":agent"),(agent_play_sound, ":agent", "snd_lightsaber_swing")])]],
+ ["lightsaber_green", "Green Lightsaber", [("lightsaber_green_ai",0)], itp_wooden_attack|itp_wooden_parry|itp_type_two_handed_wpn| itp_two_handed|itp_primary, itc_lightsaber_standard,
+ 500 , weight(3)|difficulty(8)|spd_rtng(89) | weapon_length(99)|swing_damage(70 , cut) | thrust_damage(85 ,  pierce),imodbits_sword_high,
+ [(ti_on_weapon_attack, [(store_trigger_param_1, ":agent"),(agent_play_sound, ":agent", "snd_lightsaber_swing")])]],
+
 
 #BOWS
 ["dragon_bow", "Dragon Bow", [("bow_1",0),("long_bow_carry",ixmesh_carry)], itp_type_bow |itp_merchandise|itp_primary|itp_two_handed ,itcf_shoot_bow|itcf_carry_bow_back, 
@@ -732,6 +743,7 @@ items = [
 305 , weight(4.5)|difficulty(13)|spd_rtng(95) | weapon_length(85)|swing_damage(38 , pierce) | thrust_damage(0 ,  pierce),imodbits_mace ],
 
 ["sickle",         "Sickle", [("sickle",0)], itp_type_one_handed_wpn|itp_merchandise|itp_primary|itp_secondary|itp_no_parry|itp_wooden_parry, itc_cleaver, 
+
 9 , weight(1.5)|difficulty(0)|spd_rtng(99) | weapon_length(40)|swing_damage(20 , cut) | thrust_damage(0 ,  pierce),imodbits_none ],
 ["cleaver",         "Cleaver", [("cleaver_new",0)], itp_type_one_handed_wpn|itp_merchandise|itp_primary|itp_secondary|itp_no_parry|itp_wooden_parry, itc_cleaver, 
 14 , weight(1.5)|difficulty(0)|spd_rtng(103) | weapon_length(35)|swing_damage(24 , cut) | thrust_damage(0 ,  pierce),imodbits_none ],
@@ -1189,13 +1201,16 @@ items = [
 ["demon_fist", "Demon Fist", [("demon_warlord_handR",0)], itp_type_hand_armor|itp_type_one_handed_wpn|itp_primary, itc_scimitar|itcf_carry_mace_left_hip, 394 , weight(1.5)|difficulty(0)|spd_rtng(60) | weapon_length(95)|swing_damage(40 , cut) | thrust_damage(0,  pierce), imodbits_none ],
 
 # STAR WARS STUFF
-["darth_maul_armor", "Darth Maul Robe", [("maularmor",0)], itp_type_body_armor |itp_covers_legs ,0, 74, weight(80)|head_armor(0)|body_armor(50)|leg_armor(30)|difficulty(0) ,imodbits_plate ],
-["darth_maul_head", "Darth Maul Head", [("maularmor.1",0)], itp_type_head_armor|itp_covers_head ,0, 74, weight(25)|head_armor(25)|difficulty(0) ,imodbits_none ],
-["mace_windu_armor", "Mace Windu Robe", [("macewindu",0)], itp_type_body_armor |itp_covers_legs ,0, 74, weight(80)|head_armor(0)|body_armor(50)|leg_armor(30)|difficulty(0) ,imodbits_none ],
+["darth_maul_armor", "Darth Maul Robe", [("maularmor",0)], itp_type_body_armor |itp_covers_legs|itp_covers_head ,0, 74, weight(80)|head_armor(0)|body_armor(50)|leg_armor(30)|difficulty(0) ,imodbits_cloth ],
+["mace_windu_armor", "Mace Windu Robe", [("macewindu",0)], itp_type_body_armor |itp_covers_legs ,0, 74, weight(80)|head_armor(0)|body_armor(50)|leg_armor(30)|difficulty(0) ,imodbits_cloth],
 ["mace_windu_head", "Mace Windu Head", [("macehead",0)], itp_type_head_armor|itp_covers_head ,0, 74, weight(25)|head_armor(25)|difficulty(0) ,imodbits_none ],
 ["iron_man_armor", "Iron Man Suit", [("gtxbody",0)], itp_type_body_armor ,0, 5000 , weight(30)|abundance(100)|head_armor(0)|body_armor(55)|leg_armor(22)|difficulty(0) ,imodbits_armor ],
 ["iron_man_head", "Iron Man Helmet", [("gtxhead",0)], itp_type_head_armor|itp_covers_head,0, 2500 , weight(8)|abundance(100)|head_armor(55)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
 ["iron_man_boots", "Iron Man Boots", [("gtxshoes",0)], itp_type_foot_armor,0, 2500 , weight(10)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(30)|difficulty(0) ,imodbits_armor ],
+
+["hands_nothing","Invisible Hands", [("nothing",0)], itp_merchandise|itp_type_hand_armor,0, 0, weight(0.5)|abundance(100)|body_armor(5)|difficulty(0),imodbits_armor],
+["boots_nothing", "Invisible Boots", [("nothing",0)], itp_merchandise| itp_type_foot_armor|itp_attach_armature,0,
+ 174 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(16)|difficulty(0) ,imodbits_cloth ],
 
 # Shitty singleplayer stuff
 ["heraldic_mail_with_surcoat_for_tableau", "{!}Heraldic Mail with Surcoat", [("heraldic_armor_new_a",0)], itp_type_body_armor |itp_covers_legs ,0,

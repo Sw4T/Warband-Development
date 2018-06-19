@@ -6967,6 +6967,30 @@ scripts = [
         (try_end),
      (try_end),
 
+     ## Respawning agent trigger
+     (try_begin),
+        (ge, ":dead_agent_no", 0),
+        (neg|agent_is_non_player, ":dead_agent_no"),
+        (agent_get_player_id, ":dead_agent_player_id", ":dead_agent_no"),
+        (call_script, "script_rand", 0, 20),
+        (try_begin),
+            (eq, reg0, 0),
+            (player_set_troop_id, ":dead_agent_player_id", "trp_mace_windu"),
+            (player_add_spawn_item, ":dead_agent_player_id", 5, "itm_mace_windu_armor"),
+            (player_add_spawn_item, ":dead_agent_player_id", 4, "itm_mace_windu_head"),
+            (player_add_spawn_item, ":dead_agent_player_id", 0, "itm_lightsaber_green"),
+            (player_add_spawn_item, ":dead_agent_player_id", 6, "itm_boots_nothing"),
+        (else_try),
+            (eq, reg0, 1),
+            (player_set_troop_id, ":dead_agent_player_id", "trp_mace_windu"),
+            (player_add_spawn_item, ":dead_agent_player_id", 5, "itm_darth_maul_armor"),
+            (player_add_spawn_item, ":dead_agent_player_id", 0, "itm_lightsaber_red"),
+            (player_add_spawn_item, ":dead_agent_player_id", 6, "itm_boots_nothing"),
+        (else_try),
+            (player_set_troop_id, ":dead_agent_player_id", "trp_douchebag_multiplayer"),
+        (end_try),
+     (end_try),
+
      #adding 1 score points to agent which kills enemy agent at server
      (try_begin),
        (multiplayer_is_server),
@@ -47572,7 +47596,7 @@ scripts = [
           (call_script, "script_rand", 0, TOTAL_SPECIAL_UNITS), # Stores the result in reg0
           (call_script, "script_equip_special_unit_armor_for_agent", ":agent_id", reg0),
       (end_try),
-      
+
       (try_begin), # Weapons part
           (eq, reg0, random_type_one_handed),
           (call_script, "script_random_weapon_from_type", itp_type_one_handed_wpn, 0),
@@ -47665,7 +47689,6 @@ scripts = [
       (try_begin),
           (eq, ":special_unit", special_unit_darth_maul),
           (agent_equip_item, ":agent_id", "itm_darth_maul_armor"),
-          (agent_equip_item, ":agent_id", "itm_darth_maul_head"),
       (else_try),
           (eq, ":special_unit", special_unit_mace_windu),     
           (agent_equip_item, ":agent_id", "itm_mace_windu_armor"),
@@ -47730,20 +47753,28 @@ scripts = [
   # Output: -
   ("force_push",
     [
-      (call_script, "script_store_current_agents_in_array"), # Stores in array-party : p_agents_array
-      (call_script, "script_get_random_from_array", "p_agents_array"),
-      (assign, ":random_agent",reg0),
+      # (call_script, "script_store_current_agents_in_array"), # Stores in array-party : p_agents_array
+      # (call_script, "script_get_random_from_array", "p_agents_array"),
+      # (assign, ":random_agent",reg0),
 
-      (set_fixed_point_multiplier, 100),
-      (agent_get_look_position, pos1, ":random_agent"),
-      (position_move_z,pos1, 160, 1),
-      (position_get_rotation_around_z, ":z_rot", pos1),
-      (val_add, ":z_rot", 180),
-      (init_position, pos4),
-      (position_rotate_z, pos4, ":z_rot"),
-      (agent_get_position, pos2, ":random_agent"),
-      (position_copy_rotation, pos2, pos4),
-      (agent_set_position, ":random_agent", pos2),
+      # (set_fixed_point_multiplier, 100),
+      # (agent_get_look_position, pos1, ":random_agent"),
+      # (position_move_z,pos1, 160, 1),
+      # (position_get_rotation_around_z, ":z_rot", pos1),
+      # (val_add, ":z_rot", 180),
+      # (init_position, pos4),
+      # (position_rotate_z, pos4, ":z_rot"),
+      # (agent_get_position, pos2, ":random_agent"),
+      # (position_copy_rotation, pos2, pos4),
+      # (agent_set_position, ":random_agent", pos2),
+      (multiplayer_get_my_player, ":player_no"),
+      (player_get_agent_id, ":agent_id", ":player_no"),
+      (agent_get_position, pos0, ":agent_id"),
+      (call_script, "script_rand", 100, 100), # Stores the result in reg0
+      (position_move_x, pos0, reg0),
+      (position_move_y, pos0, reg0),     
+      (set_spawn_position, pos0),
+      (spawn_agent, "trp_darth_maul"),
   ]),
 
   ("spawn_demon_at_random_position_from_agent",

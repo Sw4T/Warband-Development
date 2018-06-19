@@ -973,6 +973,5 @@ tableaus = [
      (cur_tableau_add_tableau_mesh, "tableau_retired_troop_color", ":type", pos1, 0, 0),
      (position_set_z, pos1, 200),
      (cur_tableau_add_tableau_mesh, "tableau_retired_troop_alpha_mask", ":type", pos1, 0, 0),
-     ]),
-  
+     ]),  
 ]

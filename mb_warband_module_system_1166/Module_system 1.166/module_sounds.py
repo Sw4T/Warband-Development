@@ -209,4 +209,7 @@ sounds = [
  ("flag_returned", sf_2d|sf_priority_10|sf_vol_10, ["your_flag_returned.ogg"]),
  ("team_scored_a_point", sf_2d|sf_priority_10|sf_vol_10, ["you_scored_a_point.ogg"]),
  ("enemy_scored_a_point", sf_2d|sf_priority_10|sf_vol_10, ["enemy_scored_a_point.ogg"]),
+
+ # Imported sounds
+ ("lightsaber_swing", sf_vol_6|sf_priority_2,["lightsaber_miss1.mp3","lightsaber_miss2.mp3"]),
 ]

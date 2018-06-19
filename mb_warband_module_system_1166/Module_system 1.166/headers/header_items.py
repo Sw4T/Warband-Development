@@ -307,6 +307,7 @@ itc_guandao    = itc_parry_polearm|itcf_overswing_polearm|itcf_thrust_polearm|it
 itc_musket_melee = itc_parry_polearm|itcf_overswing_musket|itcf_thrust_musket|itcf_slashright_twohanded|itcf_slashleft_twohanded
 itc_greatlance = itcf_thrust_onehanded_lance | itcf_thrust_onehanded_lance_horseback | itcf_thrust_polearm
 
+itc_lightsaber_standard =  itc_cut_two_handed |  itc_parry_two_handed |itc_dagger
 
 
 #EXtra Mesh IDs

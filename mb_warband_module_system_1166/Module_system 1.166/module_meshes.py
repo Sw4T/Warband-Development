@@ -602,4 +602,5 @@ meshes = [
   ## RANDOM ACADEMY BRAWL MESHES ##
   #################################
   ("guaishou1", 0, "guaishou1", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  
 ]
